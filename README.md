@@ -63,7 +63,8 @@ Créez un fichier `.env.local` à la racine du projet :
 
 ```env
 # Email Configuration (pour le formulaire de contact)
-# Option 1: EmailJS
+# Option 1: EmailJS (recommandé - gratuit jusqu'à 100 emails/mois)
+# Voir EMAILJS_SETUP.md pour les instructions détaillées
 NEXT_PUBLIC_EMAILJS_SERVICE_ID=your_service_id
 NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=your_template_id
 NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=your_public_key

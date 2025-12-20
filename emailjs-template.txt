@@ -1,0 +1,39 @@
+Sujet: Nouveau message de contact - Portfolio
+
+Bonjour {{to_name}},
+
+Vous avez reçu un nouveau message de contact depuis votre portfolio :
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+INFORMATIONS DU CLIENT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Nom / Entreprise: {{from_name}}
+Email: {{from_email}}
+Téléphone: {{phone}}
+Entreprise: {{company}}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+DÉTAILS DU PROJET
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Type de projet: {{project_type}}
+Budget estimé: {{budget}}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+MESSAGE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+{{message}}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Ce message a été envoyé automatiquement depuis le formulaire de contact de votre portfolio.
+
+Pour répondre, utilisez l'adresse email: {{from_email}}
+
+
+
+
+
+

@@ -1,11 +1,12 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
+import emailjs from "@emailjs/browser"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
@@ -35,6 +36,9 @@ type ContactFormValues = z.infer<typeof contactFormSchema>
 export function Contact() {
   const { toast } = useToast()
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [success, setSuccess] = useState(false)
+  const [error, setError] = useState<string | null>(null)
+  const [lastSubmitTime, setLastSubmitTime] = useState<number | null>(null)
   const { ref, inView: isInView } = useInView({
     triggerOnce: true,
     threshold: 0.2,
@@ -52,25 +56,134 @@ export function Contact() {
   })
 
   const projectType = watch("projectType")
+  const [remainingTime, setRemainingTime] = useState(0)
+
+  // Vérifier l'anti-spam
+  const canSubmit = () => {
+    if (lastSubmitTime === null) return true
+    const timeSinceLastSubmit = Date.now() - lastSubmitTime
+    return timeSinceLastSubmit >= 60000 // 60 secondes
+  }
+
+  const getRemainingTime = () => {
+    if (lastSubmitTime === null) return 0
+    const timeSinceLastSubmit = Date.now() - lastSubmitTime
+    const remaining = Math.ceil((60000 - timeSinceLastSubmit) / 1000)
+    return remaining > 0 ? remaining : 0
+  }
+
+  // Timer pour l'anti-spam
+  useEffect(() => {
+    if (lastSubmitTime === null) {
+      setRemainingTime(0)
+      return
+    }
+
+    const interval = setInterval(() => {
+      const timeSinceLastSubmit = Date.now() - lastSubmitTime
+      const remaining = Math.ceil((60000 - timeSinceLastSubmit) / 1000)
+      const finalRemaining = remaining > 0 ? remaining : 0
+      setRemainingTime(finalRemaining)
+      if (finalRemaining === 0) {
+        clearInterval(interval)
+      }
+    }, 1000)
+
+    return () => clearInterval(interval)
+  }, [lastSubmitTime])
+
+  // Réinitialiser les messages après 5 secondes
+  useEffect(() => {
+    if (success) {
+      const timer = setTimeout(() => {
+        setSuccess(false)
+      }, 5000)
+      return () => clearTimeout(timer)
+    }
+  }, [success])
+
+  useEffect(() => {
+    if (error) {
+      const timer = setTimeout(() => {
+        setError(null)
+      }, 5000)
+      return () => clearTimeout(timer)
+    }
+  }, [error])
 
   const onSubmit = async (data: ContactFormValues) => {
+    // Vérification anti-spam
+    if (!canSubmit()) {
+      const remaining = remainingTime > 0 ? remainingTime : getRemainingTime()
+      setError(`Veuillez patienter ${remaining} seconde${remaining > 1 ? 's' : ''} avant de renvoyer un message.`)
+      toast({
+        title: "Trop de messages",
+        description: `Veuillez patienter ${remaining} seconde${remaining > 1 ? 's' : ''} avant de renvoyer un message.`,
+        variant: "destructive",
+      })
+      return
+    }
+
     setIsSubmitting(true)
+    setError(null)
+    setSuccess(false)
+
     try {
-      // Simulate API call - Replace with actual API endpoint
-      await new Promise((resolve) => setTimeout(resolve, 1000))
+      // Vérifier que les variables d'environnement sont configurées
+      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID
+      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID
+      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+
+      if (!serviceId || !templateId || !publicKey) {
+        throw new Error("Configuration EmailJS manquante. Veuillez redémarrer le serveur après avoir créé le fichier .env.local")
+      }
+
+      // Préparer les paramètres pour EmailJS avec les noms de champs corrects
+      const templateParams = {
+        user_name: data.name || "",
+        user_email: data.email || "",
+        user_phone: data.phone || "",
+        company_name: data.company || "",
+        project_type: data.projectType || "",
+        budget: data.budget || "",
+        message: data.message || "",
+      }
+
+      // Envoyer l'email via EmailJS avec send (plus fiable que sendForm)
+      await emailjs.send(
+        serviceId,
+        templateId,
+        templateParams,
+        publicKey
+      )
       
-      console.log("Form data:", data)
-      
+      setSuccess(true)
+      setLastSubmitTime(Date.now())
       toast({
         title: "Message envoyé !",
         description: "Je vous répondrai dans les plus brefs délais.",
       })
       
       reset()
-    } catch (error) {
+    } catch (error: any) {
+      console.error("Erreur lors de l'envoi de l'email:", error)
+      
+      let errorMessage = "Une erreur est survenue. Veuillez réessayer."
+      
+      if (error instanceof Error) {
+        errorMessage = error.message
+      } else if (error?.text) {
+        // Erreur EmailJS avec détails
+        errorMessage = `Erreur EmailJS: ${error.text}`
+        console.error("Détails EmailJS:", error)
+      } else if (typeof error === 'string') {
+        errorMessage = error
+      }
+      
+      setError(errorMessage)
       toast({
         title: "Erreur",
-        description: "Une erreur est survenue. Veuillez réessayer.",
+        description: errorMessage,
         variant: "destructive",
       })
     } finally {
@@ -205,7 +318,24 @@ export function Contact() {
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 bg-card/50 backdrop-blur-sm p-6 rounded-lg border border-border/50">
+            <form 
+              onSubmit={handleSubmit(onSubmit)} 
+              className="space-y-6 bg-card/50 backdrop-blur-sm p-6 rounded-lg border border-border/50"
+            >
+              {/* Messages de succès/erreur */}
+              {success && (
+                <div className="p-4 rounded-lg bg-green-50 border border-green-200 text-green-800">
+                  <p className="font-medium">Message envoyé avec succès !</p>
+                  <p className="text-sm mt-1">Je vous répondrai dans les plus brefs délais.</p>
+                </div>
+              )}
+              {error && (
+                <div className="p-4 rounded-lg bg-red-50 border border-red-200 text-red-800">
+                  <p className="font-medium">Erreur</p>
+                  <p className="text-sm mt-1">{error}</p>
+                </div>
+              )}
+
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <Label htmlFor="name">
@@ -298,21 +428,14 @@ export function Contact() {
               </div>
 
               <div>
-                <Label htmlFor="budget">Budget estimé (optionnel)</Label>
-                <Select
-                  onValueChange={(value) => setValue("budget", value)}
-                >
-                  <SelectTrigger className="mt-1 focus:border-primary focus:ring-primary">
-                    <SelectValue placeholder="Sélectionnez une fourchette" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="<1000">Moins de 1000€</SelectItem>
-                    <SelectItem value="1000-5000">1000€ - 5000€</SelectItem>
-                    <SelectItem value="5000-10000">5000€ - 10000€</SelectItem>
-                    <SelectItem value="10000-25000">10000€ - 25000€</SelectItem>
-                    <SelectItem value=">25000">Plus de 25000€</SelectItem>
-                  </SelectContent>
-                </Select>
+                <Label htmlFor="budget">Budget estimé en dt (optionnel)</Label>
+                <Input
+                  id="budget"
+                  type="text"
+                  placeholder="Ex: 5000 dt"
+                  className="mt-1 focus:border-primary focus:ring-primary"
+                  {...register("budget")}
+                />
               </div>
 
               <div>
@@ -336,7 +459,7 @@ export function Contact() {
                 type="submit"
                 size="lg"
                 className="w-full group relative overflow-hidden bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/40 transition-all duration-300"
-                disabled={isSubmitting}
+                disabled={isSubmitting || !canSubmit()}
               >
                 {isSubmitting ? (
                   <span className="flex items-center">
@@ -346,6 +469,10 @@ export function Contact() {
                       transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
                     />
                     Envoi en cours...
+                  </span>
+                ) : !canSubmit() ? (
+                  <span className="flex items-center">
+                    Attendez {remainingTime}s
                   </span>
                 ) : (
                   <>
