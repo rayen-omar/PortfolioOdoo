@@ -145,6 +145,8 @@ export function Projects() {
                           loop={true}
                           muted={true}
                           defaultPlaybackRate={1.5}
+                          title={`Démonstration vidéo de ${project.title} - ${project.type}`}
+                          ariaLabel={`Vidéo de démonstration du projet ${project.title}, ${project.type} développé avec ${project.technologies.join(', ')}`}
                         />
                         <div className="absolute top-4 right-4 z-20">
                           <span className="px-3 py-1 bg-black/50 backdrop-blur-sm text-white rounded-full text-xs font-semibold">
@@ -156,7 +158,7 @@ export function Projects() {
                       <>
                         <Image
                           src={project.image}
-                          alt={project.title}
+                          alt={`${project.title} - ${project.type} - Capture d'écran du projet Odoo développé par BenAmor Rayeen`}
                           fill
                           className="object-cover"
                           unoptimized
@@ -254,6 +256,8 @@ export function Projects() {
                                   loop={true}
                                   muted={true}
                                   defaultPlaybackRate={1.5}
+                                  title={`Démonstration vidéo complète de ${project.title} - ${project.type}`}
+                                  ariaLabel={`Vidéo de démonstration complète du projet ${project.title}, ${project.type} développé avec ${project.technologies.join(', ')}`}
                                 />
                               </div>
                             </div>
@@ -268,7 +272,7 @@ export function Projects() {
                               <div className="relative w-full h-64 rounded-lg overflow-hidden bg-secondary">
                                 <Image
                                   src={project.image}
-                                  alt={project.title}
+                                  alt={`${project.title} - ${project.type} - Détails du projet Odoo développé par BenAmor Rayeen`}
                                   fill
                                   className="object-contain"
                                   unoptimized

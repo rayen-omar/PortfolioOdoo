@@ -219,7 +219,7 @@ export function Hero() {
                       <div className="absolute inset-0 z-20 w-full h-full">
                         <Image
                           src="/photo.png"
-                          alt="BenAmor Rayeen - Développeur Odoo"
+                          alt="BenAmor Rayeen - Développeur Odoo Freelance spécialisé en solutions ERP personnalisées avec 3+ ans d'expérience"
                           fill
                           className="object-cover rounded-xl"
                           priority

@@ -1,7 +1,26 @@
+# robots.txt pour rayeen.dev
+
+# Autoriser tous les robots
 User-agent: *
 Allow: /
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
 
-Sitemap: https://rayen.dev/sitemap.xml
+# Sitemap
+Sitemap: https://rayeen.dev/sitemap.xml
+
+# Crawl-delay pour éviter la surcharge
+Crawl-delay: 1
+
+# Robots spécifiques
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
 
 
 

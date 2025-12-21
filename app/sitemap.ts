@@ -1,28 +1,61 @@
 import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const baseUrl = 'https://rayeen.dev'
+  const currentDate = new Date()
+
   return [
     {
-      url: 'https://rayen.dev',
-      lastModified: new Date(),
+      url: baseUrl,
+      lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 1,
     },
     {
-      url: 'https://rayen.dev/#services',
-      lastModified: new Date(),
+      url: `${baseUrl}/#home`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 1,
+    },
+    {
+      url: `${baseUrl}/#services`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/#projects`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/#skills`,
+      lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
-      url: 'https://rayen.dev/#projects',
-      lastModified: new Date(),
+      url: `${baseUrl}/#process`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/#why-choose`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/#testimonials`,
+      lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
-      url: 'https://rayen.dev/#contact',
-      lastModified: new Date(),
+      url: `${baseUrl}/#contact`,
+      lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.9,
     },

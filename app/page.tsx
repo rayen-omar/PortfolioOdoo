@@ -11,7 +11,7 @@ import { Contact } from "@/components/sections/contact"
 
 export default function Home() {
   return (
-    <div>
+    <>
       <Hero />
       <Services />
       <Projects />
@@ -20,6 +20,6 @@ export default function Home() {
       <WhyChoose />
       <Testimonials />
       <Contact />
-    </div>
+    </>
   )
 }
