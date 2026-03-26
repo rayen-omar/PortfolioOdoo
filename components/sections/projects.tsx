@@ -84,9 +84,12 @@ export function Projects() {
   })
 
   return (
-    <section id="projects" className="py-20 px-4 bg-gradient-to-b from-secondary/20 via-background to-secondary/20 relative overflow-hidden">
+    <section
+      id="projects"
+      className="py-24 px-4 relative overflow-hidden bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950"
+    >
       {/* Background decoration */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.1),transparent_50%)]"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(59,130,246,0.22),transparent_55%)]" />
       
       <div className="container mx-auto relative z-10">
         <motion.div
@@ -94,7 +97,7 @@ export function Projects() {
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="text-center mb-12"
+          className="text-center mb-14"
         >
           <motion.div
             initial={{ scale: 0 }}
@@ -102,26 +105,26 @@ export function Projects() {
             transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
             className="inline-block mb-4"
           >
-            <span className="px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-semibold border border-primary/20">
+            <span className="px-4 py-2 bg-white/5 text-white rounded-full text-sm font-semibold border border-white/10">
               Portfolio
             </span>
           </motion.div>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-foreground">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-white">
             Mes <span className="text-gradient">Réalisations</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-white/70 max-w-2xl mx-auto">
             Découvrez quelques-uns de mes projets Odoo les plus réussis
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
           {projects.map((project, index) => (
             <motion.div
               key={project.id}
               initial={{ opacity: 0, y: 50 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: index * 0.2 }}
-              whileHover={{ y: -10 }}
+              whileHover={{ y: -4 }}
             >
               <Tilt
                 tiltMaxAngleX={5}
@@ -130,21 +133,23 @@ export function Projects() {
                 transitionSpeed={1000}
                 className="h-full"
               >
-                <Card className="h-full hover:shadow-2xl transition-all duration-300 border-2 hover:border-primary/50 group overflow-hidden relative">
+                <Card className="h-full bg-white/5 border border-white/10 hover:border-primary/30 hover:shadow-lg transition-all duration-300 group overflow-hidden relative rounded-xl text-white">
                   {/* Gradient background */}
                   <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}></div>
                   
                   {/* Video or Image */}
-                  <div className={`relative h-64 bg-gradient-to-br ${project.gradient} overflow-hidden`}>
+                  <div className={`relative h-56 bg-gradient-to-br ${project.gradient} overflow-hidden`}>
                     {project.video ? (
                       <>
                         <VideoPlayer
                           src={project.video}
                           className="absolute inset-0 h-full w-full"
-                          autoPlay={true}
+                          autoPlay={false}
                           loop={true}
                           muted={true}
                           defaultPlaybackRate={1.5}
+                          title={`Démonstration vidéo de ${project.title} - ${project.type}`}
+                          ariaLabel={`Vidéo de démonstration du projet ${project.title}, ${project.type} développé avec ${project.technologies.join(', ')}`}
                         />
                         <div className="absolute top-4 right-4 z-20">
                           <span className="px-3 py-1 bg-black/50 backdrop-blur-sm text-white rounded-full text-xs font-semibold">
@@ -156,7 +161,7 @@ export function Projects() {
                       <>
                         <Image
                           src={project.image}
-                          alt={project.title}
+                          alt={`${project.title} - ${project.type} - Capture d'écran du projet Odoo développé par BenAmor Rayeen`}
                           fill
                           className="object-cover"
                           unoptimized
@@ -185,23 +190,23 @@ export function Projects() {
 
                   <CardHeader className="relative z-10">
                     <div className="flex items-start justify-between mb-2">
-                      <CardTitle className="text-2xl group-hover:text-primary transition-colors">
+                      <CardTitle className="text-xl group-hover:text-primary transition-colors leading-snug">
                         {project.title}
                       </CardTitle>
                       <motion.div
                         whileHover={{ rotate: 90, scale: 1.1 }}
                         transition={{ type: "spring", stiffness: 300 }}
                       >
-                        <ExternalLink className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors" />
+                        <ExternalLink className="h-5 w-5 text-white/70 group-hover:text-primary transition-colors" />
                       </motion.div>
                     </div>
-                    <CardDescription className="text-base">
+                    <CardDescription className="text-base text-white/70">
                       {project.type}
                     </CardDescription>
                   </CardHeader>
                   
                   <CardContent className="relative z-10">
-                    <p className="text-muted-foreground mb-4 leading-relaxed">
+                    <p className="text-white/70 mb-4 leading-relaxed">
                       {project.description}
                     </p>
                     
@@ -210,7 +215,7 @@ export function Projects() {
                         <motion.span
                           key={tech}
                           whileHover={{ scale: 1.05 }}
-                          className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium border border-primary/20"
+                          className="px-3 py-1 bg-white/5 text-white/90 rounded-full text-sm font-medium border border-white/10"
                         >
                           {tech}
                         </motion.span>
@@ -221,20 +226,20 @@ export function Projects() {
                       <DialogTrigger asChild>
                         <Button
                           variant="outline"
-                          className="w-full group/btn hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+                          className="w-full group/btn bg-white/5 text-white border-white/10 hover:bg-white/10 hover:border-white/20 hover:text-white transition-all duration-300"
                         >
                           <span className="group-hover/btn:translate-x-1 transition-transform inline-block">
                             Voir les détails
                           </span>
                         </Button>
                       </DialogTrigger>
-                      <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto">
+                      <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto bg-slate-950 border border-white/10 text-white">
                         <DialogHeader>
                           <DialogTitle className="text-2xl flex items-center gap-2">
                             <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${project.gradient}`}></div>
                             {project.title}
                           </DialogTitle>
-                          <DialogDescription className="text-base">
+                          <DialogDescription className="text-base text-white/70">
                             {project.type}
                           </DialogDescription>
                         </DialogHeader>
@@ -254,6 +259,8 @@ export function Projects() {
                                   loop={true}
                                   muted={true}
                                   defaultPlaybackRate={1.5}
+                                  title={`Démonstration vidéo complète de ${project.title} - ${project.type}`}
+                                  ariaLabel={`Vidéo de démonstration complète du projet ${project.title}, ${project.type} développé avec ${project.technologies.join(', ')}`}
                                 />
                               </div>
                             </div>
@@ -265,10 +272,10 @@ export function Projects() {
                                 <Code className="h-4 w-4 text-primary" />
                                 Capture d'écran
                               </h4>
-                              <div className="relative w-full h-64 rounded-lg overflow-hidden bg-secondary">
+                              <div className="relative w-full h-64 rounded-lg overflow-hidden bg-white/5">
                                 <Image
                                   src={project.image}
-                                  alt={project.title}
+                                  alt={`${project.title} - ${project.type} - Détails du projet Odoo développé par BenAmor Rayeen`}
                                   fill
                                   className="object-contain"
                                   unoptimized
@@ -281,7 +288,7 @@ export function Projects() {
                               <Database className="h-4 w-4 text-primary" />
                               Description
                             </h4>
-                            <p className="text-muted-foreground leading-relaxed">
+                            <p className="text-white/70 leading-relaxed">
                               {project.longDescription}
                             </p>
                           </div>
@@ -290,7 +297,7 @@ export function Projects() {
                               <Code className="h-4 w-4 text-primary" />
                               Modules développés
                             </h4>
-                            <ul className="list-disc list-inside space-y-1 text-muted-foreground">
+                            <ul className="list-disc list-inside space-y-1 text-white/70">
                               {project.modules.map((module, idx) => (
                                 <li key={idx}>{module}</li>
                               ))}
@@ -305,7 +312,7 @@ export function Projects() {
                               {project.technologies.map((tech) => (
                                 <span
                                   key={tech}
-                                  className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium"
+                                  className="px-3 py-1 bg-white/5 text-white/90 rounded-full text-sm font-medium border border-white/10"
                                 >
                                   {tech}
                                 </span>
@@ -317,7 +324,7 @@ export function Projects() {
                               <TrendingUp className="h-4 w-4 text-primary" />
                               Résultats
                             </h4>
-                            <p className="text-muted-foreground leading-relaxed">
+                            <p className="text-white/70 leading-relaxed">
                               {project.results}
                             </p>
                           </div>

@@ -28,7 +28,7 @@ const contactFormSchema = z.object({
   company: z.string().optional(),
   projectType: z.string().min(1, "Veuillez sélectionner un type de projet"),
   budget: z.string().optional(),
-  message: z.string().min(10, "Le message doit contenir au moins 10 caractères"),
+  message: z.string(),
 })
 
 type ContactFormValues = z.infer<typeof contactFormSchema>
@@ -192,7 +192,7 @@ export function Contact() {
   }
 
   return (
-    <section id="contact" className="py-20 px-4 bg-gradient-to-b from-secondary/20 via-background to-background relative overflow-hidden">
+    <section id="contact" className="py-24 px-4 bg-gradient-to-b from-secondary/10 via-background to-background relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(59,130,246,0.1),transparent_50%)]"></div>
       
@@ -202,7 +202,7 @@ export function Contact() {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="text-center mb-12"
+          className="text-center mb-14"
         >
           <motion.div
             initial={{ scale: 0 }}
@@ -217,7 +217,7 @@ export function Contact() {
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-foreground">
             Prêt à <span className="text-gradient">digitaliser</span> votre entreprise ?
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Contactez-moi pour un devis gratuit et une consultation personnalisée
           </p>
         </motion.div>
@@ -262,7 +262,7 @@ export function Contact() {
                       initial={{ opacity: 0, y: 20 }}
                       animate={isInView ? { opacity: 1, y: 0 } : {}}
                       transition={{ delay: 0.3 + index * 0.1 }}
-                      className="flex items-start gap-4 p-4 rounded-lg bg-card/50 backdrop-blur-sm border border-border/50 hover:border-primary/50 hover:bg-card transition-all duration-300 group"
+                      className="flex items-start gap-4 p-4 rounded-lg bg-card border border-border/70 hover:border-primary/30 transition-all duration-300 group"
                     >
                       <div className="w-12 h-12 bg-gradient-to-br from-primary/20 to-primary/10 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
                         <Icon className="h-6 w-6 text-primary" />
@@ -320,7 +320,7 @@ export function Contact() {
           >
             <form 
               onSubmit={handleSubmit(onSubmit)} 
-              className="space-y-6 bg-card/50 backdrop-blur-sm p-6 rounded-lg border border-border/50"
+              className="space-y-6 bg-card p-6 rounded-xl border border-border/70 shadow-sm"
             >
               {/* Messages de succès/erreur */}
               {success && (
@@ -432,7 +432,7 @@ export function Contact() {
                 <Input
                   id="budget"
                   type="text"
-                  placeholder="Ex: 5000 dt"
+                  placeholder=""
                   className="mt-1 focus:border-primary focus:ring-primary"
                   {...register("budget")}
                 />

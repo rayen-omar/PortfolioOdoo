@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -12,7 +12,8 @@ import { useToast } from "@/hooks/use-toast"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
-import { Send, Quote } from "lucide-react"
+import { Send, Quote, Lock, ShieldCheck, Loader2 } from "lucide-react"
+import emailjs from "@emailjs/browser"
 import {
   Select,
   SelectContent,
@@ -21,29 +22,36 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 
+// ⚠️ CODE SECRET — Changez ce code et partagez-le UNIQUEMENT avec vos clients
+// Pour changer: remplacez la chaîne ci-dessous par votre propre mot de passe secret
+const SECRET_ACCESS_CODE = "rayeen2024client"
+
 const testimonialFormSchema = z.object({
+  accessCode: z.string().min(1, "Le code d'accès est requis"),
   name: z.string().min(2, "Le nom doit contenir au moins 2 caractères"),
   company: z.string().min(2, "Le nom de l'entreprise est requis"),
   project: z.string().min(1, "Veuillez sélectionner un projet"),
   feedback: z.string().min(20, "Le témoignage doit contenir au moins 20 caractères"),
-  email: z.string().email("Email invalide").optional(),
+  email: z.string().email("Email invalide").optional().or(z.literal("")),
 })
 
 type TestimonialFormValues = z.infer<typeof testimonialFormSchema>
 
-// Témoignages directs écrits par les clients
-const existingTestimonials: Array<{
+interface Testimonial {
   id: number
-  feedback: string
   name: string
   company: string
-  project?: string
-}> = []
+  project: string
+  feedback: string
+  approved: boolean
+  createdAt: string
+}
 
 export function Testimonials() {
   const { toast } = useToast()
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [showForm, setShowForm] = useState(false)
+  const [testimonials, setTestimonials] = useState<Testimonial[]>([])
+  const [isLoading, setIsLoading] = useState(true)
 
   const { ref, inView } = useInView({
     triggerOnce: true,
@@ -63,26 +71,92 @@ export function Testimonials() {
 
   const project = watch("project")
 
+  // Charger les témoignages approuvés depuis l'API
+  const loadTestimonials = async () => {
+    try {
+      setIsLoading(true)
+      const res = await fetch("/api/testimonials")
+      if (res.ok) {
+        const data = await res.json()
+        setTestimonials(data)
+      }
+    } catch (error) {
+      console.error("Erreur chargement témoignages:", error)
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+  useEffect(() => {
+    loadTestimonials()
+  }, [])
 
   const onSubmit = async (data: TestimonialFormValues) => {
+    // Vérification du code d'accès secret
+    if (data.accessCode.trim() !== SECRET_ACCESS_CODE) {
+      toast({
+        title: "Code d'accès incorrect",
+        description:
+          "Seuls les clients ayant reçu le code d'accès peuvent publier un témoignage. Contactez Rayeen Omar pour obtenir votre code.",
+        variant: "destructive",
+      })
+      return
+    }
+
     setIsSubmitting(true)
     try {
-      // Simulate API call - Replace with actual API endpoint
-      await new Promise((resolve) => setTimeout(resolve, 1000))
-      
-      console.log("Testimonial data:", data)
-      
-      toast({
-        title: "Merci pour votre témoignage !",
-        description: "Votre avis a été enregistré et sera publié après modération.",
+      // 1. Sauvegarder dans le fichier JSON (en attente de validation)
+      const saveRes = await fetch("/api/testimonials", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: data.name,
+          company: data.company,
+          project: data.project,
+          feedback: data.feedback,
+          email: data.email || "",
+        }),
       })
-      
-      reset()
-      setShowForm(false)
-    } catch (error) {
+
+      if (!saveRes.ok) {
+        throw new Error("Erreur lors de la sauvegarde")
+      }
+
+      // 2. Envoyer un email de notification (EmailJS)
+      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID
+      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+
+      if (serviceId && publicKey) {
+        await emailjs.send(
+          serviceId,
+          process.env.NEXT_PUBLIC_EMAILJS_TESTIMONIAL_TEMPLATE_ID ||
+            process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+          {
+            to_name: "Rayeen Omar",
+            from_name: data.name,
+            from_email: data.email || "Non fourni",
+            company: data.company,
+            project_type: data.project,
+            message: `[TÉMOIGNAGE - EN ATTENTE DE VALIDATION]\n\n${data.feedback}\n\n---\nPour approuver ce témoignage, utilisez l'API d'administration.`,
+            subject: `Nouveau témoignage de ${data.name} — ${data.company}`,
+          },
+          publicKey
+        )
+      }
+
       toast({
-        title: "Erreur",
-        description: "Une erreur est survenue. Veuillez réessayer.",
+        title: "Témoignage soumis avec succès ! ✅",
+        description:
+          "Merci ! Votre témoignage a été enregistré et sera publié après validation par Rayeen.",
+      })
+
+      reset()
+    } catch (error) {
+      console.error("Error:", error)
+      toast({
+        title: "Erreur d'envoi",
+        description:
+          "Une erreur est survenue lors de l'envoi. Vérifiez votre connexion et réessayez.",
         variant: "destructive",
       })
     } finally {
@@ -94,7 +168,7 @@ export function Testimonials() {
     <section id="testimonials" className="py-20 px-4 bg-background relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(59,130,246,0.05),transparent)]"></div>
-      
+
       <div className="container mx-auto relative z-10">
         <motion.div
           ref={ref}
@@ -122,10 +196,14 @@ export function Testimonials() {
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-          {/* Témoignages directs écrits par les clients */}
+          {/* Liste des témoignages approuvés */}
           <div className="space-y-6">
-            {existingTestimonials.length > 0 ? (
-              existingTestimonials.map((testimonial, index) => (
+            {isLoading ? (
+              <div className="flex items-center justify-center py-16">
+                <Loader2 className="h-8 w-8 animate-spin text-primary/50" />
+              </div>
+            ) : testimonials.length > 0 ? (
+              testimonials.map((testimonial, index) => (
                 <motion.div
                   key={testimonial.id}
                   initial={{ opacity: 0, x: -20 }}
@@ -191,7 +269,42 @@ export function Testimonials() {
                 </p>
               </CardHeader>
               <CardContent>
+                {/* Bandeau info accès réservé */}
+                <div className="flex items-center gap-2 bg-primary/5 border border-primary/20 rounded-lg px-3 py-2 mb-4">
+                  <ShieldCheck className="h-4 w-4 text-primary flex-shrink-0" />
+                  <p className="text-xs text-muted-foreground">
+                    <span className="font-semibold text-primary">Accès réservé</span> — Réservé aux entreprises clientes. Vous avez reçu un code d'accès par email.
+                  </p>
+                </div>
+
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+                  {/* Code d'accès secret — en premier */}
+                  <div>
+                    <Label htmlFor="testimonial-access-code" className="flex items-center gap-1">
+                      <Lock className="h-3 w-3 text-primary" />
+                      Code d'accès client <span className="text-destructive">*</span>
+                    </Label>
+                    <Input
+                      id="testimonial-access-code"
+                      type="password"
+                      {...register("accessCode")}
+                      placeholder="Entrez le code reçu par email"
+                      className="mt-1"
+                      autoComplete="off"
+                    />
+                    {errors.accessCode && (
+                      <p className="text-sm text-destructive mt-1">
+                        {errors.accessCode.message}
+                      </p>
+                    )}
+                    <p className="text-xs text-muted-foreground mt-1">
+                      Vous n'avez pas de code ?{" "}
+                      <a href="#contact" className="text-primary underline">
+                        Contactez-moi
+                      </a>
+                    </p>
+                  </div>
+
                   <div>
                     <Label htmlFor="testimonial-name">
                       Votre nom <span className="text-destructive">*</span>
@@ -280,7 +393,7 @@ export function Testimonials() {
                       </p>
                     )}
                     <p className="text-xs text-muted-foreground mt-1">
-                      Exemple : "Rayeen a livré le projet avant la date prévue, a répondu à tous nos besoins et a été très professionnel."
+                      Exemple : &quot;Rayeen a livré le projet avant la date prévue, a répondu à tous nos besoins et a été très professionnel.&quot;
                     </p>
                   </div>
 
@@ -290,7 +403,10 @@ export function Testimonials() {
                     disabled={isSubmitting}
                   >
                     {isSubmitting ? (
-                      "Envoi en cours..."
+                      <>
+                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                        Envoi en cours...
+                      </>
                     ) : (
                       <>
                         <Send className="mr-2 h-4 w-4" />
@@ -307,4 +423,3 @@ export function Testimonials() {
     </section>
   )
 }
-

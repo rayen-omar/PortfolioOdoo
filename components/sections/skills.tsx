@@ -9,19 +9,18 @@ const skills = [
   { name: "Odoo Framework", level: 95, category: "Expert", icon: Code2 },
   { name: "Python", level: 90, category: "Avancé", icon: Zap },
   { name: "PostgreSQL", level: 85, category: "Avancé", icon: Database },
-  { name: "JavaScript/jQuery", level: 80, category: "Intermédiaire-Avancé", icon: Code2 },
+  { name: "JavaScript", level: 80, category: "Intermédiaire-Avancé", icon: Code2 },
   { name: "Git/GitHub", level: 75, category: "Intermédiaire", icon: GitBranch },
   { name: "Déploiement Linux", level: 70, category: "Intermédiaire", icon: Server },
 ]
 
 const technologies = [
-  "Odoo 15, 16, 17, 18, 19",
+  "Odoo 17, 18, 19",
   "Python",
   "PostgreSQL",
   "XML",
   "ORM Odoo",
   "JavaScript",
-  "jQuery",
   "QWeb",
   "Owl Framework",
   "Git",
@@ -36,7 +35,7 @@ export function Skills() {
   })
 
   return (
-    <section id="skills" className="py-20 px-4 bg-background relative overflow-hidden">
+    <section id="skills" className="py-24 px-4 bg-background relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(59,130,246,0.1),transparent)]"></div>
       
@@ -45,7 +44,7 @@ export function Skills() {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="text-center mb-12"
+          className="text-center mb-14"
         >
           <motion.div
             initial={{ scale: 0 }}
@@ -60,7 +59,7 @@ export function Skills() {
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-foreground">
             Mes <span className="text-gradient">Compétences</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Expertise technique en développement Odoo et technologies associées
           </p>
         </motion.div>
@@ -76,7 +75,7 @@ export function Skills() {
                   initial={{ opacity: 0, x: -20 }}
                   animate={isInView ? { opacity: 1, x: 0 } : {}}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="group"
+                  className="group rounded-xl border border-border/70 bg-card/50 p-4 hover:border-primary/30 transition-colors"
                 >
                   <div className="flex justify-between items-center mb-2">
                     <div className="flex items-center gap-3">
@@ -99,10 +98,10 @@ export function Skills() {
                       {skill.level}%
                     </motion.span>
                   </div>
-                  <div className="relative">
+                  <div className="relative mt-2">
                     <Progress
                       value={isInView ? skill.level : 0}
-                      className="h-3 bg-secondary"
+                      className="h-2.5 bg-secondary"
                     />
                     <motion.div
                       className="absolute inset-0 bg-gradient-to-r from-primary to-primary/60 rounded-full"
@@ -123,15 +122,15 @@ export function Skills() {
               <Globe className="h-5 w-5 text-primary" />
               Technologies & Outils
             </h3>
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap gap-2.5">
               {technologies.map((tech, index) => (
                 <motion.span
                   key={tech}
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={isInView ? { opacity: 1, scale: 1 } : {}}
                   transition={{ duration: 0.3, delay: index * 0.05 }}
-                  whileHover={{ scale: 1.1, y: -5 }}
-                  className="px-4 py-2 bg-secondary rounded-lg text-sm font-medium hover:bg-primary hover:text-primary-foreground transition-all duration-300 cursor-default shadow-sm hover:shadow-md"
+                  whileHover={{ y: -2 }}
+                  className="px-3.5 py-2 bg-secondary/70 rounded-md text-sm font-medium hover:bg-secondary transition-all duration-300 cursor-default border border-border/60"
                 >
                   {tech}
                 </motion.span>
@@ -155,7 +154,7 @@ export function Skills() {
                     initial={{ opacity: 0, x: 20 }}
                     animate={isInView ? { opacity: 1, x: 0 } : {}}
                     transition={{ delay: index * 0.1 }}
-                    className="flex justify-between items-center p-4 bg-secondary rounded-lg hover:bg-primary/5 transition-colors border border-transparent hover:border-primary/20"
+                    className="flex justify-between items-center p-4 bg-card/60 rounded-lg transition-colors border border-border/60"
                   >
                     <span className="font-medium">{item.lang}</span>
                     <div className="flex items-center gap-3">

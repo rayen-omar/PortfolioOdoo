@@ -11,7 +11,6 @@ const navItems = [
   { name: "Services", href: "#services" },
   { name: "Projets", href: "#projects" },
   { name: "Compétences", href: "#skills" },
-  { name: "Témoignages", href: "#testimonials" },
   { name: "Contact", href: "#contact" },
 ]
 
@@ -35,11 +34,11 @@ export function Header() {
       transition={{ duration: 0.5 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-background/95 backdrop-blur-sm shadow-lg"
-          : "bg-background"
+          ? "bg-background/90 backdrop-blur-xl border-b border-border/60 shadow-sm"
+          : "bg-background/80 backdrop-blur-md"
       }`}
     >
-      <nav className="container mx-auto px-4 py-4">
+      <nav className="container mx-auto px-4 py-3.5">
         <div className="flex items-center justify-between">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -52,7 +51,7 @@ export function Header() {
           </motion.div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-7">
             {navItems.map((item) => (
               <Link
                 key={item.name}
@@ -62,7 +61,7 @@ export function Header() {
                 {item.name}
               </Link>
             ))}
-            <Button asChild>
+            <Button asChild className="shadow-sm">
               <Link href="#contact">Demander un devis</Link>
             </Button>
           </div>

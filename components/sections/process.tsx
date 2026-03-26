@@ -39,19 +39,19 @@ const steps = [
 
 export function Process() {
   return (
-    <section id="process" className="py-20 px-4 bg-secondary/20">
+    <section id="process" className="py-24 px-4 bg-secondary/10">
       <div className="container mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="text-center mb-14"
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Comment je travaille avec vous
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Un processus structuré pour garantir le succès de votre projet
           </p>
         </motion.div>
@@ -74,10 +74,10 @@ export function Process() {
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   className="relative"
                 >
-                  <Card className="h-full hover:shadow-lg transition-shadow">
+                  <Card className="h-full border border-border/70 bg-card hover:border-primary/30 hover:shadow-md transition-all">
                     <CardHeader>
                       <div className="flex items-center justify-between mb-4">
-                        <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                        <div className="w-11 h-11 bg-primary/10 rounded-lg flex items-center justify-center">
                           <Icon className="h-6 w-6 text-primary" />
                         </div>
                         <span className="text-2xl font-bold text-primary/30">

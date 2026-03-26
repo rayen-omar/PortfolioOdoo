@@ -26,14 +26,14 @@ const socialLinks = [
 
 export function Footer() {
   return (
-    <footer className="bg-secondary/50 border-t">
-      <div className="container mx-auto px-4 py-12">
+    <footer className="bg-background border-t border-border/70">
+      <div className="container mx-auto px-4 py-14">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* About */}
           <div>
-            <h3 className="text-xl font-bold mb-4">BenAmor Rayeen</h3>
-            <p className="text-muted-foreground mb-4">
-              Développeur Odoo freelance spécialisé dans les solutions ERP
+            <h3 className="text-xl font-bold mb-4 tracking-tight">BenAmor Rayeen</h3>
+            <p className="text-muted-foreground mb-5 leading-relaxed">
+              Odoo Techno-Functional Consultant spécialisé dans les solutions ERP
               personnalisées. Transformez votre entreprise avec Odoo.
             </p>
             <div className="flex space-x-4">
@@ -45,7 +45,7 @@ export function Footer() {
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-muted-foreground hover:text-primary transition-colors"
+                    className="text-muted-foreground hover:text-primary transition-colors p-2 rounded-md hover:bg-secondary/70"
                   >
                     <Icon className="h-5 w-5" />
                     <span className="sr-only">{link.name}</span>
@@ -127,7 +127,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-8 pt-8 border-t text-center text-foreground/70">
+        <div className="mt-10 pt-8 border-t border-border/70 text-center text-foreground/70">
           <p>
             © {new Date().getFullYear()} BenAmor Rayeen. Tous droits réservés.
           </p>

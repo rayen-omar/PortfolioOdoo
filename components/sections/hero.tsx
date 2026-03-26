@@ -24,7 +24,7 @@ export function Hero() {
 
       {/* Floating particles */}
       <div className="absolute inset-0 overflow-hidden">
-        {[...Array(20)].map((_, i) => {
+        {[...Array(12)].map((_, i) => {
           const randomX = Math.random() * 100
           const randomY = Math.random() * 100
           return (
@@ -56,7 +56,7 @@ export function Hero() {
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="space-y-6"
+            className="space-y-7"
           >
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -66,7 +66,7 @@ export function Hero() {
             >
               <Sparkles className="h-4 w-4 text-primary" />
               <span className="text-sm font-medium text-primary">
-                Développeur Odoo Expert
+                Odoo Techno-Functional Consultant
               </span>
             </motion.div>
 
@@ -74,7 +74,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.8 }}
-              className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-foreground"
+              className="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight text-foreground"
             >
               Transformez votre entreprise avec des{" "}
               <span className="relative inline-block">
@@ -93,20 +93,20 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.7, duration: 0.8 }}
-              className="text-xl text-foreground/90 font-medium"
+              className="text-lg md:text-xl text-foreground/90 font-medium"
             >
-              Développeur Odoo Expert | 3+ ans d'expérience | Solutions ERP
-              personnalisées
+              Odoo Techno-Functional Consultant pour PME et entreprises en croissance
             </motion.p>
 
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8, duration: 0.8 }}
-              className="text-lg text-foreground/80 max-w-xl"
+              className="text-lg text-foreground/80 max-w-xl leading-relaxed"
             >
               Spécialisé dans le développement de modules Odoo personnalisés,
-              migrations et intégrations pour optimiser vos processus métier.
+              les migrations et les intégrations pour optimiser durablement vos
+              processus métier.
             </motion.p>
 
             <motion.div
@@ -154,43 +154,6 @@ export function Hero() {
               </Button>
             </motion.div>
 
-            {/* Stats */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1, duration: 0.8 }}
-              className="grid grid-cols-3 gap-6 pt-8"
-            >
-              {[
-                { value: "3+", label: "Ans d'expérience" },
-                { value: "15+", label: "Projets livrés" },
-                { value: "100%", label: "Satisfaction client" },
-              ].map((stat, index) => (
-                <motion.div
-                  key={stat.label}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 1 + index * 0.1, duration: 0.5 }}
-                  className="text-center p-4 rounded-lg bg-card/50 backdrop-blur-sm border border-border/50 hover:border-primary/50 transition-all duration-300 hover:shadow-lg"
-                >
-                  <motion.div
-                    className="text-3xl font-bold bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent"
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    transition={{
-                      delay: 1.2 + index * 0.1,
-                      type: "spring",
-                      stiffness: 200,
-                    }}
-                  >
-                    {stat.value}
-                  </motion.div>
-                  <div className="text-sm text-muted-foreground mt-1">
-                    {stat.label}
-                  </div>
-                </motion.div>
-              ))}
-            </motion.div>
           </motion.div>
 
           {/* Photo avec effet Tilt */}
@@ -218,19 +181,16 @@ export function Hero() {
                     {!imageError && (
                       <div className="absolute inset-0 z-20 w-full h-full">
                         <Image
-                          src="/photo.png"
-                          alt="BenAmor Rayeen - Développeur Odoo"
+                          src="/photo1.png"
+                          alt="BenAmor Rayeen - Odoo Techno-Functional Consultant spécialisé en solutions ERP personnalisées avec 3+ ans d'expérience"
                           fill
                           className="object-cover rounded-xl"
                           priority
-                          unoptimized
                           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                           onLoad={() => {
                             setImageLoaded(true)
-                            console.log('Image chargée avec succès')
                           }}
-                          onError={(e) => {
-                            console.error('Erreur de chargement de l\'image:', e)
+                          onError={() => {
                             setImageError(true)
                           }}
                           style={{ opacity: imageLoaded ? 1 : 0, transition: 'opacity 0.3s' }}
@@ -242,7 +202,7 @@ export function Hero() {
                       <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-primary/20 to-secondary/30 z-10">
                         <div className="text-6xl mb-4">👨‍💻</div>
                         <h3 className="text-2xl font-bold text-primary">BenAmor Rayeen</h3>
-                        <p className="text-foreground/70">Développeur Odoo</p>
+                        <p className="text-foreground/70">Odoo Techno-Functional Consultant</p>
                       </div>
                     )}
                     {/* Overlay gradient */}
@@ -257,17 +217,9 @@ export function Hero() {
                   animate={{ scale: 1, rotate: 0 }}
                   transition={{ delay: 1.5, type: "spring", stiffness: 200 }}
                 >
-                  Odoo Expert
+                  Odoo Techno-Functional Consultant
                 </motion.div>
 
-                <motion.div
-                  className="absolute -bottom-4 -left-4 bg-secondary border-2 border-primary/20 px-4 py-2 rounded-full shadow-lg text-sm font-semibold backdrop-blur-sm"
-                  initial={{ scale: 0, rotate: 10 }}
-                  animate={{ scale: 1, rotate: 0 }}
-                  transition={{ delay: 1.7, type: "spring", stiffness: 200 }}
-                >
-                  3+ ans d'expérience
-                </motion.div>
               </div>
             </Tilt>
 

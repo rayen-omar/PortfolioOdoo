@@ -72,7 +72,7 @@ export function Services() {
   })
 
   return (
-    <section id="services" className="py-20 px-4 bg-background relative overflow-hidden">
+    <section id="services" className="py-24 px-4 bg-background relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent"></div>
       
@@ -82,7 +82,7 @@ export function Services() {
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="text-center mb-12"
+          className="text-center mb-14"
         >
           <motion.div
             initial={{ scale: 0 }}
@@ -98,7 +98,7 @@ export function Services() {
             Services Odoo{" "}
             <span className="text-gradient">Professionnels</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Des solutions complètes pour digitaliser et optimiser votre
             entreprise
           </p>
@@ -108,7 +108,7 @@ export function Services() {
           variants={containerVariants}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7"
         >
           {services.map((service, index) => {
             const Icon = service.icon
@@ -116,22 +116,22 @@ export function Services() {
               <motion.div
                 key={service.title}
                 variants={itemVariants}
-                whileHover={{ y: -10, scale: 1.02 }}
+                whileHover={{ y: -4 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                <Card className="h-full hover:shadow-2xl transition-all duration-300 border-2 hover:border-primary/50 group overflow-hidden relative">
+                <Card className="h-full bg-card border border-border/70 hover:border-primary/30 hover:shadow-lg transition-all duration-300 group overflow-hidden relative rounded-xl">
                   {/* Gradient overlay on hover */}
                   <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300`}></div>
                   
                   <CardHeader className="relative z-10">
                     <motion.div
-                      className={`w-14 h-14 bg-gradient-to-br ${service.color} rounded-xl flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300`}
+                      className={`w-12 h-12 bg-gradient-to-br ${service.color} rounded-lg flex items-center justify-center mb-4 shadow-sm transition-transform duration-300`}
                       whileHover={{ rotate: [0, -10, 10, -10, 0] }}
                       transition={{ duration: 0.5 }}
                     >
-                      <Icon className="h-7 w-7 text-white" />
+                      <Icon className="h-6 w-6 text-white" />
                     </motion.div>
-                    <CardTitle className="text-xl group-hover:text-primary transition-colors">
+                    <CardTitle className="text-xl group-hover:text-primary transition-colors leading-snug">
                       {service.title}
                     </CardTitle>
                   </CardHeader>

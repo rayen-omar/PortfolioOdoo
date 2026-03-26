@@ -11,6 +11,8 @@ interface VideoPlayerProps {
   loop?: boolean
   muted?: boolean
   defaultPlaybackRate?: number
+  title?: string
+  ariaLabel?: string
 }
 
 export function VideoPlayer({
@@ -20,6 +22,8 @@ export function VideoPlayer({
   loop = true,
   muted = true,
   defaultPlaybackRate = 1.5,
+  title,
+  ariaLabel,
 }: VideoPlayerProps) {
   const videoRef = useRef<HTMLVideoElement>(null)
   const [isPlaying, setIsPlaying] = useState(autoPlay)
@@ -77,6 +81,8 @@ export function VideoPlayer({
         muted={isMuted}
         autoPlay={autoPlay}
         playsInline
+        title={title}
+        aria-label={ariaLabel || title || "Vidéo de démonstration du projet"}
         onPlay={() => setIsPlaying(true)}
         onPause={() => setIsPlaying(false)}
       />
@@ -154,6 +160,7 @@ export function VideoPlayer({
     </div>
   )
 }
+
 
 
 
