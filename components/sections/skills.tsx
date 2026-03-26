@@ -3,11 +3,13 @@
 import { motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
 import { Progress } from "@/components/ui/progress"
-import { Code2, Database, GitBranch, Server, Zap, Globe } from "lucide-react"
+import { Code2, Database, GitBranch, Server, Zap, Globe, Monitor, Terminal } from "lucide-react"
 
 const skills = [
   { name: "Odoo Framework", level: 95, category: "Expert", icon: Code2 },
   { name: "Python", level: 90, category: "Avancé", icon: Zap },
+  { name: "Développement Front-end", level: 88, category: "Avancé", icon: Monitor },
+  { name: "Développement Back-end", level: 87, category: "Avancé", icon: Terminal },
   { name: "PostgreSQL", level: 85, category: "Avancé", icon: Database },
   { name: "JavaScript", level: 80, category: "Intermédiaire-Avancé", icon: Code2 },
   { name: "Git/GitHub", level: 75, category: "Intermédiaire", icon: GitBranch },
@@ -18,9 +20,21 @@ const technologies = [
   "Odoo 17, 18, 19",
   "Python",
   "PostgreSQL",
-  "XML",
-  "ORM Odoo",
+  "React",
+  "Next.js",
+  "TypeScript",
   "JavaScript",
+<<<<<<< HEAD
+=======
+  "HTML5",
+  "CSS3",
+  "Tailwind CSS",
+  "Node.js",
+  "API REST",
+  "ORM",
+  "XML",
+  "jQuery",
+>>>>>>> 9a7258d0b592361248bbe75c2972e2eba08020fe
   "QWeb",
   "Owl Framework",
   "Git",

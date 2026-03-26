@@ -11,6 +11,7 @@ import { useState } from "react"
 export function Hero() {
   const [imageLoaded, setImageLoaded] = useState(false)
   const [imageError, setImageError] = useState(false)
+  const [imageVersion] = useState(() => Date.now())
 
   return (
     <section
@@ -181,8 +182,13 @@ export function Hero() {
                     {!imageError && (
                       <div className="absolute inset-0 z-20 w-full h-full">
                         <Image
+<<<<<<< HEAD
                           src="/photo1.png"
                           alt="BenAmor Rayeen - Odoo Techno-Functional Consultant spécialisé en solutions ERP personnalisées avec 3+ ans d'expérience"
+=======
+                          src={`/photo1.png?v=${imageVersion}`}
+                          alt="BenAmor Rayeen - Développeur Odoo Freelance spécialisé en solutions ERP personnalisées avec 3+ ans d'expérience"
+>>>>>>> 9a7258d0b592361248bbe75c2972e2eba08020fe
                           fill
                           className="object-cover rounded-xl"
                           priority

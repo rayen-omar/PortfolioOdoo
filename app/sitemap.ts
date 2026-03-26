@@ -38,6 +38,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: `${baseUrl}/#process`,
       lastModified: currentDate,
+<<<<<<< HEAD
+=======
       changeFrequency: 'monthly',
       priority: 0.7,
     },
@@ -48,6 +50,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
+      url: `${baseUrl}/#testimonials`,
+      lastModified: currentDate,
+>>>>>>> 9a7258d0b592361248bbe75c2972e2eba08020fe
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+<<<<<<< HEAD
+      url: `${baseUrl}/#why-choose`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+=======
+>>>>>>> 9a7258d0b592361248bbe75c2972e2eba08020fe
       url: `${baseUrl}/#contact`,
       lastModified: currentDate,
       changeFrequency: 'monthly',
