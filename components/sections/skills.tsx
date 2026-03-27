@@ -24,8 +24,6 @@ const technologies = [
   "Next.js",
   "TypeScript",
   "JavaScript",
-<<<<<<< HEAD
-=======
   "HTML5",
   "CSS3",
   "Tailwind CSS",
@@ -34,7 +32,6 @@ const technologies = [
   "ORM",
   "XML",
   "jQuery",
->>>>>>> 9a7258d0b592361248bbe75c2972e2eba08020fe
   "QWeb",
   "Owl Framework",
   "Git",
