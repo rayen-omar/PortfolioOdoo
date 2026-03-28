@@ -8,7 +8,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion"
-import { HelpCircle } from "lucide-react"
+import { HelpCircle, Code2 } from "lucide-react"
 import { useEffect } from "react"
 
 const faqData = [
