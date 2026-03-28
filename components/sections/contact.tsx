@@ -198,29 +198,22 @@ export function Contact() {
       
       <div className="container mx-auto relative z-10">
         <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-14"
-        >
-          <motion.div
-            initial={{ scale: 0 }}
-            animate={isInView ? { scale: 1 } : {}}
-            transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-            className="inline-block mb-4"
-          >
-            <span className="px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-semibold border border-primary/20">
-              Contact
-            </span>
-          </motion.div>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-foreground">
-            Prêt à <span className="text-gradient">digitaliser</span> votre entreprise ?
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Contactez-moi pour un devis gratuit et une consultation personnalisée
-          </p>
-        </motion.div>
+           ref={ref}
+           initial={{ opacity: 0, scale: 0.95 }}
+           animate={isInView ? { opacity: 1, scale: 1 } : {}}
+           transition={{ duration: 0.8 }}
+           className="text-center mb-20"
+         >
+           <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 text-primary rounded-full text-[10px] font-black uppercase tracking-widest border border-primary/20 mb-6 font-sans">
+             <Mail className="w-3 h-3" />
+             Lançons Un Projet
+           </div>
+           <h2 className="text-5xl md:text-7xl font-black mb-8 tracking-tighter text-foreground font-sans">
+             Contactez <span className="text-muted-foreground mr-2">&</span> 
+             <span className="text-primary italic font-black">Moi</span>
+           </h2>
+           <div className="w-24 h-2 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto rounded-full opacity-50 shadow-[0_0_20px_rgba(59,130,246,0.5)]"></div>
+         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Contact Info */}
@@ -405,7 +398,7 @@ export function Contact() {
                   <SelectTrigger className="mt-1 focus:border-primary focus:ring-primary">
                     <SelectValue placeholder="Sélectionnez un type de projet" />
                   </SelectTrigger>
-                  <SelectContent>
+                  <SelectContent className="bg-slate-900 border-white/10 rounded-xl">
                     <SelectItem value="custom-module">
                       Développement de module personnalisé
                     </SelectItem>
@@ -458,8 +451,8 @@ export function Contact() {
               <Button
                 type="submit"
                 size="lg"
-                className="w-full group relative overflow-hidden bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/40 transition-all duration-300"
-                disabled={isSubmitting || !canSubmit()}
+                className="w-full h-16 bg-primary hover:bg-primary/90 rounded-2xl text-lg font-black tracking-tight shadow-2xl shadow-primary/30 transition-all duration-500 overflow-hidden group"
+                disabled={isSubmitting}
               >
                 {isSubmitting ? (
                   <span className="flex items-center">
@@ -469,10 +462,6 @@ export function Contact() {
                       transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
                     />
                     Envoi en cours...
-                  </span>
-                ) : !canSubmit() ? (
-                  <span className="flex items-center">
-                    Attendez {remainingTime}s
                   </span>
                 ) : (
                   <>

@@ -2,9 +2,7 @@
 
 import { motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
-import { CheckCircle2, Award, Briefcase, Code2, Users, Github } from "lucide-react"
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
+import { CheckCircle2, Award, Briefcase, Users } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
 
 export function About() {
@@ -21,30 +19,23 @@ export function About() {
 
   return (
     <section id="profil" className="py-24 px-4 bg-background relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute inset-0 bg-gradient-to-tr from-primary/5 via-transparent to-transparent"></div>
-      
       <div className="container mx-auto relative z-10">
         <motion.div
           ref={ref}
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={inView ? { opacity: 1, scale: 1 } : {}}
           transition={{ duration: 0.8 }}
-          className="text-center mb-14"
+          className="text-center mb-20"
         >
-          <motion.div
-            initial={{ scale: 0 }}
-            animate={inView ? { scale: 1 } : {}}
-            transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-            className="inline-block mb-4"
-          >
-            <span className="px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-semibold border border-primary/20">
-              Mon Profil
-            </span>
-          </motion.div>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-foreground">
-            La vraie valeur d'un <span className="text-gradient">Techno-Fonctionnel</span>
+          <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 text-primary rounded-full text-[10px] font-black uppercase tracking-widest border border-primary/20 mb-6">
+            <Users className="w-3 h-3" />
+            Mon Profil
+          </div>
+          <h2 className="text-5xl md:text-7xl font-black mb-8 tracking-tighter text-foreground">
+            Vision <span className="text-muted-foreground mr-2">&</span> 
+            <span className="text-primary italic font-black">Expertise</span>
           </h2>
+          <div className="w-24 h-2 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto rounded-full opacity-50 shadow-[0_0_20px_rgba(59,130,246,0.5)]"></div>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
@@ -78,14 +69,6 @@ export function About() {
                   </p>
                </div>
             </div>
-            
-            <div className="pt-6">
-               <Button asChild size="lg" className="shadow-md">
-                  <Link href="#contact">
-                    Discuter de votre projet
-                  </Link>
-               </Button>
-            </div>
           </motion.div>
 
           <motion.div
@@ -97,20 +80,29 @@ export function About() {
             {stats.map((stat, index) => {
               const Icon = stat.icon
               return (
-                <Card 
-                  key={index} 
-                  className={`bg-card border-border/60 hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 ${index === 2 ? 'col-span-2' : ''}`}
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={inView ? { opacity: 1, scale: 1 } : {}}
+                  transition={{ delay: 0.5 + index * 0.1, duration: 0.5 }}
+                  className={index === 2 ? 'col-span-2' : ''}
                 >
-                  <CardContent className="p-6 text-center space-y-4">
-                    <div className="w-12 h-12 mx-auto bg-primary/10 rounded-full flex items-center justify-center">
-                      <Icon className="w-6 h-6 text-primary" />
-                    </div>
-                    <div>
-                      <h4 className="text-3xl font-bold text-foreground mb-1">{stat.value}</h4>
-                      <p className="text-sm text-muted-foreground font-medium">{stat.label}</p>
-                    </div>
-                  </CardContent>
-                </Card>
+                  <Card className="h-full bg-card/50 border-white/5 backdrop-blur-sm hover:border-primary/40 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/10 group cursor-default">
+                    <CardContent className="p-8 text-center space-y-4">
+                      <div className="w-14 h-14 mx-auto bg-primary/10 rounded-2xl flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500">
+                        <Icon className="w-7 h-7 text-primary" />
+                      </div>
+                      <div className="space-y-1">
+                        <h4 className="text-4xl font-black text-foreground tracking-tight group-hover:text-primary transition-colors">
+                          {stat.value}
+                        </h4>
+                        <p className="text-sm text-muted-foreground font-semibold uppercase tracking-wider">
+                          {stat.label}
+                        </p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </motion.div>
               )
             })}
           </motion.div>

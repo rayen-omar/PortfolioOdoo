@@ -132,29 +132,22 @@ export function VersionComparison() {
       
       <div className="container mx-auto relative z-10">
         <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-12"
-        >
-          <motion.div
-            initial={{ scale: 0 }}
-            animate={inView ? { scale: 1 } : {}}
-            transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-            className="inline-block mb-4"
-          >
-            <span className="px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-semibold border border-primary/20">
-              Expertise Multi-versions
-            </span>
-          </motion.div>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-foreground">
-            Expertise Multi-versions Odoo
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Maîtrise complète d'Odoo 15, 16, 17, 18 et 19. Migration sécurisée entre versions avec préservation des données.
-          </p>
-        </motion.div>
+           ref={ref}
+           initial={{ opacity: 0, scale: 0.95 }}
+           animate={inView ? { opacity: 1, scale: 1 } : {}}
+           transition={{ duration: 0.8 }}
+           className="text-center mb-20"
+         >
+           <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 text-primary rounded-full text-[10px] font-black uppercase tracking-widest border border-primary/20 mb-6 font-sans">
+             <TrendingUp className="w-3 h-3" />
+             Expertise Multi-versions
+           </div>
+           <h2 className="text-5xl md:text-7xl font-black mb-8 tracking-tighter text-foreground font-sans">
+             Historique <span className="text-muted-foreground mr-2">&</span> 
+             <span className="text-primary italic font-black">Evolutions</span>
+           </h2>
+           <div className="w-24 h-2 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto rounded-full opacity-50 shadow-[0_0_20px_rgba(59,130,246,0.5)]"></div>
+         </motion.div>
 
         {/* Version Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">

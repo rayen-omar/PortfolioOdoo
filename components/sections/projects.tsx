@@ -5,7 +5,7 @@ import { useInView } from "react-intersection-observer"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
-import { ExternalLink, Code, Database, Zap, TrendingUp } from "lucide-react"
+import { ExternalLink, Code, Database, Zap, TrendingUp, Briefcase } from "lucide-react"
 import Image from "next/image"
 import Tilt from "react-parallax-tilt"
 import { VideoPlayer } from "@/components/ui/video-player"
@@ -93,29 +93,21 @@ export function Projects() {
       
       <div className="container mx-auto relative z-10">
         <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-14"
-        >
-          <motion.div
-            initial={{ scale: 0 }}
-            animate={inView ? { scale: 1 } : {}}
-            transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-            className="inline-block mb-4"
-          >
-            <span className="px-4 py-2 bg-white/5 text-white rounded-full text-sm font-semibold border border-white/10">
-              Portfolio
-            </span>
-          </motion.div>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-white">
-            Mes <span className="text-gradient">Réalisations</span>
-          </h2>
-          <p className="text-lg text-white/70 max-w-2xl mx-auto">
-            Découvrez quelques-uns de mes projets Odoo les plus réussis
-          </p>
-        </motion.div>
+           ref={ref}
+           initial={{ opacity: 0, scale: 0.95 }}
+           animate={inView ? { opacity: 1, scale: 1 } : {}}
+           transition={{ duration: 0.8 }}
+           className="text-center mb-20"
+         >
+           <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/5 text-white rounded-full text-[10px] font-black uppercase tracking-widest border border-white/10 mb-6">
+             <Briefcase className="w-3 h-3" />
+             Portfolio
+           </div>
+           <h2 className="text-5xl md:text-7xl font-black mb-8 tracking-tighter text-white">
+             Dernières <span className="text-primary italic font-black">Réalisations</span>
+           </h2>
+           <div className="w-24 h-2 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto rounded-full opacity-50 shadow-[0_0_20px_rgba(59,130,246,0.5)]"></div>
+         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
           {projects.map((project, index) => (
@@ -133,11 +125,7 @@ export function Projects() {
                 transitionSpeed={1000}
                 className="h-full"
               >
-                <Card className="h-full bg-white/5 border border-white/10 hover:border-primary/30 hover:shadow-lg transition-all duration-300 group overflow-hidden relative rounded-xl text-white">
-                  {/* Gradient background */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}></div>
-                  
-                  {/* Video or Image */}
+                <Card className="h-full bg-card border border-border/70 hover:border-primary/30 hover:shadow-xl transition-all duration-300 group overflow-hidden relative rounded-xl">
                   <div className={`relative h-56 bg-gradient-to-br ${project.gradient} overflow-hidden`}>
                     {project.video ? (
                       <>
@@ -149,7 +137,6 @@ export function Projects() {
                           muted={true}
                           defaultPlaybackRate={1.5}
                           title={`Démonstration vidéo de ${project.title} - ${project.type}`}
-                          ariaLabel={`Vidéo de démonstration du projet ${project.title}, ${project.type} développé avec ${project.technologies.join(', ')}`}
                         />
                         <div className="absolute top-4 right-4 z-20">
                           <span className="px-3 py-1 bg-black/50 backdrop-blur-sm text-white rounded-full text-xs font-semibold">
@@ -161,7 +148,7 @@ export function Projects() {
                       <>
                         <Image
                           src={project.image}
-                          alt={`${project.title} - ${project.type} - Capture d'écran du projet Odoo développé par BenAmor Rayeen`}
+                          alt={`${project.title} - Capture d'écran`}
                           fill
                           className="object-cover"
                           unoptimized
@@ -174,17 +161,9 @@ export function Projects() {
                         </div>
                       </>
                     ) : (
-                      <>
-                        <div className="absolute inset-0 flex items-center justify-center">
-                          <Code className="h-24 w-24 text-white/20" />
-                        </div>
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                        <div className="absolute top-4 right-4">
-                          <span className="px-3 py-1 bg-black/50 backdrop-blur-sm text-white rounded-full text-xs font-semibold">
-                            {project.technologies[0]}
-                          </span>
-                        </div>
-                      </>
+                      <div className="absolute inset-0 flex items-center justify-center">
+                         <Code className="h-24 w-24 text-white/20" />
+                      </div>
                     )}
                   </div>
 

@@ -3,43 +3,43 @@
 import { motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Code, Database, Settings, GraduationCap, Server } from "lucide-react"
+import { Code2, ArrowRightLeft, Wand2, BookOpen, Rocket, Settings } from "lucide-react"
 
 const services = [
   {
-    icon: Code,
+    icon: Code2,
     title: "Développement de modules personnalisés",
     description:
       "Création de modules Odoo adaptés à vos besoins spécifiques avec intégration à vos systèmes existants.",
-    color: "from-blue-500 to-cyan-500",
+    color: "from-blue-600 to-cyan-400",
   },
   {
-    icon: Database,
+    icon: ArrowRightLeft,
     title: "Migration Odoo",
     description:
       "Migration sécurisée entre versions Odoo ou depuis d'autres systèmes ERP avec préservation des données.",
-    color: "from-purple-500 to-pink-500",
+    color: "from-indigo-600 to-purple-500",
   },
   {
-    icon: Settings,
+    icon: Wand2,
     title: "Personnalisation & Configuration",
     description:
       "Adaptation d'Odoo à vos processus métier avec configuration avancée des modules standards.",
-    color: "from-orange-500 to-red-500",
+    color: "from-rose-500 to-orange-400",
   },
   {
-    icon: GraduationCap,
+    icon: BookOpen,
     title: "Formation & Support",
     description:
       "Formation de vos équipes à Odoo et support technique continu pour une adoption réussie.",
-    color: "from-green-500 to-emerald-500",
+    color: "from-emerald-600 to-teal-400",
   },
   {
-    icon: Server,
+    icon: Rocket,
     title: "Déploiement & Hébergement",
     description:
       "Installation sur serveur VPS avec configuration optimale pour performance et sécurité.",
-    color: "from-indigo-500 to-blue-500",
+    color: "from-blue-700 to-indigo-600",
   },
 ]
 
@@ -78,31 +78,22 @@ export function Services() {
       
       <div className="container mx-auto relative z-10">
         <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-14"
-        >
-          <motion.div
-            initial={{ scale: 0 }}
-            animate={inView ? { scale: 1 } : {}}
-            transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-            className="inline-block mb-4"
-          >
-            <span className="px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-semibold border border-primary/20">
-              Mes Services
-            </span>
-          </motion.div>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-foreground">
-            Services Odoo{" "}
-            <span className="text-gradient">Professionnels</span>
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Des solutions complètes pour digitaliser et optimiser votre
-            entreprise
-          </p>
-        </motion.div>
+           ref={ref}
+           initial={{ opacity: 0, scale: 0.95 }}
+           animate={inView ? { opacity: 1, scale: 1 } : {}}
+           transition={{ duration: 0.8 }}
+           className="text-center mb-20"
+         >
+           <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 text-primary rounded-full text-[10px] font-black uppercase tracking-widest border border-primary/20 mb-6">
+             <Settings className="w-3 h-3" />
+             Mes Services
+           </div>
+           <h2 className="text-5xl md:text-7xl font-black mb-8 tracking-tighter text-foreground">
+             Solutions <span className="text-muted-foreground mr-2">&</span> 
+             <span className="text-primary italic font-black">Sur Mesure</span>
+           </h2>
+           <div className="w-24 h-2 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto rounded-full opacity-50 shadow-[0_0_20px_rgba(59,130,246,0.5)]"></div>
+         </motion.div>
 
         <motion.div
           variants={containerVariants}
