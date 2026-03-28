@@ -140,8 +140,8 @@ export const metadata: Metadata = {
     canonical: "https://rayeen.dev",
   },
   icons: {
-    icon: "/imageicon1.png",
-    apple: "/imageicon1.png",
+    icon: "/logo.svg",
+    apple: "/logo.svg",
   },
   manifest: "/manifest.json",
   other: {

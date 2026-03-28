@@ -31,7 +31,12 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* About */}
           <div>
-            <h3 className="text-xl font-bold mb-4 tracking-tight">BenAmor Rayeen</h3>
+            <div className="flex items-center gap-3 mb-5 group">
+              <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center p-1.5 border border-primary/20 shadow-sm transition-transform group-hover:scale-110">
+                <img src="/logo.svg" alt="Logo" className="w-full h-full object-contain" />
+              </div>
+              <h3 className="text-xl font-bold tracking-tight">BenAmor <span className="text-primary italic">Rayeen</span></h3>
+            </div>
             <p className="text-muted-foreground mb-5 leading-relaxed">
               Odoo Techno-Functional Consultant spécialisé dans les solutions ERP
               personnalisées. Transformez votre entreprise avec Odoo.

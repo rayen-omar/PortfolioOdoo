@@ -16,27 +16,15 @@ export default function manifest(): MetadataRoute.Manifest {
     scope: '/',
     icons: [
       {
-        src: '/imageicon1.png',
-        sizes: '192x192',
-        type: 'image/png',
+        src: '/logo.svg',
+        sizes: 'any',
+        type: 'image/svg+xml',
         purpose: 'any',
       },
       {
-        src: '/imageicon1.png',
-        sizes: '192x192',
-        type: 'image/png',
-        purpose: 'maskable',
-      },
-      {
-        src: '/imageicon1.png',
+        src: '/logo.svg',
         sizes: '512x512',
-        type: 'image/png',
-        purpose: 'any',
-      },
-      {
-        src: '/imageicon1.png',
-        sizes: '512x512',
-        type: 'image/png',
+        type: 'image/svg+xml',
         purpose: 'maskable',
       },
     ],

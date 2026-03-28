@@ -46,8 +46,18 @@ export function Header() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <Link href="/" className="text-2xl font-bold text-primary">
-              BenAmor <span className="text-foreground">Rayeen</span>
+            <Link href="/" className="flex items-center gap-3.5 hover:opacity-90 transition-all active:scale-95 group">
+              <div className="relative w-11 h-11 overflow-hidden rounded-xl bg-primary/5 flex items-center justify-center p-1.5 border border-primary/10 shadow-sm group-hover:border-primary/30 transition-colors">
+                <img src="/logo.svg" alt="BenAmor Rayeen" className="w-full h-full object-contain" />
+              </div>
+              <div className="flex flex-col">
+                <span className="text-xl font-bold tracking-tight text-foreground leading-tight">
+                  BenAmor <span className="text-primary italic font-black">Rayeen</span>
+                </span>
+                <span className="text-[10px] uppercase tracking-widest font-bold text-muted-foreground/80 leading-tight">
+                  Odoo Techno-Functional
+                </span>
+              </div>
             </Link>
           </motion.div>
 
