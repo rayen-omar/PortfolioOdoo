@@ -8,8 +8,6 @@ import { Code2, Database, GitBranch, Server, Zap, Globe, Monitor, Terminal } fro
 const skills = [
   { name: "Odoo Framework", level: 95, category: "Expert", icon: Code2 },
   { name: "Python", level: 90, category: "Avancé", icon: Zap },
-  { name: "Développement Front-end", level: 88, category: "Avancé", icon: Monitor },
-  { name: "Développement Back-end", level: 87, category: "Avancé", icon: Terminal },
   { name: "PostgreSQL", level: 85, category: "Avancé", icon: Database },
   { name: "JavaScript", level: 80, category: "Intermédiaire-Avancé", icon: Code2 },
   { name: "Git/GitHub", level: 75, category: "Intermédiaire", icon: GitBranch },
@@ -21,8 +19,6 @@ const technologies = [
   "Python",
   "PostgreSQL",
   "React",
-  "Next.js",
-  "TypeScript",
   "JavaScript",
   "HTML5",
   "CSS3",
@@ -31,12 +27,25 @@ const technologies = [
   "API REST",
   "ORM",
   "XML",
-  "jQuery",
   "QWeb",
   "Owl Framework",
   "Git",
   "Docker",
   "Linux",
+]
+
+const odooModules = [
+  "Odoo Online",
+  "Odoo Entreprise",
+  "Odoo Community",
+  "Comptabilité",
+  "Ventes",
+  "Achats",
+  "CRM",
+  "Stock",
+  "Contacts",
+  "Website",
+  "Configuration & Paramétrage",
 ]
 
 export function Skills() {
@@ -146,6 +155,28 @@ export function Skills() {
                   {tech}
                 </motion.span>
               ))}
+            </div>
+
+            {/* Odoo Modules Grid */}
+            <div className="mt-8">
+              <h3 className="text-xl font-semibold mb-6 flex items-center gap-2">
+                <Database className="h-5 w-5 text-primary" />
+                Solutions & Modules Odoo
+              </h3>
+              <div className="flex flex-wrap gap-2.5">
+                {odooModules.map((module, index) => (
+                  <motion.span
+                    key={module}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                    transition={{ duration: 0.3, delay: index * 0.05 }}
+                    whileHover={{ y: -2 }}
+                    className="px-3.5 py-2 bg-primary/10 text-primary rounded-md text-sm font-medium hover:bg-primary/20 transition-all duration-300 cursor-default border border-primary/20"
+                  >
+                    {module}
+                  </motion.span>
+                ))}
+              </div>
             </div>
 
             {/* Languages */}
