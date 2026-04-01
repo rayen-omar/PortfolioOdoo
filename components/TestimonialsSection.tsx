@@ -81,6 +81,8 @@ export default function TestimonialsSection() {
         body: JSON.stringify({ company, name, rating, text, photo, email, project }),
       });
 
+      const data = await res.json();
+
       if (res.ok) {
         setIsSuccess(true);
         toast({ title: "Témoignage envoyé !", description: "Il sera visible après validation." });
@@ -93,9 +95,16 @@ export default function TestimonialsSection() {
         setText("");
         setPhoto(null);
         setTimeout(() => setIsSuccess(false), 5000);
+      } else {
+        throw new Error(data.error || "Une erreur est survenue lors de l'enregistrement.");
       }
-    } catch (error) {
-      toast({ title: "Erreur", description: "Échec de l'envoi du témoignage.", variant: "destructive" });
+    } catch (error: any) {
+      console.error("Erreur submission:", error);
+      toast({ 
+        title: "Erreur d'envoi", 
+        description: error.message || "Échec de l'envoi du témoignage. Vérifiez votre connexion ou la configuration Supabase.", 
+        variant: "destructive" 
+      });
     } finally {
       setIsSubmitting(false);
     }

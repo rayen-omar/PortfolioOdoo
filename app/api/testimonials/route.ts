@@ -60,7 +60,6 @@ export async function POST(req: NextRequest) {
           text,
           photo_url: photo || "",
           email: email || "",
-          project: project || "",
           approved: false,
         },
       ])
