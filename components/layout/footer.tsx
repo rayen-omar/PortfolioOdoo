@@ -14,7 +14,7 @@ const socialLinks = [
   },
   {
     name: "Email",
-    href: "mailto:benomorr326@gmail.com",
+    href: "mailto:rayeen@benamor.tech",
     icon: Mail,
   },
   {
@@ -106,10 +106,10 @@ export function Footer() {
               <li>Monastir, Tunisie</li>
               <li>
                 <Link
-                  href="mailto:benomorr326@gmail.com"
+                  href="mailto:rayeen@benamor.tech"
                   className="hover:text-primary transition-colors"
                 >
-                  benomorr326@gmail.com
+                  rayeen@benamor.tech
                 </Link>
               </li>
               <li>

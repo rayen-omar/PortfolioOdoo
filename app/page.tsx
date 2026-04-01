@@ -6,12 +6,14 @@ import { Skills } from "@/components/sections/skills"
 import { Process } from "@/components/sections/process"
 import { WhyChoose } from "@/components/sections/why-choose"
 import { Contact } from "@/components/sections/contact"
+import TestimonialsSection from "@/components/TestimonialsSection"
 
 export default function Home() {
   return (
     <>
       <Hero />
       <Services />
+      <TestimonialsSection />
       <Projects />
       <WhyChoose />
       <About />

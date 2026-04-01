@@ -1,70 +1,116 @@
-import { NextRequest, NextResponse } from "next/server"
-import { createClient } from "@supabase/supabase-js"
+import { NextRequest, NextResponse } from "next/server";
+import fs from "fs";
+import path from "path";
 
-// Client Supabase côté serveur (avec les clés service pour les opérations admin)
-function getSupabase() {
-  return createClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-  )
+const DATA_PATH = path.join(process.cwd(), "data", "testimonials.json");
+
+// Define Testimonial type
+interface Testimonial {
+  id: string;
+  company: string;
+  name: string;
+  rating: number;
+  text: string;
+  photo?: string;
+  email?: string;
+  project?: string;
+  approved: boolean;
+  createdAt: string;
 }
 
-// GET — Lire tous les témoignages approuvés
-export async function GET() {
+// GET: return approved testimonials only (by default) or all for admin
+export async function GET(req: NextRequest) {
   try {
-    const supabase = getSupabase()
-    const { data, error } = await supabase
-      .from("testimonials")
-      .select("id, name, company, project, feedback, created_at")
-      .eq("approved", true)
-      .order("created_at", { ascending: false })
+    const { searchParams } = new URL(req.url);
+    const isAdmin = searchParams.get("all") === "true";
 
-    if (error) throw error
+    if (!fs.existsSync(DATA_PATH)) {
+      return NextResponse.json([]);
+    }
+    const fileData = fs.readFileSync(DATA_PATH, "utf8");
+    const testimonials: Testimonial[] = JSON.parse(fileData);
 
-    return NextResponse.json(data || [])
+    const filtered = isAdmin ? testimonials : testimonials.filter((t) => t.approved);
+    return NextResponse.json(filtered);
   } catch (error) {
-    console.error("GET testimonials error:", error)
-    return NextResponse.json([], { status: 200 })
+    console.error("GET testimonials error:", error);
+    return NextResponse.json({ error: "Failed to fetch testimonials" }, { status: 500 });
   }
 }
 
-// POST — Soumettre un nouveau témoignage (en attente d'approbation)
+// POST: receive form data, save to data/testimonials.json as pending
 export async function POST(req: NextRequest) {
   try {
-    const body = await req.json()
-    const { name, company, project, feedback, email } = body
+    const body = await req.json();
+    const { company, name, rating, text, photo, email, project } = body;
 
-    if (!name || !company || !project || !feedback) {
+    if (!company || !text) {
       return NextResponse.json(
-        { error: "Champs obligatoires manquants" },
+        { error: "Company and Text are required." },
         { status: 400 }
-      )
+      );
     }
 
-    const supabase = getSupabase()
-    const { data, error } = await supabase
-      .from("testimonials")
-      .insert([
-        {
-          name: name.trim(),
-          company: company.trim(),
-          project: project.trim(),
-          feedback: feedback.trim(),
-          email: email?.trim() || "",
-          approved: false, // En attente de validation par Rayeen
-        },
-      ])
-      .select()
-      .single()
+    const newTestimonial: Testimonial = {
+      id: Date.now().toString(),
+      company,
+      name: name || "",
+      rating: rating || 5,
+      text,
+      photo: photo || "",
+      email: email || "",
+      project: project || "",
+      approved: false,
+      createdAt: new Date().toISOString(),
+    };
 
-    if (error) throw error
+    let testimonials: Testimonial[] = [];
+    if (fs.existsSync(DATA_PATH)) {
+      const fileData = fs.readFileSync(DATA_PATH, "utf8");
+      testimonials = JSON.parse(fileData);
+    }
 
-    return NextResponse.json({ success: true, id: data.id })
+    testimonials.push(newTestimonial);
+    fs.writeFileSync(DATA_PATH, JSON.stringify(testimonials, null, 2));
+
+    return NextResponse.json({ success: true, message: "Testimonial submitted for approval." });
   } catch (error) {
-    console.error("POST testimonial error:", error)
-    return NextResponse.json(
-      { error: "Erreur lors de l'enregistrement" },
-      { status: 500 }
-    )
+    console.error("POST testimonial error:", error);
+    return NextResponse.json({ error: "Failed to save testimonial" }, { status: 500 });
+  }
+}
+
+// PATCH/DELETE for admin functionality (optional but helpful for the admin page)
+export async function PATCH(req: NextRequest) {
+  try {
+    const body = await req.json();
+    const { id, approved } = body;
+
+    const fileData = fs.readFileSync(DATA_PATH, "utf8");
+    const testimonials: Testimonial[] = JSON.parse(fileData);
+    const updated = testimonials.map((t) =>
+      t.id === id ? { ...t, approved } : t
+    );
+
+    fs.writeFileSync(DATA_PATH, JSON.stringify(updated, null, 2));
+    return NextResponse.json({ success: true });
+  } catch (error) {
+    return NextResponse.json({ error: "Failed to update" }, { status: 500 });
+  }
+}
+
+export async function DELETE(req: NextRequest) {
+  try {
+    const { searchParams } = new URL(req.url);
+    const id = searchParams.get("id");
+
+    const fileData = fs.readFileSync(DATA_PATH, "utf8");
+    const testimonials: Testimonial[] = JSON.parse(fileData);
+    const filtered = testimonials.filter((t) => t.id !== id);
+
+    fs.writeFileSync(DATA_PATH, JSON.stringify(filtered, null, 2));
+    return NextResponse.json({ success: true });
+  } catch (error) {
+    return NextResponse.json({ error: "Failed to delete" }, { status: 500 });
   }
 }

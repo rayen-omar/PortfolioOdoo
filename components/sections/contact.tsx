@@ -232,8 +232,8 @@ export function Contact() {
                   {
                     icon: Mail,
                     title: "Email",
-                    content: "benomorr326@gmail.com",
-                    href: "mailto:benomorr326@gmail.com",
+                    content: "rayeen@benamor.tech",
+                    href: "mailto:rayeen@benamor.tech",
                   },
                   {
                     icon: Phone,
