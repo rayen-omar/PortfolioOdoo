@@ -13,11 +13,11 @@ interface Testimonial {
   name: string;
   rating: number;
   text: string;
-  photo?: string;
+  photo_url?: string;
   email?: string;
   project?: string;
   approved: boolean;
-  createdAt: string;
+  created_at: string;
 }
 
 export default function TestimonialsSection() {
@@ -165,8 +165,8 @@ export default function TestimonialsSection() {
                           &quot;{t.text}&quot;
                         </p>
                         <div className="flex items-center gap-3 pt-4 border-t border-border/50">
-                          {t.photo ? (
-                            <img src={t.photo} className="w-10 h-10 rounded-full object-cover border-2 border-primary/20" alt={t.company} />
+                          {t.photo_url ? (
+                            <img src={t.photo_url} className="w-10 h-10 rounded-full object-cover border-2 border-primary/20" alt={t.company} />
                           ) : (
                             <div className={`w-10 h-10 rounded-full flex items-center justify-center font-black text-white text-xs ${colors[i % colors.length]} shadow-lg`}>
                               {getInitial(t.company)}

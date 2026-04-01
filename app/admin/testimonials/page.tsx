@@ -12,9 +12,9 @@ interface Testimonial {
   name: string;
   rating: number;
   text: string;
-  photo?: string;
+  photo_url?: string;
   approved: boolean;
-  createdAt: string;
+  created_at: string;
 }
 
 export default function AdminPage() {
@@ -142,7 +142,7 @@ export default function AdminPage() {
                           {"★".repeat(t.rating)}{"☆".repeat(5 - t.rating)}
                         </div>
                       </div>
-                      {t.photo && <img src={t.photo} className="w-10 h-10 rounded-full" alt="Avatar" />}
+                      {t.photo_url && <img src={t.photo_url} className="w-10 h-10 rounded-full" alt="Avatar" />}
                     </div>
                     <p className="text-sm italic">&quot;{t.text}&quot;</p>
                     <div className="flex gap-2 pt-2">
