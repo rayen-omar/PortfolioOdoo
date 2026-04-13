@@ -9,8 +9,36 @@ import { Contact } from "@/components/sections/contact"
 import TestimonialsSection from "@/components/TestimonialsSection"
 
 export default function Home() {
+  const personSchema = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: "Rayeen Ben Amor",
+    jobTitle: "Développeur & Consultant Odoo – Freelance",
+    description: "Expert en intégration, migration ERP, et développement sur mesure Odoo 18 et 19 en Tunisie.",
+    url: "https://www.benamor.tech",
+    image: "https://www.benamor.tech/photo.png",
+    sameAs: [
+      "https://www.linkedin.com/in/rayen-benamor-1739a9378/",
+      "https://github.com/rayen-omar"
+    ],
+    address: {
+      "@type": "PostalAddress",
+      addressCountry: "TN",
+      addressLocality: "Monastir",
+      addressRegion: "Monastir"
+    },
+    knowsAbout: [
+      "Odoo", "Odoo 18", "Odoo 19", "Migration ERP", "Intégration Odoo", "Python", "PostgreSQL",
+      "Développement Technique", "Consulting Fonctionnel", "Agence de voyage", "Cabinet Comptable"
+    ]
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+      />
       <Hero />
       <Services />
       <TestimonialsSection />

@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://rayeen.dev'
+  const baseUrl = 'https://www.benamor.tech'
   const currentDate = new Date()
 
   return [
@@ -38,7 +38,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: `${baseUrl}/#process`,
       lastModified: currentDate,
-
       changeFrequency: 'monthly',
       priority: 0.7,
     },
@@ -51,14 +50,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: `${baseUrl}/#testimonials`,
       lastModified: currentDate,
-
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-
-      url: `${baseUrl}/#why-choose`,
-      lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.7,
     },
@@ -70,12 +61,3 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ]
 }
-
-
-
-
-
-
-
-
-

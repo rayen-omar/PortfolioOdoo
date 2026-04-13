@@ -10,120 +10,62 @@ import type { ReactNode } from "react";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://rayeen.dev"),
+  metadataBase: new URL("https://www.benamor.tech"),
   title: {
     default:
-      "BenAmor Rayeen - Odoo Techno-Functional Consultant | Solutions ERP Personnalisees",
-    template: "%s | BenAmor Rayeen - Odoo Techno-Functional Consultant",
+      "Rayeen Ben Amor | Développeur & Consultant Odoo – Freelance",
+    template: "%s | Rayeen Ben Amor - Odoo",
   },
   description:
-    "Odoo Techno-Functional Consultant specialise dans les solutions ERP personnalisees. 3+ ans d'experience en developpement Odoo 15, 16, 17, 18, 19. Modules personnalises, migrations et integrations en Tunisie.",
+    "Rayeen Ben Amor, Développeur & Consultant Odoo Freelance en Tunisie. Expert en intégration Odoo, migration ERP (Sage vers Odoo), Odoo 18, 19 et développement sur mesure.",
   keywords: [
-    "Odoo Techno-Functional Consultant",
-    "Consultant Odoo",
-    "ERP personnalisé",
-    "Développement Odoo",
-    "Migration Odoo",
-    "Modules Odoo",
-    "Odoo 15",
-    "Odoo 16",
-    "Odoo 17",
-    "Odoo 18",
-    "Odoo 19",
-    "Développeur Python",
-    "Python",
-    "PostgreSQL",
-    "Développement PostgreSQL",
-    "ERP Tunisie",
-    "Solutions ERP",
-    "Intégration Odoo",
-    "Personnalisation Odoo",
-    "Formation Odoo",
-    "Support Odoo",
-    "Développement ERP",
-    "Système ERP",
-    "Tunisie",
-    "BenAmor Rayeen",
-    "Rayeen Dev",
-    "Consultant Odoo",
-    "Odoo Techno-Functional Consultant",
-    "Développeur ERP freelance",
-    "Customisation Odoo",
-    "Développement sur mesure",
-    "Automatisation processus",
-    "Business Intelligence",
-    "Reporting Odoo",
-    "E-commerce Odoo",
-    "CRM Odoo",
-    "Gestion de projet Odoo",
-    "Développement backend",
-    "Framework Odoo",
-    "JavaScript",
-    "JS",
-    "XML",
-    "QWeb",
-    "API REST",
-    "API Odoo",
-    "Intégration API",
-    "Développement web",
-    "Freelance développeur",
-    "Développeur indépendant",
-    "Programmeur Odoo",
-    "Spécialiste Odoo",
-    "Développement modules personnalisés",
-    "Optimisation Odoo",
-    "Performance Odoo",
-    "Sécurité Odoo",
-    "Déploiement Odoo",
-    "Hébergement Odoo",
-    "Maintenance Odoo",
-    "Upgrade Odoo",
-    "Migration données",
-    "Import données",
-    "Export données",
-    "Workflow Odoo",
-    "Automatisation workflow",
-    "Point de vente POS",
-    "Gestion stock",
-    "Comptabilité Odoo",
-    "Facturation Odoo",
-    "Gestion commerciale",
-    "Gestion RH",
-    "Paie Odoo",
-    "Fiscalité Tunisie",
-    "Développeur Tunisie",
-    "Freelance Tunisie",
+    "développeur odoo tunisie",
+    "consultant odoo tunisie",
+    "freelance odoo tunisie",
+    "migration erp odoo",
+    "intégrateur odoo",
+    "odoo developer tunisia",
+    "migration sage odoo",
+    "odoo 18 tunisie",
+    "odoo 19 developer",
+    "odoo 19",
+    "odoo 18",
+    "odoo fonctionnel",
+    "odoo technique",
+    "odoo agence voyage",
+    "odoo cabinet comptable",
+    "odoo freelance",
+    "integration odoo"
   ],
-  authors: [{ name: "BenAmor Rayeen", url: "https://rayeen.dev" }],
-  creator: "BenAmor Rayeen",
-  publisher: "BenAmor Rayeen",
+  authors: [{ name: "Rayeen Ben Amor", url: "https://www.benamor.tech" }],
+  creator: "Rayeen Ben Amor",
+  publisher: "Rayeen Ben Amor",
   category: "Technology",
   classification: "Développement Logiciel",
   openGraph: {
     type: "website",
     locale: "fr_FR",
-    url: "https://rayeen.dev",
+    url: "https://www.benamor.tech",
     title:
-      "BenAmor Rayeen - Odoo Techno-Functional Consultant | Solutions ERP Personnalisees",
+      "Rayeen Ben Amor | Développeur & Consultant Odoo – Freelance en Tunisie",
     description:
-      "Odoo Techno-Functional Consultant specialise dans les solutions ERP personnalisees. 3+ ans d'experience en developpement Odoo 15, 16, 17, 18, 19. Modules personnalises, migrations, integrations.",
-    siteName: "Rayeen.Dev",
+      "Développeur & Consultant Odoo Freelance basé à Monastir, Tunisie. Spécialiste intégration, migration ERP, Odoo 18/19, dev technique & fonctionnel.",
+    siteName: "Benamor.tech",
     images: [
       {
         url: "/photo.png",
         width: 1200,
         height: 630,
-        alt: "BenAmor Rayeen - Odoo Techno-Functional Consultant",
+        alt: "Rayeen Ben Amor - Développeur & Consultant Odoo Freelance",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "BenAmor Rayeen - Odoo Techno-Functional Consultant",
+    title: "Rayeen Ben Amor | Consultant Odoo Freelance",
     description:
-      "Odoo Techno-Functional Consultant specialise dans les solutions ERP personnalisees. 3+ ans d'experience en developpement Odoo 15, 16, 17, 18, 19.",
+      "Développeur & Consultant Odoo Freelance basé à Monastir, Tunisie. Spécialiste intégration, migration ERP, Odoo 18/19.",
     images: ["/photo.png"],
-    creator: "@rayeen_dev",
   },
   robots: {
     index: true,
@@ -137,7 +79,7 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: "https://rayeen.dev",
+    canonical: "https://www.benamor.tech",
   },
   icons: {
     icon: "/logo.svg",
@@ -155,131 +97,17 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="fr">
+      <head>
+        <link rel="canonical" href="https://www.benamor.tech" />
+      </head>
       <body className={inter.className}>
         <Header />
         <main>{children}</main>
         <Footer />
         <Toaster />
         <Analytics />
-        <StructuredData />
       </body>
     </html>
   );
 }
 
-// Composant pour les données structurées JSON-LD
-function StructuredData() {
-  const personSchema = {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    name: "BenAmor Rayeen",
-    jobTitle: "Odoo Techno-Functional Consultant",
-    description:
-      "Odoo Techno-Functional Consultant specialise dans les solutions ERP personnalisees avec 3+ ans d'experience",
-    url: "https://rayeen.dev",
-    image: "https://rayeen.dev/photo.png",
-    sameAs: [
-      // Ajoutez vos liens sociaux ici
-      // "https://linkedin.com/in/rayeen",
-      // "https://github.com/rayeen",
-    ],
-    knowsAbout: [
-      "Odoo",
-      "Odoo 15",
-      "Odoo 16",
-      "Odoo 17",
-      "Odoo 18",
-      "Odoo 19",
-      "Python",
-      "PostgreSQL",
-      "JavaScript",
-      "XML",
-      "QWeb",
-      "API REST",
-      "ERP",
-      "CRM",
-      "E-commerce",
-      "Business Intelligence",
-      "Développement de modules personnalisés",
-      "Migration Odoo",
-      "Intégration ERP",
-      "Automatisation de processus",
-      "Gestion de projet",
-      "Reporting",
-      "Point de vente POS",
-      "Gestion stock",
-      "Comptabilité",
-      "Facturation",
-      "Gestion RH",
-      "Paie",
-      "Fiscalité",
-    ],
-    address: {
-      "@type": "PostalAddress",
-      addressCountry: "TN",
-      addressLocality: "Tunisie",
-    },
-  };
-
-  const professionalServiceSchema = {
-    "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    name: "Rayeen.Dev - Services Odoo",
-    description:
-      "Services de développement Odoo personnalisés, migrations et intégrations ERP",
-    url: "https://rayeen.dev",
-    image: "https://rayeen.dev/photo.png",
-    provider: {
-      "@type": "Person",
-      name: "BenAmor Rayeen",
-    },
-    areaServed: {
-      "@type": "Country",
-      name: "Tunisie",
-    },
-    serviceType: [
-      "Développement de modules Odoo personnalisés",
-      "Migration Odoo",
-      "Personnalisation et configuration Odoo",
-      "Formation et support Odoo",
-      "Déploiement et hébergement Odoo",
-    ],
-    priceRange: "$$",
-  };
-
-  const websiteSchema = {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    name: "Rayeen.Dev",
-    url: "https://rayeen.dev",
-    description: "Portfolio de BenAmor Rayeen - Odoo Techno-Functional Consultant",
-    author: {
-      "@type": "Person",
-      name: "BenAmor Rayeen",
-    },
-    potentialAction: {
-      "@type": "SearchAction",
-      target: "https://rayeen.dev/?search={search_term_string}",
-      "query-input": "required name=search_term_string",
-    },
-  };
-
-  return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(professionalServiceSchema),
-        }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
-      />
-    </>
-  );
-}

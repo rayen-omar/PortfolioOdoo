@@ -77,9 +77,9 @@ export function Hero() {
               transition={{ delay: 0.6, duration: 0.8 }}
               className="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight text-foreground"
             >
-              Transformez votre entreprise avec des{" "}
+              Développeur & Consultant{" "}
               <span className="relative inline-block">
-                <span className="relative z-10 text-primary">solutions Odoo</span>
+                <span className="relative z-10 text-primary">Odoo Freelance</span>
                 <motion.span
                   className="absolute bottom-0 left-0 right-0 h-3 bg-primary/20 -z-0"
                   initial={{ scaleX: 0 }}
@@ -87,7 +87,7 @@ export function Hero() {
                   transition={{ delay: 1.2, duration: 0.8 }}
                 />
               </span>{" "}
-              sur mesure
+              en Tunisie
             </motion.h1>
 
             <motion.p
