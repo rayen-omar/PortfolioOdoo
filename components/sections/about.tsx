@@ -45,7 +45,7 @@ export function About() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="space-y-6"
           >
-            <h3 className="text-2xl font-bold">Bonjour, je suis Rayeen, Consultant Techno-Fonctionnel Odoo.</h3>
+            <h3 className="text-2xl font-bold">Bonjour, je suis BenAmor, Consultant Techno-Fonctionnel Odoo.</h3>
             <p className="text-muted-foreground text-lg leading-relaxed mt-4">
               Basé en Tunisie et disponible pour des missions à l'international (100% remote), je parle à la fois le langage de votre entreprise et celui de la machine.
             </p>
@@ -111,3 +111,4 @@ export function About() {
     </section>
   )
 }
+

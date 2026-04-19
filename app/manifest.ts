@@ -2,9 +2,9 @@ import { MetadataRoute } from 'next'
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'Rayeen.Dev - Odoo Techno-Functional Consultant | Solutions ERP Personnalisees',
-    short_name: 'Rayeen.Dev',
-    description: 'Odoo Techno-Functional Consultant specialise dans les solutions ERP personnalisees. 3+ ans d\'experience en developpement Odoo 15, 16, 17.',
+    name: 'BenAmor.Dev - Odoo Techno-Functional Consultant | Solutions ERP Personnalisees',
+    short_name: 'BenAmor.Dev',
+    description: 'Portfolio de BenAmor, Consultant Odoo Freelance. Plus de 3 ans d experience en developpement, integration et migration ERP Odoo pour PME.',
     start_url: '/',
     display: 'standalone',
     orientation: 'portrait-primary',
@@ -30,6 +30,7 @@ export default function manifest(): MetadataRoute.Manifest {
     ],
   }
 }
+
 
 
 

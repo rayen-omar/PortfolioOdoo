@@ -97,7 +97,7 @@ export function Testimonials() {
       toast({
         title: "Code d'accès incorrect",
         description:
-          "Seuls les clients ayant reçu le code d'accès peuvent publier un témoignage. Contactez Rayeen Omar pour obtenir votre code.",
+          "Seuls les clients ayant reçu le code d'accès peuvent publier un témoignage. Contactez BenAmor pour obtenir votre code.",
         variant: "destructive",
       })
       return
@@ -132,7 +132,7 @@ export function Testimonials() {
           process.env.NEXT_PUBLIC_EMAILJS_TESTIMONIAL_TEMPLATE_ID ||
             process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
           {
-            to_name: "Rayeen Omar",
+            to_name: "BenAmor",
             from_name: data.name,
             from_email: data.email || "Non fourni",
             company: data.company,
@@ -147,7 +147,7 @@ export function Testimonials() {
       toast({
         title: "Témoignage soumis avec succès ! ✅",
         description:
-          "Merci ! Votre témoignage a été enregistré et sera publié après validation par Rayeen.",
+          "Merci ! Votre témoignage a été enregistré et sera publié après validation par BenAmor.",
       })
 
       reset()
@@ -386,7 +386,7 @@ export function Testimonials() {
                       </p>
                     )}
                     <p className="text-xs text-muted-foreground mt-1">
-                      Exemple : &quot;Rayeen a livré le projet avant la date prévue, a répondu à tous nos besoins et a été très professionnel.&quot;
+                      Exemple : &quot;BenAmor a livré le projet avant la date prévue, a répondu à tous nos besoins et a été très professionnel.&quot;
                     </p>
                   </div>
 
@@ -416,3 +416,4 @@ export function Testimonials() {
     </section>
   )
 }
+

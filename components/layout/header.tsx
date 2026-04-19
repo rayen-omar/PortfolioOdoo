@@ -5,6 +5,7 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Menu, X } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
+import { LogoB } from "@/components/ui/logo"
 
 const navItems = [
   { name: "Accueil", href: "#home" },
@@ -49,11 +50,11 @@ export function Header() {
           >
             <Link href="/" className="flex items-center gap-3.5 hover:opacity-90 transition-all active:scale-95 group">
               <div className="relative w-11 h-11 overflow-hidden rounded-xl bg-primary/5 flex items-center justify-center p-1.5 border border-primary/10 shadow-sm group-hover:border-primary/30 transition-colors">
-                <img src="/logo.svg" alt="BenAmor Rayeen" className="w-full h-full object-contain" />
+                <LogoB className="w-full h-full" />
               </div>
               <div className="flex flex-col">
                 <span className="text-xl font-bold tracking-tight text-foreground leading-tight">
-                  BenAmor <span className="text-primary italic font-black">Rayeen</span>
+                  BenAmor
                 </span>
                 <span className="text-[10px] uppercase tracking-widest font-bold text-muted-foreground/80 leading-tight">
                   Odoo Techno-Functional

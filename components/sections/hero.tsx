@@ -1,17 +1,32 @@
 "use client"
 
-import { motion } from "framer-motion"
+import { motion, useAnimation } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Download, Sparkles } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 import Tilt from "react-parallax-tilt"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 export function Hero() {
   const [imageLoaded, setImageLoaded] = useState(false)
   const [imageError, setImageError] = useState(false)
   const [imageVersion] = useState(() => Date.now())
+  const controls = useAnimation()
+
+  useEffect(() => {
+    let isMounted = true
+    const animateText = async () => {
+      while (isMounted) {
+        await controls.start("visible")
+        await new Promise(resolve => setTimeout(resolve, 2500))
+        await controls.start("hidden")
+        await new Promise(resolve => setTimeout(resolve, 300))
+      }
+    }
+    animateText()
+    return () => { isMounted = false }
+  }, [controls])
 
   return (
     <section
@@ -59,35 +74,65 @@ export function Hero() {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="space-y-7"
           >
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.8 }}
-              className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full border border-primary/20 mb-4"
-            >
-              <Sparkles className="h-4 w-4 text-primary" />
-              <span className="text-sm font-medium text-primary">
-                Odoo Techno-Functional Consultant
-              </span>
-            </motion.div>
+
 
             <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6, duration: 0.8 }}
-              className="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight text-foreground"
+              initial="hidden"
+              animate={controls}
+              variants={{
+                hidden: { opacity: 1, transition: { staggerChildren: 0.02, staggerDirection: -1 } },
+                visible: {
+                  opacity: 1,
+                  transition: { staggerChildren: 0.12, delayChildren: 0.2 }
+                }
+              }}
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-bold leading-[1.2] md:leading-[1.1] tracking-tight text-foreground"
             >
-              Développeur & Consultant{" "}
-              <span className="relative inline-block">
-                <span className="relative z-10 text-primary">Odoo Freelance</span>
+              <span className="block mb-2 md:mb-4 whitespace-nowrap">
+                <span className="inline-block mr-2 md:mr-3">
+                  {"Développeur".split("").map((char, index) => (
+                    <motion.span key={`w1-${index}`} variants={{ hidden: { opacity: 0, display: "none" }, visible: { opacity: 1, display: "inline-block" } }}>{char}</motion.span>
+                  ))}
+                </span>
+                <span className="inline-block mr-2 md:mr-3 text-muted-foreground/60">
+                  <motion.span variants={{ hidden: { opacity: 0, display: "none" }, visible: { opacity: 1, display: "inline-block" } }}>&</motion.span>
+                </span>
+                <span className="inline-block">
+                   {"Consultant".split("").map((char, index) => (
+                    <motion.span key={`w2-${index}`} variants={{ hidden: { opacity: 0, display: "none" }, visible: { opacity: 1, display: "inline-block" } }}>{char}</motion.span>
+                  ))}
+                </span>
+              </span>
+
+              <span className="block">
+                <motion.span 
+                  className="relative inline-block whitespace-nowrap"
+                >
+                  <span className="relative z-10 text-primary">
+                    {"Odoo Freelance".split("").map((char, index) => (
+                      <motion.span key={`w3-${index}`} variants={{ hidden: { opacity: 0, display: "none" }, visible: { opacity: 1, display: "inline-block" } }}>
+                        {char === " " ? "\u00A0" : char}
+                      </motion.span>
+                    ))}
+                  </span>
+                  <motion.span
+                    className="absolute bottom-1.5 left-0 right-0 h-3 md:h-4 bg-primary/20 -z-0"
+                    variants={{
+                      hidden: { scaleX: 0 },
+                      visible: { scaleX: 1, transition: { delay: 3.8, duration: 0.6, ease: "easeOut" } }
+                    }}
+                    style={{ originX: 0 }}
+                  />
+                </motion.span>
+
+                {/* Curseur de machine à écrire */}
                 <motion.span
-                  className="absolute bottom-0 left-0 right-0 h-3 bg-primary/20 -z-0"
-                  initial={{ scaleX: 0 }}
-                  animate={{ scaleX: 1 }}
-                  transition={{ delay: 1.2, duration: 0.8 }}
+                  initial={{ opacity: 1 }}
+                  animate={{ opacity: [1, 0, 1] }}
+                  transition={{ duration: 0.8, repeat: Infinity, ease: "linear" }}
+                  className="inline-block w-1 md:w-2 h-8 md:h-12 bg-primary ml-2 align-middle -mt-2"
                 />
-              </span>{" "}
-              en Tunisie
+              </span>
             </motion.h1>
 
             <motion.p
@@ -111,48 +156,62 @@ export function Hero() {
             </motion.p>
 
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.8, duration: 0.8 }}
+              initial="hidden"
+              animate="visible"
+              variants={{
+                hidden: { opacity: 0 },
+                visible: {
+                  opacity: 1,
+                  transition: { staggerChildren: 0.15, delayChildren: 1.2 }
+                }
+              }}
               className="flex flex-wrap gap-4 pt-4"
             >
-              <Button
-                asChild
-                size="lg"
-                className="group relative overflow-hidden bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/40 transition-all duration-300"
-              >
-                <Link href="#contact">
-                  <span className="relative z-10 flex items-center">
-                    Demander un devis gratuit
-                    <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                  </span>
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-primary/0 via-white/20 to-primary/0"
-                    initial={{ x: "-100%" }}
-                    whileHover={{ x: "100%" }}
-                    transition={{ duration: 0.6 }}
-                  />
-                </Link>
-              </Button>
-              <Button
-                asChild
-                variant="outline"
-                size="lg"
-                className="group border-2 hover:border-primary/50 hover:bg-primary/5 transition-all duration-300"
-              >
-                <Link href="#projects">Voir mes réalisations</Link>
-              </Button>
-              <Button
-                asChild
-                variant="ghost"
-                size="lg"
-                className="group hover:bg-primary/10 transition-all duration-300"
-              >
-                <Link href="/cv.pdf" download>
-                  <Download className="mr-2 h-4 w-4 group-hover:scale-110 transition-transform" />
-                  Télécharger mon CV
-                </Link>
-              </Button>
+              <motion.div variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { type: "spring", bounce: 0.4 } } }}>
+                <Button
+                  asChild
+                  size="lg"
+                  className="group relative overflow-hidden bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/40 transition-all duration-300"
+                >
+                  <Link href="#contact">
+                    <span className="relative z-10 flex items-center">
+                      Demander un devis gratuit
+                      <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                    </span>
+                    <motion.div
+                      className="absolute inset-0 bg-gradient-to-r from-primary/0 via-white/20 to-primary/0"
+                      initial={{ x: "-100%" }}
+                      whileHover={{ x: "100%" }}
+                      transition={{ duration: 0.6 }}
+                    />
+                  </Link>
+                </Button>
+              </motion.div>
+              
+              <motion.div variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { type: "spring", bounce: 0.4 } } }}>
+                <Button
+                  asChild
+                  variant="outline"
+                  size="lg"
+                  className="group border-2 hover:border-primary/50 hover:bg-primary/5 transition-all duration-300"
+                >
+                  <Link href="#projects">Voir mes réalisations</Link>
+                </Button>
+              </motion.div>
+
+              <motion.div variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { type: "spring", bounce: 0.4 } } }}>
+                <Button
+                  asChild
+                  variant="ghost"
+                  size="lg"
+                  className="group hover:bg-primary/10 transition-all duration-300"
+                >
+                  <Link href="/cv.pdf" download>
+                    <Download className="mr-2 h-4 w-4 group-hover:scale-110 transition-transform" />
+                    Télécharger mon CV
+                  </Link>
+                </Button>
+              </motion.div>
             </motion.div>
 
           </motion.div>
@@ -162,7 +221,7 @@ export function Hero() {
             initial={{ opacity: 0, x: 50, scale: 0.9 }}
             animate={{ opacity: 1, x: 0, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-            className="relative flex items-center justify-center"
+            className="relative flex items-center justify-center lg:pl-16"
           >
             <Tilt
               tiltMaxAngleX={10}
@@ -183,7 +242,7 @@ export function Hero() {
                       <div className="absolute inset-0 z-20 w-full h-full">
                         <Image
                           src={`/photo1.png?v=${imageVersion}`}
-                          alt="BenAmor Rayeen - Odoo Techno-Functional Consultant spécialisé en solutions ERP personnalisées avec 3+ ans d'expérience"
+                          alt="BenAmor - Odoo Techno-Functional Consultant spécialisé en solutions ERP personnalisées avec 3+ ans d'expérience"
                           fill
                           className="object-cover rounded-xl"
                           priority
@@ -202,8 +261,8 @@ export function Hero() {
                     {imageError && (
                       <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-primary/20 to-secondary/30 z-10">
                         <div className="text-6xl mb-4">👨‍💻</div>
-                        <h3 className="text-2xl font-bold text-primary">BenAmor Rayeen</h3>
-                        <p className="text-foreground/70">Odoo Techno-Functional Consultant</p>
+                        <h3 className="text-2xl font-bold text-primary">BenAmor</h3>
+                        <p className="text-sm font-medium text-foreground relative top-0.5">Odoo Techno-Functional Consultant</p>
                       </div>
                     )}
                     {/* Overlay gradient */}
@@ -224,12 +283,34 @@ export function Hero() {
               </div>
             </Tilt>
 
-            {/* Decorative elements */}
             <div className="absolute top-10 right-10 w-32 h-32 bg-primary/10 rounded-full blur-3xl -z-10 animate-pulse"></div>
             <div className="absolute bottom-10 left-10 w-40 h-40 bg-secondary rounded-full blur-3xl -z-10 animate-pulse delay-1000"></div>
           </motion.div>
         </div>
       </div>
+
+      {/* Modern Mouse Scroll Indicator */}
+      <motion.div
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 2.2, duration: 1, ease: "easeOut" }}
+        className="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+      >
+        <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-muted-foreground/60 transition-colors hover:text-primary">
+          Découvrir
+        </span>
+        <motion.div
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          className="w-6 h-10 border-2 border-muted-foreground/30 hover:border-primary/50 transition-colors rounded-full flex justify-center p-1.5"
+        >
+          <motion.div
+            animate={{ y: [0, 14, 0], opacity: [1, 0.2, 1] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            className="w-1.5 h-2.5 bg-primary rounded-full"
+          />
+        </motion.div>
+      </motion.div>
     </section>
   )
 }

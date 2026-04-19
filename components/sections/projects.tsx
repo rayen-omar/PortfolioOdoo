@@ -254,7 +254,7 @@ export function Projects() {
                               <div className="relative w-full h-64 rounded-lg overflow-hidden bg-white/5">
                                 <Image
                                   src={project.image}
-                                  alt={`${project.title} - ${project.type} - Détails du projet Odoo développé par BenAmor Rayeen`}
+                                  alt={`${project.title} - ${project.type} - Détails du projet Odoo développé par BenAmor`}
                                   fill
                                   className="object-contain"
                                   unoptimized
@@ -323,3 +323,4 @@ export function Projects() {
     </section>
   )
 }
+

@@ -12,7 +12,7 @@ export default function Home() {
   const personSchema = {
     "@context": "https://schema.org",
     "@type": "Person",
-    name: "Rayeen Ben Amor",
+    name: "BenAmor",
     jobTitle: "Développeur & Consultant Odoo – Freelance",
     description: "Expert en intégration, migration ERP, et développement sur mesure Odoo 18 et 19 en Tunisie.",
     url: "https://www.benamor.tech",
@@ -51,3 +51,4 @@ export default function Home() {
     </>
   )
 }
+

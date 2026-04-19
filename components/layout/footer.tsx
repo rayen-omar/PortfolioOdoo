@@ -1,5 +1,6 @@
 import Link from "next/link"
-import { Github, Linkedin, Mail, Phone } from "lucide-react"
+import { Github, Linkedin, Mail, Phone, Facebook } from "lucide-react"
+import { LogoB } from "@/components/ui/logo"
 
 const socialLinks = [
   {
@@ -22,6 +23,11 @@ const socialLinks = [
     href: "https://wa.me/21695129848",
     icon: Phone,
   },
+  {
+    name: "Facebook",
+    href: "https://www.facebook.com/profile.php?id=61585465568145",
+    icon: Facebook,
+  },
 ]
 
 export function Footer() {
@@ -33,9 +39,9 @@ export function Footer() {
           <div>
             <div className="flex items-center gap-3 mb-5 group">
               <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center p-1.5 border border-primary/20 shadow-sm transition-transform group-hover:scale-110">
-                <img src="/logo.svg" alt="Logo" className="w-full h-full object-contain" />
+                <LogoB className="w-full h-full" />
               </div>
-              <h3 className="text-xl font-bold tracking-tight">BenAmor <span className="text-primary italic">Rayeen</span></h3>
+              <h3 className="text-xl font-bold tracking-tight">BenAmor</h3>
             </div>
             <p className="text-muted-foreground mb-5 leading-relaxed">
               Odoo Techno-Functional Consultant spécialisé dans les solutions ERP
@@ -132,11 +138,6 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-10 pt-8 border-t border-border/70 text-center text-foreground/70">
-          <p>
-            © {new Date().getFullYear()} BenAmor Rayeen. Tous droits réservés.
-          </p>
-        </div>
       </div>
     </footer>
   )

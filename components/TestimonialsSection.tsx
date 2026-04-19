@@ -204,7 +204,7 @@ export default function TestimonialsSection() {
               <div className="relative z-10 space-y-6">
                 <div className="text-center space-y-2">
                   <h3 className="text-2xl font-black text-foreground italic tracking-tighter uppercase">Laissez un avis</h3>
-                  <p className="text-muted-foreground text-xs font-semibold">Votre retour est précieux pour Rayeen.</p>
+                  <p className="text-muted-foreground text-xs font-semibold">Votre retour est précieux pour BenAmor.</p>
                 </div>
 
                 {isSuccess ? (
@@ -316,3 +316,4 @@ export default function TestimonialsSection() {
     </section>
   );
 }
+
