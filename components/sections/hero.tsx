@@ -168,13 +168,13 @@ export function Hero() {
                   transition: { staggerChildren: 0.15, delayChildren: 1.2 }
                 }
               }}
-              className="flex flex-wrap gap-4 pt-4"
+              className="flex flex-col sm:flex-row flex-wrap gap-4 pt-4"
             >
-              <motion.div variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { type: "spring", bounce: 0.4 } } }}>
+              <motion.div variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { type: "spring", bounce: 0.4 } } }} className="w-full sm:w-auto">
                 <Button
                   asChild
                   size="lg"
-                  className="group relative overflow-hidden bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/40 transition-all duration-300"
+                  className="w-full sm:w-auto group relative overflow-hidden bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/40 transition-all duration-300"
                 >
                   <Link href="#contact">
                     <span className="relative z-10 flex items-center">
@@ -191,23 +191,23 @@ export function Hero() {
                 </Button>
               </motion.div>
               
-              <motion.div variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { type: "spring", bounce: 0.4 } } }}>
+              <motion.div variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { type: "spring", bounce: 0.4 } } }} className="w-full sm:w-auto">
                 <Button
                   asChild
                   variant="outline"
                   size="lg"
-                  className="group border-2 hover:border-primary/50 hover:bg-primary/5 transition-all duration-300"
+                  className="w-full sm:w-auto group border-2 hover:border-primary/50 hover:bg-primary/5 transition-all duration-300"
                 >
                   <Link href="#projects">Voir mes réalisations</Link>
                 </Button>
               </motion.div>
 
-              <motion.div variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { type: "spring", bounce: 0.4 } } }}>
+              <motion.div variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { type: "spring", bounce: 0.4 } } }} className="w-full sm:w-auto">
                 <Button
                   asChild
                   variant="ghost"
                   size="lg"
-                  className="group hover:bg-primary/10 transition-all duration-300"
+                  className="w-full sm:w-auto group hover:bg-primary/10 transition-all duration-300"
                 >
                   <Link href="/cv.pdf" download>
                     <Download className="mr-2 h-4 w-4 group-hover:scale-110 transition-transform" />

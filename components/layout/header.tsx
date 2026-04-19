@@ -90,28 +90,43 @@ export function Header() {
           </Button>
         </div>
 
-        {/* Mobile Navigation */}
         <AnimatePresence>
           {isMobileMenuOpen && (
             <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              className="md:hidden mt-4 pb-4 space-y-4"
+              initial={{ opacity: 0, y: -10, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -10, scale: 0.95 }}
+              transition={{ duration: 0.2, ease: "easeOut" }}
+              className="absolute top-full left-4 right-4 mt-2 p-5 bg-background/95 backdrop-blur-2xl border border-white/10 rounded-3xl shadow-2xl md:hidden overflow-hidden origin-top"
             >
-              {navItems.map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className="block text-sm font-medium text-foreground/80 hover:text-primary transition-colors"
-                  onClick={() => setIsMobileMenuOpen(false)}
+              <div className="flex flex-col space-y-1">
+                {navItems.map((item, i) => (
+                  <motion.div
+                    key={item.name}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.05 + 0.1, duration: 0.3 }}
+                  >
+                    <Link
+                      href={item.href}
+                      className="flex items-center w-full px-4 py-3.5 text-base font-semibold rounded-2xl text-foreground/80 hover:text-primary hover:bg-primary/10 active:scale-95 transition-all"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      {item.name}
+                    </Link>
+                  </motion.div>
+                ))}
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: navItems.length * 0.05 + 0.1, duration: 0.3 }}
+                  className="pt-4 mt-2 border-t border-border/40"
                 >
-                  {item.name}
-                </Link>
-              ))}
-              <Button asChild className="w-full">
-                <Link href="#contact">Demander un devis</Link>
-              </Button>
+                  <Button asChild className="w-full rounded-2xl py-6 text-base font-bold shadow-xl shadow-primary/25 bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70">
+                    <Link href="#contact" onClick={() => setIsMobileMenuOpen(false)}>Demander un devis</Link>
+                  </Button>
+                </motion.div>
+              </div>
             </motion.div>
           )}
         </AnimatePresence>

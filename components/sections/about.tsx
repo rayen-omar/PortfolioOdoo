@@ -31,14 +31,14 @@ export function About() {
             <Users className="w-3 h-3" />
             Mon Profil
           </div>
-          <h2 className="text-5xl md:text-7xl font-black mb-8 tracking-tighter text-foreground">
+          <h2 className="text-4xl sm:text-5xl md:text-7xl font-black mb-8 tracking-tighter text-foreground">
             Vision <span className="text-muted-foreground mr-2">&</span> 
             <span className="text-primary italic font-black">Expertise</span>
           </h2>
           <div className="w-24 h-2 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto rounded-full opacity-50 shadow-[0_0_20px_rgba(59,130,246,0.5)]"></div>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center mb-20">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}

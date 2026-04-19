@@ -115,6 +115,19 @@ function HubContainer({ items, centerIcon, centerText, hubType, inView }: any) {
   const mouseY = useMotionValue(0)
   const springX = useSpring(mouseX, { stiffness: 100, damping: 30 })
   const springY = useSpring(mouseY, { stiffness: 100, damping: 30 })
+  const [radius, setRadius] = useState(175)
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 420) setRadius(110)
+      else if (window.innerWidth < 640) setRadius(130)
+      else setRadius(175)
+    }
+    handleResize()
+    window.addEventListener("resize", handleResize)
+    return () => window.removeEventListener("resize", handleResize)
+  }, [])
+
   const handleMouseMove = (e: any) => {
     if (!containerRef.current) return
     const rect = containerRef.current.getBoundingClientRect()
@@ -129,7 +142,6 @@ function HubContainer({ items, centerIcon, centerText, hubType, inView }: any) {
       <motion.div style={{ x: springX, y: springY }} className="relative w-full h-full flex items-center justify-center">
         {items.map((item: any, i: number) => {
           const angle = (i * 360 / items.length) * (Math.PI / 180)
-          const radius = 175
           const x = radius * Math.cos(angle)
           const y = radius * Math.sin(angle)
           return <FloatingCard key={item.name} name={item.name} icon={item.icon} x={x} y={y} delay={i * 0.1} inView={inView} variant={hubType === 'odoo' ? 'primary' : 'default'} />
@@ -145,8 +157,8 @@ function HubContainer({ items, centerIcon, centerText, hubType, inView }: any) {
 function FloatingCard({ name, icon, x, y, delay, inView, variant = 'default' }: any) {
   return (
     <motion.div initial={{ scale: 0, opacity: 0 }} animate={inView ? { scale: 1, opacity: 1, x: [x - 5, x + 5, x - 5], y: [y + 5, y - 5, y + 5] } : {}} transition={{ delay, y: { duration: 5, repeat: Infinity, ease: "easeInOut" }, x: { duration: 4, repeat: Infinity, ease: "easeInOut" } }} style={{ position: 'absolute' }}>
-      <div className={`p-3 rounded-2xl backdrop-blur-xl border flex flex-col items-center gap-2 min-w-[100px] ${variant === 'primary' ? 'bg-primary/5 border-primary/30' : 'bg-white/5 border-white/10'}`}>
-        <div className={`p-2 rounded-xl ${variant === 'primary' ? 'bg-primary/10 text-primary' : 'bg-secondary text-primary'}`}>{icon}</div>
+      <div className={`p-2 sm:p-3 rounded-2xl backdrop-blur-xl border flex flex-col items-center gap-1 sm:gap-2 min-w-[85px] sm:min-w-[100px] ${variant === 'primary' ? 'bg-primary/5 border-primary/30' : 'bg-white/5 border-white/10'}`}>
+        <div className={`p-1.5 sm:p-2 rounded-xl ${variant === 'primary' ? 'bg-primary/10 text-primary' : 'bg-secondary text-primary'}`}>{icon}</div>
         <span className="text-[9px] font-black uppercase tracking-widest text-muted-foreground">{name}</span>
       </div>
     </motion.div>
