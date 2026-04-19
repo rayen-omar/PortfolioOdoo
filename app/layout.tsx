@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://www.benamor.tech"),
   title: {
     default:
-      "BenAmor | Développeur & Consultant odoo – Freelance",
+      "BenAmor | Développeur & Consultant odoo – Expert",
     template: "%s | BenAmor - odoo",
   },
   description:
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     locale: "fr_FR",
     url: "https://www.benamor.tech",
     title:
-      "BenAmor | Développeur & Consultant odoo – Freelance en Tunisie",
+      "BenAmor | Développeur & Consultant odoo – Expert en Tunisie",
     description:
       "Développeur & Consultant odoo Freelance basé à Monastir, Tunisie. Spécialiste intégration, migration ERP, odoo 18/19, dev technique & fonctionnel.",
     siteName: "Benamor.tech",
@@ -62,7 +62,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "BenAmor | Consultant odoo Freelance",
+    title: "BenAmor | Consultant odoo Expert",
     description:
       "Développeur & Consultant odoo Freelance basé à Monastir, Tunisie. Spécialiste intégration, migration ERP, odoo 18/19.",
     images: ["/photo.png"],

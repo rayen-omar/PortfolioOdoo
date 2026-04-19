@@ -109,7 +109,7 @@ export function Hero() {
                   className="relative inline-block whitespace-nowrap"
                 >
                   <span className="relative z-10 bg-gradient-to-r from-violet-500 to-primary text-transparent bg-clip-text pl-1 pr-1">
-                    {"odoo Freelance".split("").map((char, index) => (
+                    {"odoo Expert".split("").map((char, index) => (
                       <motion.span 
                         key={`w3-${index}`} 
                         variants={{ hidden: { opacity: 0, display: "none" }, visible: { opacity: 1, display: "inline-block" } }}

@@ -13,7 +13,7 @@ export default function Home() {
     "@context": "https://schema.org",
     "@type": "Person",
     name: "BenAmor",
-    jobTitle: "Développeur & Consultant odoo – Freelance",
+    jobTitle: "Développeur & Consultant odoo – Expert",
     description: "Expert en intégration, migration ERP, et développement sur mesure odoo 18 et 19 en Tunisie.",
     url: "https://www.benamor.tech",
     image: "https://www.benamor.tech/photo.png",
