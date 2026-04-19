@@ -13,11 +13,11 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://www.benamor.tech"),
   title: {
     default:
-      "BenAmor | Développeur & Consultant Odoo – Freelance",
-    template: "%s | BenAmor - Odoo",
+      "BenAmor | Développeur & Consultant odoo – Freelance",
+    template: "%s | BenAmor - odoo",
   },
   description:
-    "BenAmor, Développeur & Consultant Odoo Freelance en Tunisie. Expert en intégration Odoo, migration ERP (Sage vers Odoo), Odoo 18, 19 et développement sur mesure.",
+    "BenAmor, Développeur & Consultant odoo Freelance en Tunisie. Expert en intégration odoo, migration ERP (Sage vers odoo), odoo 18, 19 et développement sur mesure.",
   keywords: [
     "développeur odoo tunisie",
     "consultant odoo tunisie",
@@ -47,24 +47,24 @@ export const metadata: Metadata = {
     locale: "fr_FR",
     url: "https://www.benamor.tech",
     title:
-      "BenAmor | Développeur & Consultant Odoo – Freelance en Tunisie",
+      "BenAmor | Développeur & Consultant odoo – Freelance en Tunisie",
     description:
-      "Développeur & Consultant Odoo Freelance basé à Monastir, Tunisie. Spécialiste intégration, migration ERP, Odoo 18/19, dev technique & fonctionnel.",
+      "Développeur & Consultant odoo Freelance basé à Monastir, Tunisie. Spécialiste intégration, migration ERP, odoo 18/19, dev technique & fonctionnel.",
     siteName: "Benamor.tech",
     images: [
       {
         url: "/photo.png",
         width: 1200,
         height: 630,
-        alt: "BenAmor - Développeur & Consultant Odoo Freelance",
+        alt: "BenAmor - Développeur & Consultant odoo Freelance",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "BenAmor | Consultant Odoo Freelance",
+    title: "BenAmor | Consultant odoo Freelance",
     description:
-      "Développeur & Consultant Odoo Freelance basé à Monastir, Tunisie. Spécialiste intégration, migration ERP, Odoo 18/19.",
+      "Développeur & Consultant odoo Freelance basé à Monastir, Tunisie. Spécialiste intégration, migration ERP, odoo 18/19.",
     images: ["/photo.png"],
   },
   robots: {
@@ -110,5 +110,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     </html>
   );
 }
+
 
 

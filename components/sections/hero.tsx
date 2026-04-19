@@ -108,9 +108,12 @@ export function Hero() {
                 <motion.span 
                   className="relative inline-block whitespace-nowrap"
                 >
-                  <span className="relative z-10 text-primary">
-                    {"Odoo Freelance".split("").map((char, index) => (
-                      <motion.span key={`w3-${index}`} variants={{ hidden: { opacity: 0, display: "none" }, visible: { opacity: 1, display: "inline-block" } }}>
+                  <span className="relative z-10 bg-gradient-to-r from-violet-500 to-primary text-transparent bg-clip-text pl-1 pr-1">
+                    {"odoo Freelance".split("").map((char, index) => (
+                      <motion.span 
+                        key={`w3-${index}`} 
+                        variants={{ hidden: { opacity: 0, display: "none" }, visible: { opacity: 1, display: "inline-block" } }}
+                      >
                         {char === " " ? "\u00A0" : char}
                       </motion.span>
                     ))}
@@ -141,7 +144,7 @@ export function Hero() {
               transition={{ delay: 0.7, duration: 0.8 }}
               className="text-lg md:text-xl text-foreground/90 font-medium"
             >
-              Odoo Techno-Functional Consultant pour PME et entreprises en croissance
+              odoo Techno-Functional Consultant pour PME et entreprises en croissance
             </motion.p>
 
             <motion.p
@@ -150,7 +153,7 @@ export function Hero() {
               transition={{ delay: 0.8, duration: 0.8 }}
               className="text-lg text-foreground/80 max-w-xl leading-relaxed"
             >
-              Spécialisé dans le développement de modules Odoo personnalisés,
+              Spécialisé dans le développement de modules odoo personnalisés,
               les migrations et les intégrations pour optimiser durablement vos
               processus métier.
             </motion.p>
@@ -242,7 +245,7 @@ export function Hero() {
                       <div className="absolute inset-0 z-20 w-full h-full">
                         <Image
                           src={`/photo1.png?v=${imageVersion}`}
-                          alt="BenAmor - Odoo Techno-Functional Consultant spécialisé en solutions ERP personnalisées avec 3+ ans d'expérience"
+                          alt="BenAmor - odoo Techno-Functional Consultant spécialisé en solutions ERP personnalisées avec 3+ ans d'expérience"
                           fill
                           className="object-cover rounded-xl"
                           priority
@@ -262,7 +265,7 @@ export function Hero() {
                       <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-primary/20 to-secondary/30 z-10">
                         <div className="text-6xl mb-4">👨‍💻</div>
                         <h3 className="text-2xl font-bold text-primary">BenAmor</h3>
-                        <p className="text-sm font-medium text-foreground relative top-0.5">Odoo Techno-Functional Consultant</p>
+                        <p className="text-sm font-medium text-foreground relative top-0.5">odoo Techno-Functional Consultant</p>
                       </div>
                     )}
                     {/* Overlay gradient */}
@@ -277,7 +280,7 @@ export function Hero() {
                   animate={{ scale: 1, rotate: 0 }}
                   transition={{ delay: 1.5, type: "spring", stiffness: 200 }}
                 >
-                  Odoo Techno-Functional Consultant
+                  odoo Techno-Functional Consultant
                 </motion.div>
 
               </div>
@@ -314,3 +317,4 @@ export function Hero() {
     </section>
   )
 }
+

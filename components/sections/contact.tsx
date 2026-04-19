@@ -402,7 +402,7 @@ export function Contact() {
                     <SelectItem value="custom-module">
                       Développement de module personnalisé
                     </SelectItem>
-                    <SelectItem value="migration">Migration Odoo</SelectItem>
+                    <SelectItem value="migration">Migration odoo</SelectItem>
                     <SelectItem value="customization">
                       Personnalisation & Configuration
                     </SelectItem>
@@ -485,3 +485,4 @@ export function Contact() {
     </section>
   )
 }
+

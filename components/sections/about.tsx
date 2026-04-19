@@ -45,7 +45,7 @@ export function About() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="space-y-6"
           >
-            <h3 className="text-2xl font-bold">Bonjour, je suis BenAmor, Consultant Techno-Fonctionnel Odoo.</h3>
+            <h3 className="text-2xl font-bold">Bonjour, je suis BenAmor, Consultant Techno-Fonctionnel odoo.</h3>
             <p className="text-muted-foreground text-lg leading-relaxed mt-4">
               Basé en Tunisie et disponible pour des missions à l'international (100% remote), je parle à la fois le langage de votre entreprise et celui de la machine.
             </p>
@@ -53,7 +53,7 @@ export function About() {
                <div>
                   <h4 className="text-lg font-semibold flex items-center gap-2 mb-2">
                     <Briefcase className="w-5 h-5 text-primary" />
-                    Consultant Odoo Auto-entrepreneur
+                    Consultant odoo Auto-entrepreneur
                   </h4>
                   <p className="text-muted-foreground leading-relaxed">
                     J'interviens en tant qu'indépendant pour accompagner les entreprises dans leur transformation digitale. J'élimine le fossé de communication en auditant vos besoins métiers (comptabilité, supply chain, RH) tout en développant moi-même les extensions Python/XML complexes nécessaires.
@@ -111,4 +111,5 @@ export function About() {
     </section>
   )
 }
+
 

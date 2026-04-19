@@ -46,7 +46,7 @@ export function ProProcessContact() {
               Contact
             </p>
             <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
-              Discutons de votre projet Odoo
+              Discutons de votre projet odoo
             </h2>
             <p className="mx-auto mt-4 max-w-2xl leading-relaxed text-muted-foreground">
               Partagez votre contexte et vos objectifs. Je vous propose une
@@ -68,3 +68,4 @@ export function ProProcessContact() {
     </>
   )
 }
+

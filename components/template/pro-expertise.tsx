@@ -1,7 +1,7 @@
 "use client"
 
 const expertise = [
-  "Odoo 15, 16, 17, 18, 19",
+  "odoo 15, 16, 17, 18, 19",
   "Python et PostgreSQL",
   "Architecture modulaire maintenable",
   "Integrations API et automatisations",
@@ -41,3 +41,4 @@ export function ProExpertise() {
     </section>
   )
 }
+

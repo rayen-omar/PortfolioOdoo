@@ -136,7 +136,7 @@ export default function TestimonialsSection() {
           </h2>
           <div className="w-24 h-2 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto rounded-full opacity-50 shadow-[0_0_20px_rgba(59,130,246,0.5)] mb-8"></div>
           <p className="text-muted-foreground max-w-2xl mx-auto text-lg leading-relaxed">
-            Découvrez comment j&apos;accompagne les entreprises dans leur transformation digitale avec Odoo.
+            Découvrez comment j&apos;accompagne les entreprises dans leur transformation digitale avec odoo.
           </p>
         </div>
 
@@ -224,7 +224,7 @@ export default function TestimonialsSection() {
                       <label className="text-[10px] font-black uppercase text-muted-foreground tracking-widest pl-1">Entreprise *</label>
                       <input
                         type="text"
-                        placeholder="Ex: Odoo Expert"
+                        placeholder="Ex: odoo Expert"
                         value={company}
                         onChange={(e) => setCompany(e.target.value)}
                         className="w-full bg-background border border-border/50 rounded-xl px-3 py-2 text-sm text-foreground focus:border-primary outline-none transition-all placeholder:text-muted-foreground/30 font-medium"
@@ -316,4 +316,5 @@ export default function TestimonialsSection() {
     </section>
   );
 }
+
 

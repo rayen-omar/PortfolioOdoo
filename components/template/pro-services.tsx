@@ -6,7 +6,7 @@ import { Code2, Database, Settings, Server } from "lucide-react"
 const services = [
   {
     icon: Code2,
-    title: "Modules Odoo personnalises",
+    title: "Modules odoo personnalises",
     description:
       "Conception de modules adaptes a vos processus metier et integres a votre environnement existant.",
   },
@@ -14,7 +14,7 @@ const services = [
     icon: Database,
     title: "Migration et evolution",
     description:
-      "Migration entre versions Odoo avec preservation des donnees et plan de transition controle.",
+      "Migration entre versions odoo avec preservation des donnees et plan de transition controle.",
   },
   {
     icon: Settings,
@@ -39,7 +39,7 @@ export function ProServices() {
             Services
           </p>
           <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
-            Une offre claire pour vos projets Odoo
+            Une offre claire pour vos projets odoo
           </h2>
         </div>
 
@@ -70,3 +70,4 @@ export function ProServices() {
     </section>
   )
 }
+

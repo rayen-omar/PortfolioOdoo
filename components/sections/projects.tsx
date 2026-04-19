@@ -26,7 +26,7 @@ const projects = [
       "Reporting et analytics avancés",
       "Gestion des fournisseurs et commissions",
     ],
-    technologies: ["Odoo 17", "Python", "PostgreSQL", "JavaScript"],
+    technologies: ["odoo 17", "Python", "PostgreSQL", "JavaScript"],
     results: "Automatisation complète du workflow d'une agence de voyage",
     image: "/images/travelpro.jpg",
     video: "/demo travel pro.mp4",
@@ -47,7 +47,7 @@ const projects = [
       "Gestion des clients et historique",
       "Module de facturation automatisée",
     ],
-    technologies: ["Odoo 16", "Python", "PostgreSQL", "E-commerce Integration"],
+    technologies: ["odoo 16", "Python", "PostgreSQL", "E-commerce Integration"],
     results: "Digitalisation complète du processus de vente et production",
     image: "/images/nexprint.jpg",
     video: "/demo nexprint.mp4",
@@ -56,21 +56,21 @@ const projects = [
   {
     id: 3,
     title: "Gestion automatisée de la paie et fiscalité tunisienne",
-    type: "Module Odoo 15 - Paie & Fiscalité",
+    type: "Module odoo 15 - Paie & Fiscalité",
     description:
-      "Développement d'un module Odoo pour la gestion de la Retenue à la Source (RAS) et la génération de la Déclaration Employeur (.txt).",
+      "Développement d'un module odoo pour la gestion de la Retenue à la Source (RAS) et la génération de la Déclaration Employeur (.txt).",
     longDescription:
-      "Module Odoo complet pour la gestion automatisée de la paie et de la fiscalité tunisienne. Le module inclut la gestion de la Retenue à la Source (RAS), la génération automatique de la Déclaration Employeur au format .txt, l'intégration complète avec le module de paie d'Odoo, la configuration des taux fiscaux tunisiens, et la création de rapports PDF personnalisés (factures, bons de livraison). Le projet inclut également des tests unitaires et fonctionnels avec Pytest, ainsi qu'une documentation technique claire et structurée.",
+      "Module odoo complet pour la gestion automatisée de la paie et de la fiscalité tunisienne. Le module inclut la gestion de la Retenue à la Source (RAS), la génération automatique de la Déclaration Employeur au format .txt, l'intégration complète avec le module de paie d'odoo, la configuration des taux fiscaux tunisiens, et la création de rapports PDF personnalisés (factures, bons de livraison). Le projet inclut également des tests unitaires et fonctionnels avec Pytest, ainsi qu'une documentation technique claire et structurée.",
     modules: [
       "Gestion de la Retenue à la Source (RAS)",
       "Génération de la Déclaration Employeur (.txt)",
-      "Intégration avec le module de paie Odoo",
+      "Intégration avec le module de paie odoo",
       "Configuration des taux fiscaux tunisiens",
       "Création de rapports PDF personnalisés (factures, bons de livraison)",
       "Tests unitaires et fonctionnels avec Pytest",
       "Documentation technique complète",
     ],
-    technologies: ["Odoo 15", "Python", "PostgreSQL", "Pytest", "QWeb"],
+    technologies: ["odoo 15", "Python", "PostgreSQL", "Pytest", "QWeb"],
     results: "Automatisation complète de la gestion de paie et fiscalité conforme à la législation tunisienne",
     image: "/demo-projet-fiscal.png",
     gradient: "from-green-500 to-emerald-500",
@@ -254,7 +254,7 @@ export function Projects() {
                               <div className="relative w-full h-64 rounded-lg overflow-hidden bg-white/5">
                                 <Image
                                   src={project.image}
-                                  alt={`${project.title} - ${project.type} - Détails du projet Odoo développé par BenAmor`}
+                                  alt={`${project.title} - ${project.type} - Détails du projet odoo développé par BenAmor`}
                                   fill
                                   className="object-contain"
                                   unoptimized
@@ -323,4 +323,5 @@ export function Projects() {
     </section>
   )
 }
+
 

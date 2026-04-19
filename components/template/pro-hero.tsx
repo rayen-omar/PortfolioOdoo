@@ -5,7 +5,7 @@ import { ArrowRight, CheckCircle2 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 const trustPoints = [
-  "Odoo Techno-Functional Consultant",
+  "odoo Techno-Functional Consultant",
   "Livraison orientee resultat",
   "Support post-livraison",
 ]
@@ -17,15 +17,15 @@ export function ProHero() {
       <div className="container mx-auto">
         <div className="mx-auto max-w-4xl text-center">
           <p className="mb-5 inline-flex rounded-full border border-primary/20 bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary">
-            Portfolio professionnel Odoo
+            Portfolio professionnel odoo
           </p>
           <h1 className="text-4xl font-bold tracking-tight text-foreground md:text-5xl lg:text-6xl">
-            Developpement Odoo sur mesure pour structurer et accelerer votre
+            Developpement odoo sur mesure pour structurer et accelerer votre
             entreprise
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
             J accompagne les entreprises dans la conception, la personnalisation
-            et l evolution de leur ERP Odoo avec une approche claire, fiable et
+            et l evolution de leur ERP odoo avec une approche claire, fiable et
             orientee impact metier.
           </p>
 
@@ -57,3 +57,4 @@ export function ProHero() {
     </section>
   )
 }
+

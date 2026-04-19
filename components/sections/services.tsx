@@ -10,28 +10,28 @@ const services = [
     icon: Code2,
     title: "Développement de modules personnalisés",
     description:
-      "Création de modules Odoo adaptés à vos besoins spécifiques avec intégration à vos systèmes existants.",
+      "Création de modules odoo adaptés à vos besoins spécifiques avec intégration à vos systèmes existants.",
     color: "from-blue-600 to-cyan-400",
   },
   {
     icon: ArrowRightLeft,
-    title: "Migration Odoo",
+    title: "Migration odoo",
     description:
-      "Migration sécurisée entre versions Odoo ou depuis d'autres systèmes ERP avec préservation des données.",
+      "Migration sécurisée entre versions odoo ou depuis d'autres systèmes ERP avec préservation des données.",
     color: "from-indigo-600 to-purple-500",
   },
   {
     icon: Wand2,
     title: "Personnalisation & Configuration",
     description:
-      "Adaptation d'Odoo à vos processus métier avec configuration avancée des modules standards.",
+      "Adaptation d'odoo à vos processus métier avec configuration avancée des modules standards.",
     color: "from-rose-500 to-orange-400",
   },
   {
     icon: BookOpen,
     title: "Formation & Support",
     description:
-      "Formation de vos équipes à Odoo et support technique continu pour une adoption réussie.",
+      "Formation de vos équipes à odoo et support technique continu pour une adoption réussie.",
     color: "from-emerald-600 to-teal-400",
   },
   {
@@ -143,3 +143,4 @@ export function Services() {
     </section>
   )
 }
+

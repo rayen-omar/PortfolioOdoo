@@ -13,8 +13,8 @@ export default function Home() {
     "@context": "https://schema.org",
     "@type": "Person",
     name: "BenAmor",
-    jobTitle: "Développeur & Consultant Odoo – Freelance",
-    description: "Expert en intégration, migration ERP, et développement sur mesure Odoo 18 et 19 en Tunisie.",
+    jobTitle: "Développeur & Consultant odoo – Freelance",
+    description: "Expert en intégration, migration ERP, et développement sur mesure odoo 18 et 19 en Tunisie.",
     url: "https://www.benamor.tech",
     image: "https://www.benamor.tech/photo.png",
     sameAs: [
@@ -28,7 +28,7 @@ export default function Home() {
       addressRegion: "Monastir"
     },
     knowsAbout: [
-      "Odoo", "Odoo 18", "Odoo 19", "Migration ERP", "Intégration Odoo", "Python", "PostgreSQL",
+      "odoo", "odoo 18", "odoo 19", "Migration ERP", "Intégration odoo", "Python", "PostgreSQL",
       "Développement Technique", "Consulting Fonctionnel", "Agence de voyage", "Cabinet Comptable"
     ]
   };
@@ -51,4 +51,5 @@ export default function Home() {
     </>
   )
 }
+
 

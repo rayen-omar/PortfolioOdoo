@@ -11,7 +11,7 @@ import { useState, useEffect, useRef } from "react"
 
 const techTools = [
   { name: "Python", icon: <Zap /> },
-  { name: "XML / Odoo Views", icon: <Code2 /> },
+  { name: "XML / odoo Views", icon: <Code2 /> },
   { name: "PostgreSQL", icon: <Database /> },
   { name: "React / Next.js", icon: <Layout /> },
   { name: "Docker", icon: <Box /> },
@@ -86,7 +86,7 @@ export function Skills() {
                className="px-8 py-5 bg-card/40 rounded-[2.5rem] border border-border/60 border-r-8 border-r-primary flex items-center justify-between backdrop-blur-md shadow-2xl text-right lg:text-left lg:flex-row-reverse"
              >
                 <div className="space-y-1">
-                   <h3 className="text-2xl font-black tracking-tight group-hover:text-primary transition-colors">Expertise Odoo</h3>
+                   <h3 className="text-2xl font-black tracking-tight group-hover:text-primary transition-colors">Expertise odoo</h3>
                    <div className="flex items-center gap-2 text-[10px] uppercase font-bold text-muted-foreground opacity-70 justify-end lg:justify-start">
                       <Box className="w-3 h-3" /> Modules Fonctionnels Std.
                    </div>
@@ -96,7 +96,7 @@ export function Skills() {
                 </div>
              </motion.div>
              <div className="relative h-[500px] rounded-[3.5rem] bg-[#020617]/40 border border-white/5 shadow-inner overflow-hidden flex items-center justify-center">
-                <HubContainer items={odooModules} centerText="Odoo" hubType="odoo" inView={inView} />
+                <HubContainer items={odooModules} centerText="odoo" hubType="odoo" inView={inView} />
              </div>
           </div>
         </div>
@@ -152,3 +152,4 @@ function FloatingCard({ name, icon, x, y, delay, inView, variant = 'default' }: 
     </motion.div>
   )
 }
+

@@ -44,8 +44,8 @@ export function Footer() {
               <h3 className="text-xl font-bold tracking-tight">BenAmor</h3>
             </div>
             <p className="text-muted-foreground mb-5 leading-relaxed">
-              Odoo Techno-Functional Consultant spécialisé dans les solutions ERP
-              personnalisées. Transformez votre entreprise avec Odoo.
+              odoo Techno-Functional Consultant spécialisé dans les solutions ERP
+              personnalisées. Transformez votre entreprise avec odoo.
             </p>
             <div className="flex space-x-4">
               {socialLinks.map((link) => {
@@ -142,4 +142,5 @@ export function Footer() {
     </footer>
   )
 }
+
 

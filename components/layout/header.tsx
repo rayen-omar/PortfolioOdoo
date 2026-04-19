@@ -57,7 +57,7 @@ export function Header() {
                   BenAmor
                 </span>
                 <span className="text-[10px] uppercase tracking-widest font-bold text-muted-foreground/80 leading-tight">
-                  Odoo Techno-Functional
+                  odoo Techno-Functional
                 </span>
               </div>
             </Link>
@@ -119,4 +119,5 @@ export function Header() {
     </motion.header>
   )
 }
+
 

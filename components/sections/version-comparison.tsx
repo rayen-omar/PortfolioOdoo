@@ -7,7 +7,7 @@ import { Check, ArrowRight, TrendingUp, Code, ShoppingCart, Database } from "luc
 
 const versions = [
   {
-    version: "Odoo 19",
+    version: "odoo 19",
     year: "2024",
     status: "Dernière version supportée",
     description: "Version la plus récente avec fonctionnalités avancées",
@@ -25,7 +25,7 @@ const versions = [
     recommended: true,
   },
   {
-    version: "Odoo 18",
+    version: "odoo 18",
     year: "2023",
     status: "Stable et performante",
     description: "Bon équilibre entre stabilité et nouveautés",
@@ -41,7 +41,7 @@ const versions = [
     recommended: true,
   },
   {
-    version: "Odoo 17",
+    version: "odoo 17",
     year: "2023",
     status: "Idéal pour e-commerce",
     description: "Excellente version pour projets e-commerce",
@@ -57,7 +57,7 @@ const versions = [
     recommended: false,
   },
   {
-    version: "Odoo 16",
+    version: "odoo 16",
     year: "2022",
     status: "Stable mais obsolète",
     description: "Version stable mais migration recommandée",
@@ -72,10 +72,10 @@ const versions = [
     recommended: false,
   },
   {
-    version: "Odoo 15",
+    version: "odoo 15",
     year: "2022",
     status: "Migration recommandée",
-    description: "Version ancienne, migration vers Odoo 19 recommandée",
+    description: "Version ancienne, migration vers odoo 19 recommandée",
     features: [
       "Fonctionnalités de base",
       "Modules standards",
@@ -90,29 +90,29 @@ const versions = [
 
 const migrationPaths = [
   {
-    from: "Odoo 15",
-    to: "Odoo 19",
+    from: "odoo 15",
+    to: "odoo 19",
     steps: ["Audit système", "Planification", "Migration données", "Tests", "Formation"],
     duration: "3-4 semaines",
     complexity: "Moyenne à élevée",
   },
   {
-    from: "Odoo 16",
-    to: "Odoo 19",
+    from: "odoo 16",
+    to: "odoo 19",
     steps: ["Audit", "Migration", "Tests", "Formation"],
     duration: "2-3 semaines",
     complexity: "Moyenne",
   },
   {
-    from: "Odoo 17",
-    to: "Odoo 19",
+    from: "odoo 17",
+    to: "odoo 19",
     steps: ["Audit", "Migration", "Tests"],
     duration: "1-2 semaines",
     complexity: "Faible à moyenne",
   },
   {
-    from: "Odoo 18",
-    to: "Odoo 19",
+    from: "odoo 18",
+    to: "odoo 19",
     steps: ["Audit", "Migration", "Tests"],
     duration: "1 semaine",
     complexity: "Faible",
@@ -213,7 +213,7 @@ export function VersionComparison() {
           className="mb-12"
         >
           <h3 className="text-2xl md:text-3xl font-bold mb-8 text-center">
-            Chemins de Migration Odoo
+            Chemins de Migration odoo
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {migrationPaths.map((path, index) => (
@@ -263,19 +263,20 @@ export function VersionComparison() {
           className="text-center"
         >
           <p className="text-lg text-muted-foreground mb-6">
-            Besoin d'aide pour choisir votre version Odoo ou planifier votre migration ?
+            Besoin d'aide pour choisir votre version odoo ou planifier votre migration ?
           </p>
           <a
             href="#contact"
             className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-primary-foreground rounded-lg font-semibold hover:bg-primary/90 transition-colors shadow-lg hover:shadow-xl text-lg"
           >
-            Audit gratuit version Odoo actuelle
+            Audit gratuit version odoo actuelle
           </a>
         </motion.div>
       </div>
     </section>
   )
 }
+
 
 
 

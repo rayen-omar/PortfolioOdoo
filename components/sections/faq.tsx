@@ -13,44 +13,44 @@ import { useEffect } from "react"
 
 const faqData = [
   {
-    question: "Quelle version Odoo choisir pour mon entreprise ?",
+    question: "Quelle version odoo choisir pour mon entreprise ?",
     answer:
-      "Le choix de la version Odoo dépend de vos besoins spécifiques. Odoo 19 est la dernière version avec les fonctionnalités les plus récentes et le meilleur support. Odoo 18 offre un bon équilibre entre stabilité et nouveautés. Odoo 17 est idéal pour l'e-commerce avancé. Odoo 16 et 15 sont encore supportées mais je recommande une migration vers une version plus récente pour bénéficier des dernières améliorations. En tant qu'expert Odoo en Tunisie, je peux vous aider à choisir la version adaptée à votre secteur d'activité et vos besoins.",
+      "Le choix de la version odoo dépend de vos besoins spécifiques. odoo 19 est la dernière version avec les fonctionnalités les plus récentes et le meilleur support. odoo 18 offre un bon équilibre entre stabilité et nouveautés. odoo 17 est idéal pour l'e-commerce avancé. odoo 16 et 15 sont encore supportées mais je recommande une migration vers une version plus récente pour bénéficier des dernières améliorations. En tant qu'expert odoo en Tunisie, je peux vous aider à choisir la version adaptée à votre secteur d'activité et vos besoins.",
   },
   {
-    question: "Quelles sont les différences entre Odoo 15 et Odoo 19 ?",
+    question: "Quelles sont les différences entre odoo 15 et odoo 19 ?",
     answer:
-      "Odoo 19 apporte de nombreuses améliorations par rapport à Odoo 15 : interface utilisateur modernisée, performances optimisées, nouvelles fonctionnalités e-commerce, amélioration de la gestion de stock, nouveaux modules (planning, documents), meilleure intégration avec les outils externes, et support technique prolongé. Odoo 19 offre également une meilleure expérience mobile et des API plus robustes. La migration d'Odoo 15 vers Odoo 19 nécessite une planification minutieuse pour préserver vos données et personnalisations. Je propose des audits gratuits pour évaluer la complexité de votre migration.",
+      "odoo 19 apporte de nombreuses améliorations par rapport à odoo 15 : interface utilisateur modernisée, performances optimisées, nouvelles fonctionnalités e-commerce, amélioration de la gestion de stock, nouveaux modules (planning, documents), meilleure intégration avec les outils externes, et support technique prolongé. odoo 19 offre également une meilleure expérience mobile et des API plus robustes. La migration d'odoo 15 vers odoo 19 nécessite une planification minutieuse pour préserver vos données et personnalisations. Je propose des audits gratuits pour évaluer la complexité de votre migration.",
   },
   {
-    question: "Quel est le coût d'une migration Odoo ?",
+    question: "Quel est le coût d'une migration odoo ?",
     answer:
-      "Le coût d'une migration Odoo varie selon plusieurs facteurs : version source et cible (migration Odoo 15 vers 19, Odoo 16 vers 19, etc.), volume de données, nombre de modules personnalisés, complexité des intégrations, et besoins de formation. Pour une migration standard d'Odoo 15/16/17 vers Odoo 19, les tarifs démarrent à partir de 3000 TND pour les petites structures. Je propose un devis gratuit personnalisé après analyse de votre système actuel. Le devis inclut l'audit, la migration, les tests, et la formation de base.",
+      "Le coût d'une migration odoo varie selon plusieurs facteurs : version source et cible (migration odoo 15 vers 19, odoo 16 vers 19, etc.), volume de données, nombre de modules personnalisés, complexité des intégrations, et besoins de formation. Pour une migration standard d'odoo 15/16/17 vers odoo 19, les tarifs démarrent à partir de 3000 TND pour les petites structures. Je propose un devis gratuit personnalisé après analyse de votre système actuel. Le devis inclut l'audit, la migration, les tests, et la formation de base.",
   },
   {
-    question: "Proposez-vous un support multi-versions Odoo ?",
+    question: "Proposez-vous un support multi-versions odoo ?",
     answer:
-      "Oui, je suis expert sur toutes les versions Odoo 15, 16, 17, 18 et 19. Je peux intervenir sur votre installation quelle que soit la version, que vous soyez à Tunis, Sousse, Sfax, Monastir ou ailleurs en Tunisie. Mon support multi-versions inclut : maintenance, résolution de bugs, développement de modules compatibles, optimisation des performances, et conseil pour les upgrades. Je maîtrise les spécificités de chaque version et peux vous accompagner dans votre migration progressive vers les versions les plus récentes.",
+      "Oui, je suis expert sur toutes les versions odoo 15, 16, 17, 18 et 19. Je peux intervenir sur votre installation quelle que soit la version, que vous soyez à Tunis, Sousse, Sfax, Monastir ou ailleurs en Tunisie. Mon support multi-versions inclut : maintenance, résolution de bugs, développement de modules compatibles, optimisation des performances, et conseil pour les upgrades. Je maîtrise les spécificités de chaque version et peux vous accompagner dans votre migration progressive vers les versions les plus récentes.",
   },
   {
-    question: "Combien de temps prend une migration Odoo 15 vers Odoo 19 ?",
+    question: "Combien de temps prend une migration odoo 15 vers odoo 19 ?",
     answer:
-      "La durée d'une migration Odoo 15 vers Odoo 19 dépend de la complexité de votre installation : nombre de modules personnalisés, volume de données, intégrations externes. Pour une migration standard : 2-3 semaines (audit 2 jours, migration 1 semaine, tests 1 semaine, formation 2 jours). Pour des installations complexes avec beaucoup de personnalisations : 4-6 semaines. Je travaille en étroite collaboration avec vos équipes pour minimiser les interruptions et garantir une transition en douceur. Un plan de migration détaillé vous est fourni avant le début des travaux.",
+      "La durée d'une migration odoo 15 vers odoo 19 dépend de la complexité de votre installation : nombre de modules personnalisés, volume de données, intégrations externes. Pour une migration standard : 2-3 semaines (audit 2 jours, migration 1 semaine, tests 1 semaine, formation 2 jours). Pour des installations complexes avec beaucoup de personnalisations : 4-6 semaines. Je travaille en étroite collaboration avec vos équipes pour minimiser les interruptions et garantir une transition en douceur. Un plan de migration détaillé vous est fourni avant le début des travaux.",
   },
   {
-    question: "Développez-vous des modules Odoo personnalisés pour tous les secteurs ?",
+    question: "Développez-vous des modules odoo personnalisés pour tous les secteurs ?",
     answer:
-      "Oui, je développe des modules Odoo personnalisés pour tous les secteurs d'activité en Tunisie : agences de voyage (comme TravelPro), impression et communication visuelle (comme Nexprint), e-commerce, retail, distribution, manufacturing, services, immobilier, santé, éducation, finance, agriculture, hôtellerie, transport, etc. Chaque module est conçu selon vos processus métier spécifiques et intégré parfaitement avec les modules standards d'Odoo. Mes modules sont compatibles avec Odoo 15, 16, 17, 18 et 19, avec documentation complète et support après livraison.",
+      "Oui, je développe des modules odoo personnalisés pour tous les secteurs d'activité en Tunisie : agences de voyage (comme TravelPro), impression et communication visuelle (comme Nexprint), e-commerce, retail, distribution, manufacturing, services, immobilier, santé, éducation, finance, agriculture, hôtellerie, transport, etc. Chaque module est conçu selon vos processus métier spécifiques et intégré parfaitement avec les modules standards d'odoo. Mes modules sont compatibles avec odoo 15, 16, 17, 18 et 19, avec documentation complète et support après livraison.",
   },
   {
     question: "Proposez-vous des services pour entreprises à Tunis, Sousse, Sfax ?",
     answer:
-      "Absolument ! Bien que basé à Monastir, je propose mes services de développement Odoo pour toutes les entreprises tunisiennes, notamment à Tunis, Sousse, Sfax, et dans toutes les autres villes. Je peux me déplacer pour des réunions, formations, ou audits sur site. La majorité du travail peut également se faire en remote avec des visioconférences régulières. J'ai déjà accompagné des entreprises dans toute la Tunisie avec des résultats probants. Contactez-moi pour discuter de vos besoins spécifiques.",
+      "Absolument ! Bien que basé à Monastir, je propose mes services de développement odoo pour toutes les entreprises tunisiennes, notamment à Tunis, Sousse, Sfax, et dans toutes les autres villes. Je peux me déplacer pour des réunions, formations, ou audits sur site. La majorité du travail peut également se faire en remote avec des visioconférences régulières. J'ai déjà accompagné des entreprises dans toute la Tunisie avec des résultats probants. Contactez-moi pour discuter de vos besoins spécifiques.",
   },
   {
-    question: "Quelle est votre expérience avec Odoo e-commerce ?",
+    question: "Quelle est votre expérience avec odoo e-commerce ?",
     answer:
-      "J'ai une solide expérience en développement de solutions e-commerce Odoo, notamment avec le projet Nexprint Studio (plateforme e-commerce pour services d'impression sur Odoo 16). Je maîtrise les modules e-commerce d'Odoo 15, 16, 17, 18 et 19, incluant : catalogues produits personnalisables, gestion des commandes en ligne, intégration de moyens de paiement tunisiens, gestion des stocks en temps réel, personnalisation de produits, workflow de production, et intégration avec les marketplaces. Je peux créer des boutiques en ligne performantes adaptées au marché tunisien.",
+      "J'ai une solide expérience en développement de solutions e-commerce odoo, notamment avec le projet Nexprint Studio (plateforme e-commerce pour services d'impression sur odoo 16). Je maîtrise les modules e-commerce d'odoo 15, 16, 17, 18 et 19, incluant : catalogues produits personnalisables, gestion des commandes en ligne, intégration de moyens de paiement tunisiens, gestion des stocks en temps réel, personnalisation de produits, workflow de production, et intégration avec les marketplaces. Je peux créer des boutiques en ligne performantes adaptées au marché tunisien.",
   },
 ]
 
@@ -153,4 +153,5 @@ export function FAQ() {
     </section>
   )
 }
+
 
