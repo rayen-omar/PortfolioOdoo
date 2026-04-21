@@ -28,10 +28,94 @@ export function Hero() {
     return () => { isMounted = false }
   }, [controls])
 
+  const renderPhoto = (isMobile: boolean) => {
+    const photoInnerContent = (
+        <div className="relative">
+          {/* Glow effect */}
+          <div className="absolute -inset-3 bg-gradient-to-r from-primary/20 via-primary/10 to-transparent rounded-3xl blur-2xl opacity-75 animate-pulse"></div>
+          
+          {/* Photo container */}
+          <div className="relative rounded-2xl overflow-hidden border-2 border-primary/20 shadow-xl bg-gradient-to-br from-primary/10 to-secondary/20 p-1.5">
+            <div className="relative aspect-[3/4] rounded-xl overflow-hidden bg-gradient-to-br from-primary/5 to-secondary/10">
+              {/* Image avec Next.js Image */}
+              {!imageError && (
+                <div className="absolute inset-0 z-20 w-full h-full">
+                  <Image
+                    src={`/photo1.png?v=${imageVersion}`}
+                    alt="BenAmor - odoo Techno-Functional Consultant spécialisé en solutions ERP personnalisées avec 3+ ans d'expérience"
+                    fill
+                    className="object-cover rounded-xl"
+                    priority
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    onLoad={() => {
+                      setImageLoaded(true)
+                    }}
+                    onError={() => {
+                      setImageError(true)
+                    }}
+                    style={{ opacity: imageLoaded ? 1 : 0, transition: 'opacity 0.3s' }}
+                  />
+                </div>
+              )}
+              {/* Fallback - affiché seulement si l'image ne charge pas */}
+              {imageError && (
+                <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-primary/20 to-secondary/30 z-10">
+                  <div className="text-6xl mb-4">👨‍💻</div>
+                  <h3 className="text-2xl font-bold text-primary">BenAmor</h3>
+                  <p className="text-sm font-medium text-foreground relative top-0.5">odoo Techno-Functional Consultant</p>
+                </div>
+              )}
+              {/* Overlay gradient */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent z-30 pointer-events-none"></div>
+            </div>
+          </div>
+
+          {/* Floating badges */}
+          <motion.div
+            className="absolute -top-4 -right-4 bg-primary text-primary-foreground px-4 py-2 rounded-full shadow-lg text-sm font-semibold"
+            initial={{ scale: 0, rotate: -10 }}
+            animate={{ scale: 1, rotate: 0 }}
+            transition={{ delay: 1.5, type: "spring", stiffness: 200 }}
+          >
+            odoo Techno-Functional Consultant
+          </motion.div>
+
+        </div>
+    );
+
+    return (
+      <motion.div
+        initial={{ opacity: 0, x: isMobile ? 0 : 50, y: isMobile ? 30 : 0, scale: 0.9 }}
+        animate={{ opacity: 1, x: 0, y: 0, scale: 1 }}
+        transition={{ duration: 0.8, delay: isMobile ? 0.2 : 0.4, ease: "easeOut" }}
+        className={`relative items-center justify-center ${isMobile ? 'flex lg:hidden w-full mt-14 mb-8' : 'hidden lg:flex lg:pl-16'}`}
+      >
+        {isMobile ? (
+          <div className="relative w-full max-w-sm mx-auto">
+            {photoInnerContent}
+          </div>
+        ) : (
+          <Tilt
+            tiltMaxAngleX={10}
+            tiltMaxAngleY={10}
+            perspective={1000}
+            transitionSpeed={1000}
+            className="relative w-full max-w-sm mx-auto"
+          >
+            {photoInnerContent}
+          </Tilt>
+        )}
+
+        <div className="absolute top-10 right-10 w-32 h-32 bg-primary/10 rounded-full blur-3xl -z-10 animate-pulse"></div>
+        <div className="absolute bottom-10 left-10 w-40 h-40 bg-secondary rounded-full blur-3xl -z-10 animate-pulse delay-1000"></div>
+      </motion.div>
+    );
+  };
+
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center pt-20 pb-12 px-4 overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center pt-24 pb-32 lg:pb-12 px-4 overflow-hidden"
     >
       {/* Animated Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-background via-primary/5 to-secondary/20">
@@ -86,15 +170,15 @@ export function Hero() {
                   transition: { staggerChildren: 0.12, delayChildren: 0.2 }
                 }
               }}
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-bold leading-[1.2] md:leading-[1.1] tracking-tight text-foreground"
+              className="text-[1.7rem] sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-bold leading-[1.3] md:leading-[1.1] tracking-tight text-foreground flex flex-col items-start"
             >
-              <span className="block mb-2 md:mb-4 whitespace-nowrap">
-                <span className="inline-block mr-2 md:mr-3">
+              <span className="flex flex-wrap gap-x-2 md:gap-x-3 mb-1 sm:mb-2 md:mb-4 w-full">
+                <span className="inline-block">
                   {"Développeur".split("").map((char, index) => (
                     <motion.span key={`w1-${index}`} variants={{ hidden: { opacity: 0, display: "none" }, visible: { opacity: 1, display: "inline-block" } }}>{char}</motion.span>
                   ))}
                 </span>
-                <span className="inline-block mr-2 md:mr-3 text-muted-foreground/60">
+                <span className="inline-block text-muted-foreground/60">
                   <motion.span variants={{ hidden: { opacity: 0, display: "none" }, visible: { opacity: 1, display: "inline-block" } }}>&</motion.span>
                 </span>
                 <span className="inline-block">
@@ -104,11 +188,11 @@ export function Hero() {
                 </span>
               </span>
 
-              <span className="block">
+              <span className="flex flex-wrap items-center mt-1">
                 <motion.span 
-                  className="relative inline-block whitespace-nowrap"
+                  className="relative inline-block"
                 >
-                  <span className="relative z-10 bg-gradient-to-r from-violet-500 to-primary text-transparent bg-clip-text pl-1 pr-1">
+                  <span className="relative z-10 bg-gradient-to-r from-violet-500 to-primary text-transparent bg-clip-text pr-1 py-1">
                     {"odoo Expert".split("").map((char, index) => (
                       <motion.span 
                         key={`w3-${index}`} 
@@ -119,7 +203,7 @@ export function Hero() {
                     ))}
                   </span>
                   <motion.span
-                    className="absolute bottom-1.5 left-0 right-0 h-3 md:h-4 bg-primary/20 -z-0"
+                    className="absolute bottom-1.5 left-0 right-0 h-2 sm:h-3 md:h-4 bg-primary/20 -z-0"
                     variants={{
                       hidden: { scaleX: 0 },
                       visible: { scaleX: 1, transition: { delay: 3.8, duration: 0.6, ease: "easeOut" } }
@@ -133,7 +217,7 @@ export function Hero() {
                   initial={{ opacity: 1 }}
                   animate={{ opacity: [1, 0, 1] }}
                   transition={{ duration: 0.8, repeat: Infinity, ease: "linear" }}
-                  className="inline-block w-1 md:w-2 h-8 md:h-12 bg-primary ml-2 align-middle -mt-2"
+                  className="inline-block w-1.5 md:w-2 h-7 sm:h-8 md:h-11 bg-primary ml-1 sm:ml-2 align-middle"
                 />
               </span>
             </motion.h1>
@@ -157,6 +241,9 @@ export function Hero() {
               les migrations et les intégrations pour optimiser durablement vos
               processus métier.
             </motion.p>
+
+            {/* Mobile-only visible photo */}
+            {renderPhoto(true)}
 
             <motion.div
               initial="hidden"
@@ -219,76 +306,8 @@ export function Hero() {
 
           </motion.div>
 
-          {/* Photo avec effet Tilt */}
-          <motion.div
-            initial={{ opacity: 0, x: 50, scale: 0.9 }}
-            animate={{ opacity: 1, x: 0, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-            className="relative flex items-center justify-center lg:pl-16"
-          >
-            <Tilt
-              tiltMaxAngleX={10}
-              tiltMaxAngleY={10}
-              perspective={1000}
-              transitionSpeed={1000}
-              className="relative w-full max-w-sm"
-            >
-              <div className="relative">
-                {/* Glow effect */}
-                <div className="absolute -inset-3 bg-gradient-to-r from-primary/20 via-primary/10 to-transparent rounded-3xl blur-2xl opacity-75 animate-pulse"></div>
-                
-                {/* Photo container */}
-                <div className="relative rounded-2xl overflow-hidden border-2 border-primary/20 shadow-xl bg-gradient-to-br from-primary/10 to-secondary/20 p-1.5">
-                  <div className="relative aspect-[3/4] rounded-xl overflow-hidden bg-gradient-to-br from-primary/5 to-secondary/10">
-                    {/* Image avec Next.js Image */}
-                    {!imageError && (
-                      <div className="absolute inset-0 z-20 w-full h-full">
-                        <Image
-                          src={`/photo1.png?v=${imageVersion}`}
-                          alt="BenAmor - odoo Techno-Functional Consultant spécialisé en solutions ERP personnalisées avec 3+ ans d'expérience"
-                          fill
-                          className="object-cover rounded-xl"
-                          priority
-                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                          onLoad={() => {
-                            setImageLoaded(true)
-                          }}
-                          onError={() => {
-                            setImageError(true)
-                          }}
-                          style={{ opacity: imageLoaded ? 1 : 0, transition: 'opacity 0.3s' }}
-                        />
-                      </div>
-                    )}
-                    {/* Fallback - affiché seulement si l'image ne charge pas */}
-                    {imageError && (
-                      <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-primary/20 to-secondary/30 z-10">
-                        <div className="text-6xl mb-4">👨‍💻</div>
-                        <h3 className="text-2xl font-bold text-primary">BenAmor</h3>
-                        <p className="text-sm font-medium text-foreground relative top-0.5">odoo Techno-Functional Consultant</p>
-                      </div>
-                    )}
-                    {/* Overlay gradient */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent z-30 pointer-events-none"></div>
-                  </div>
-                </div>
-
-                {/* Floating badges */}
-                <motion.div
-                  className="absolute -top-4 -right-4 bg-primary text-primary-foreground px-4 py-2 rounded-full shadow-lg text-sm font-semibold"
-                  initial={{ scale: 0, rotate: -10 }}
-                  animate={{ scale: 1, rotate: 0 }}
-                  transition={{ delay: 1.5, type: "spring", stiffness: 200 }}
-                >
-                  odoo Techno-Functional Consultant
-                </motion.div>
-
-              </div>
-            </Tilt>
-
-            <div className="absolute top-10 right-10 w-32 h-32 bg-primary/10 rounded-full blur-3xl -z-10 animate-pulse"></div>
-            <div className="absolute bottom-10 left-10 w-40 h-40 bg-secondary rounded-full blur-3xl -z-10 animate-pulse delay-1000"></div>
-          </motion.div>
+          {/* Photo on desktop */}
+          {renderPhoto(false)}
         </div>
       </div>
 
@@ -299,7 +318,7 @@ export function Hero() {
         transition={{ delay: 2.2, duration: 1, ease: "easeOut" }}
         className="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
       >
-        <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-muted-foreground/60 transition-colors hover:text-primary">
+        <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-muted-foreground/60 transition-colors hover:text-primary pl-[0.3em]">
           Découvrir
         </span>
         <motion.div

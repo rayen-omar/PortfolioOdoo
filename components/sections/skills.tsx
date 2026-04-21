@@ -76,7 +76,7 @@ export function Skills() {
                    <Cpu className="w-6 h-6 animate-pulse" />
                 </div>
              </motion.div>
-             <div className="relative h-[500px] rounded-[3.5rem] bg-[#020617]/40 border border-white/5 shadow-inner overflow-hidden flex items-center justify-center">
+             <div className="relative h-[350px] sm:h-[500px] rounded-[3.5rem] bg-[#020617]/40 border border-white/5 shadow-inner overflow-hidden flex items-center justify-center">
                 <HubContainer items={techTools} centerIcon={<Terminal />} hubType="tech" inView={inView} />
              </div>
           </div>
@@ -95,7 +95,7 @@ export function Skills() {
                    <Settings className="w-6 h-6 animate-spin-slow" />
                 </div>
              </motion.div>
-             <div className="relative h-[500px] rounded-[3.5rem] bg-[#020617]/40 border border-white/5 shadow-inner overflow-hidden flex items-center justify-center">
+             <div className="relative h-[350px] sm:h-[500px] rounded-[3.5rem] bg-[#020617]/40 border border-white/5 shadow-inner overflow-hidden flex items-center justify-center">
                 <HubContainer items={odooModules} centerText="odoo" hubType="odoo" inView={inView} />
              </div>
           </div>
@@ -115,17 +115,28 @@ function HubContainer({ items, centerIcon, centerText, hubType, inView }: any) {
   const mouseY = useMotionValue(0)
   const springX = useSpring(mouseX, { stiffness: 100, damping: 30 })
   const springY = useSpring(mouseY, { stiffness: 100, damping: 30 })
-  const [radius, setRadius] = useState(175)
+  const [scaleFactor, setScaleFactor] = useState(1)
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth < 420) setRadius(110)
-      else if (window.innerWidth < 640) setRadius(130)
-      else setRadius(175)
+      if (!containerRef.current) return
+      const width = containerRef.current.clientWidth
+      // Base required width to fit all items perfectly without clipping
+      const requiredWidth = 460
+      if (width < requiredWidth) {
+        setScaleFactor(width / requiredWidth)
+      } else {
+        setScaleFactor(1)
+      }
     }
     handleResize()
+    const observer = new ResizeObserver(handleResize)
+    if (containerRef.current) observer.observe(containerRef.current)
     window.addEventListener("resize", handleResize)
-    return () => window.removeEventListener("resize", handleResize)
+    return () => {
+      window.removeEventListener("resize", handleResize)
+      observer.disconnect()
+    }
   }, [])
 
   const handleMouseMove = (e: any) => {
@@ -138,10 +149,11 @@ function HubContainer({ items, centerIcon, centerText, hubType, inView }: any) {
   }
   const handleMouseLeave = () => { mouseX.set(0); mouseY.set(0); }
   return (
-    <div ref={containerRef} onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave} className="relative w-full h-full flex items-center justify-center" style={{ perspective: 1000 }}>
-      <motion.div style={{ x: springX, y: springY }} className="relative w-full h-full flex items-center justify-center">
+    <div ref={containerRef} onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave} className="relative w-full h-full flex items-center justify-center overflow-hidden" style={{ perspective: 1000 }}>
+      <motion.div style={{ x: springX, y: springY, scale: scaleFactor }} className="relative flex items-center justify-center">
         {items.map((item: any, i: number) => {
           const angle = (i * 360 / items.length) * (Math.PI / 180)
+          const radius = 175
           const x = radius * Math.cos(angle)
           const y = radius * Math.sin(angle)
           return <FloatingCard key={item.name} name={item.name} icon={item.icon} x={x} y={y} delay={i * 0.1} inView={inView} variant={hubType === 'odoo' ? 'primary' : 'default'} />
