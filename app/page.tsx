@@ -44,7 +44,6 @@ export default function Home() {
       <TestimonialsSection />
       <Projects />
       <WhyChoose />
-      <About />
       <Skills />
       <Process />
       <Contact />
