@@ -150,7 +150,7 @@ export function Hero() {
       </div>
 
       <div className="container mx-auto relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-[55%_45%] xl:grid-cols-[60%_40%] gap-8 xl:gap-12 items-center">
           {/* Text Content */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -170,9 +170,9 @@ export function Hero() {
                   transition: { staggerChildren: 0.12, delayChildren: 0.2 }
                 }
               }}
-              className="text-[1.7rem] sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-bold leading-[1.3] md:leading-[1.1] tracking-tight text-foreground flex flex-col items-start"
+              className="min-h-[85px] sm:min-h-[90px] md:min-h-[105px] lg:min-h-[110px] xl:min-h-[135px] text-[1.5rem] min-[380px]:text-[1.65rem] sm:text-[2.2rem] md:text-[2.6rem] lg:text-[2.5rem] xl:text-[3.4rem] font-bold leading-[1.3] md:leading-[1.1] tracking-tight text-foreground flex flex-col items-start whitespace-nowrap"
             >
-              <span className="flex flex-wrap gap-x-2 md:gap-x-3 mb-1 sm:mb-2 md:mb-4 w-full">
+              <span className="flex gap-x-2 md:gap-x-3 mb-1 sm:mb-2 md:mb-4 w-full">
                 <span className="inline-block">
                   {"Développeur".split("").map((char, index) => (
                     <motion.span key={`w1-${index}`} variants={{ hidden: { opacity: 0, display: "none" }, visible: { opacity: 1, display: "inline-block" } }}>{char}</motion.span>
@@ -255,41 +255,43 @@ export function Hero() {
                   transition: { staggerChildren: 0.15, delayChildren: 1.2 }
                 }
               }}
-              className="flex flex-col sm:flex-row flex-wrap gap-4 pt-4"
+              className="flex flex-col gap-4 pt-4"
             >
-              <motion.div variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { type: "spring", bounce: 0.4 } } }} className="w-full sm:w-auto">
-                <Button
-                  asChild
-                  size="lg"
-                  className="w-full sm:w-auto group relative overflow-hidden bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/40 transition-all duration-300"
-                >
-                  <Link href="#contact">
-                    <span className="relative z-10 flex items-center">
-                      Demander un devis gratuit
-                      <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                    </span>
-                    <motion.div
-                      className="absolute inset-0 bg-gradient-to-r from-primary/0 via-white/20 to-primary/0"
-                      initial={{ x: "-100%" }}
-                      whileHover={{ x: "100%" }}
-                      transition={{ duration: 0.6 }}
-                    />
-                  </Link>
-                </Button>
-              </motion.div>
-              
-              <motion.div variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { type: "spring", bounce: 0.4 } } }} className="w-full sm:w-auto">
-                <Button
-                  asChild
-                  variant="outline"
-                  size="lg"
-                  className="w-full sm:w-auto group border-2 hover:border-primary/50 hover:bg-primary/5 transition-all duration-300"
-                >
-                  <Link href="#projects">Voir mes réalisations</Link>
-                </Button>
-              </motion.div>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <motion.div variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { type: "spring", bounce: 0.4 } } }} className="w-full sm:w-auto">
+                  <Button
+                    asChild
+                    size="lg"
+                    className="w-full sm:w-auto group relative overflow-hidden bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/40 transition-all duration-300"
+                  >
+                    <Link href="#contact">
+                      <span className="relative z-10 flex items-center">
+                        Demander un devis gratuit
+                        <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                      </span>
+                      <motion.div
+                        className="absolute inset-0 bg-gradient-to-r from-primary/0 via-white/20 to-primary/0"
+                        initial={{ x: "-100%" }}
+                        whileHover={{ x: "100%" }}
+                        transition={{ duration: 0.6 }}
+                      />
+                    </Link>
+                  </Button>
+                </motion.div>
+                
+                <motion.div variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { type: "spring", bounce: 0.4 } } }} className="w-full sm:w-auto">
+                  <Button
+                    asChild
+                    variant="outline"
+                    size="lg"
+                    className="w-full sm:w-auto group border-2 hover:border-primary/50 hover:bg-primary/5 transition-all duration-300"
+                  >
+                    <Link href="#projects">Voir mes réalisations</Link>
+                  </Button>
+                </motion.div>
+              </div>
 
-              <motion.div variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { type: "spring", bounce: 0.4 } } }} className="w-full sm:w-auto">
+              <motion.div variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { type: "spring", bounce: 0.4 } } }} className="w-full sm:w-auto flex">
                 <Button
                   asChild
                   variant="ghost"
@@ -316,7 +318,7 @@ export function Hero() {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 2.2, duration: 1, ease: "easeOut" }}
-        className="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+        className="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2"
       >
         <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-muted-foreground/60 transition-colors hover:text-primary pl-[0.3em]">
           Découvrir
