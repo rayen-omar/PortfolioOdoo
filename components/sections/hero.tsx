@@ -88,7 +88,7 @@ export function Hero() {
         initial={{ opacity: 0, x: isMobile ? 0 : 50, y: isMobile ? 30 : 0, scale: 0.9 }}
         animate={{ opacity: 1, x: 0, y: 0, scale: 1 }}
         transition={{ duration: 0.8, delay: isMobile ? 0.2 : 0.4, ease: "easeOut" }}
-        className={`relative items-center justify-center ${isMobile ? 'flex lg:hidden w-full mt-14 mb-8' : 'hidden lg:flex lg:pl-16'}`}
+        className={`relative items-center justify-center ${isMobile ? 'flex lg:hidden w-full mt-10 mb-10' : 'hidden lg:flex lg:pl-16'}`}
       >
         {isMobile ? (
           <div className="relative w-full max-w-sm mx-auto">
@@ -154,7 +154,7 @@ export function Hero() {
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="space-y-7"
+            className="space-y-9"
           >
 
 
@@ -224,7 +224,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.7, duration: 0.8 }}
-              className="text-lg md:text-xl text-foreground/90 font-medium"
+              className="text-lg md:text-xl text-foreground/90 font-medium mb-2"
             >
               odoo Techno-Functional Consultant pour PME et entreprises en croissance
             </motion.p>
@@ -233,7 +233,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8, duration: 0.8 }}
-              className="text-lg text-foreground/80 max-w-xl leading-relaxed"
+              className="text-lg text-foreground/80 max-w-xl leading-relaxed mb-4"
             >
               Spécialisé dans le développement de modules odoo personnalisés,
               les migrations et les intégrations pour optimiser durablement vos

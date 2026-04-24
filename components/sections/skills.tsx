@@ -36,7 +36,7 @@ export function Skills() {
   })
 
   return (
-    <section id="skills" className="py-24 px-4 bg-background relative overflow-hidden">
+    <section id="skills" className="py-16 sm:py-24 px-4 bg-background relative overflow-hidden">
       {/* Premium Background Ambiance */}
       <div className="absolute inset-0 pointer-events-none opacity-40">
         <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[120px] animate-pulse"></div>
@@ -47,13 +47,13 @@ export function Skills() {
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={inView ? { opacity: 1, scale: 1 } : {}}
-          className="text-center mb-20"
+          className="text-center mb-10 sm:mb-20"
         >
           <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 text-primary rounded-full text-[10px] font-black uppercase tracking-[0.25em] border border-primary/20 mb-6 font-sans">
             <Cpu className="w-3 h-3" />
             Stack & Expertise
           </div>
-          <h2 className="text-5xl md:text-7xl font-black mb-8 tracking-tight text-foreground font-heading uppercase py-2 px-4">
+          <h2 className="text-3xl sm:text-5xl md:text-7xl font-black mb-8 tracking-tight text-foreground font-heading uppercase py-2 px-6 text-center mx-auto max-w-[95vw]">
             Technique <span className="text-primary/80">&</span> 
             <span className="bg-gradient-to-r from-primary to-blue-400 text-transparent bg-clip-text italic px-2"> Métier</span>
           </h2>

@@ -54,9 +54,9 @@ export default function TestimonialsSection() {
   ];
 
   return (
-    <section id="testimonials" className="py-24 px-4 bg-background relative overflow-hidden">
+    <section id="testimonials" className="py-16 sm:py-24 px-4 bg-background relative overflow-hidden">
       <div className="container mx-auto max-w-7xl relative z-10">
-        <div className="text-center mb-16">
+        <div className="text-center mb-10 sm:mb-16">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -65,7 +65,7 @@ export default function TestimonialsSection() {
           >
             <Star className="w-3 h-3 fill-current" /> Retours & Avis
           </motion.div>
-          <h2 className="text-5xl md:text-7xl font-black mb-8 tracking-tight text-foreground font-heading uppercase py-2 px-4">
+          <h2 className="text-3xl sm:text-5xl md:text-7xl font-black mb-8 tracking-tight text-foreground font-heading uppercase py-2 px-6 text-center mx-auto max-w-[95vw]">
             Ils me font <span className="bg-gradient-to-r from-primary to-blue-400 text-transparent bg-clip-text italic px-2"> Confiance</span>
           </h2>
           <div className="w-24 h-2 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto rounded-full opacity-50 shadow-[0_0_20px_rgba(59,130,246,0.3)] mb-8"></div>

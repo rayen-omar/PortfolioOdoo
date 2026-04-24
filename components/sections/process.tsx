@@ -44,7 +44,7 @@ const steps = [
 
 export function Process() {
   return (
-    <section id="process" className="py-32 px-4 bg-background relative overflow-hidden">
+    <section id="process" className="py-16 sm:py-24 px-4 bg-background relative overflow-hidden">
       {/* Background radial glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[120px] pointer-events-none"></div>
 
@@ -54,13 +54,13 @@ export function Process() {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-24"
+          className="text-center mb-10 sm:mb-24"
         >
           <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 text-primary rounded-full text-[10px] font-black uppercase tracking-[0.25em] border border-primary/20 mb-6 font-sans">
             <Cpu className="w-3 h-3" />
             Méthodologie & Accompagnement
           </div>
-          <h2 className="text-5xl md:text-7xl font-black mb-8 tracking-tight text-foreground font-heading uppercase py-2 px-4">
+          <h2 className="text-3xl sm:text-5xl md:text-7xl font-black mb-8 tracking-tight text-foreground font-heading uppercase py-2 px-6 text-center mx-auto max-w-[95vw]">
             Processus <span className="text-primary/80">&</span> 
             <span className="bg-gradient-to-r from-primary to-blue-400 text-transparent bg-clip-text italic px-2"> Agilité</span>
           </h2>

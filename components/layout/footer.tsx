@@ -32,14 +32,14 @@ const socialLinks = [
 
 export function Footer() {
   return (
-    <footer className="bg-background text-white py-20 relative overflow-hidden border-t border-border/30">
+    <footer className="bg-background text-white py-12 sm:py-20 relative overflow-hidden border-t border-border/30">
       {/* Background Watermark */}
       <div className="absolute inset-0 flex items-center justify-center opacity-[0.05] pointer-events-none select-none">
         <span className="text-[20vw] font-serif italic whitespace-nowrap text-primary">BenAmor</span>
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-24">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-24">
           {/* Column 1: About */}
           <div className="space-y-8">
             <div className="flex items-center gap-4 group">

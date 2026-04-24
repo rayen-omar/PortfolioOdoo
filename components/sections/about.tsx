@@ -18,18 +18,18 @@ export function About() {
   ]
 
   return (
-    <section id="profil" className="py-24 px-4 bg-background relative overflow-hidden">
+    <section id="profil" className="py-16 sm:py-24 px-4 bg-background relative overflow-hidden">
       <div className="container mx-auto relative z-10">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, scale: 0.95 }}
           animate={inView ? { opacity: 1, scale: 1 } : {}}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="text-center mb-20"
+          className="text-center mb-10 sm:mb-20"
         >
           <div className="inline-flex items-center gap-3 px-3 py-1 bg-primary/10 text-primary rounded-full text-[10px] sm:text-[12px] font-mono uppercase tracking-[0.1em] border border-primary/20 mb-6"><div className="w-2 h-2 rounded-full bg-primary shadow-[0_0_8px_rgba(213,255,79,0.8)] animate-pulse"></div>Mon Profil
           </div>
-          <h2 className="text-5xl md:text-7xl font-black mb-8 tracking-tight text-foreground font-heading uppercase py-2 px-4">
+          <h2 className="text-3xl sm:text-5xl md:text-7xl font-black mb-8 tracking-tight text-foreground font-heading uppercase py-2 px-6 text-center mx-auto max-w-[95vw]">
             Vision <span className="text-primary/80">&</span> 
             <span className="bg-gradient-to-r from-primary to-blue-400 text-transparent bg-clip-text italic px-2"> Expertise</span>
           </h2>
@@ -43,8 +43,7 @@ export function About() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="space-y-6"
           >
-            <h3 className="text-2xl font-bold">Bonjour, je suis BenAmor, Techno-Functional odoo.</h3>
-            <p className="text-muted-foreground text-lg leading-relaxed mt-4">
+            <p className="text-muted-foreground text-lg leading-relaxed">
               Basé en Tunisie et disponible pour des missions à l'international (100% remote), je parle à la fois le langage de votre entreprise et celui de la machine.
             </p>
             <div className="space-y-6 mt-6">
