@@ -53,10 +53,10 @@ export function Header() {
                 <LogoB className="w-full h-full" />
               </div>
               <div className="flex flex-col">
-                <span className="text-xl font-bold tracking-tight text-foreground leading-tight">
+                <span className="text-xl font-serif italic text-foreground leading-tight">
                   BenAmor
                 </span>
-                <span className="text-[10px] uppercase tracking-widest font-bold text-muted-foreground/80 leading-tight">
+                <span className="text-[10px] uppercase tracking-[0.15em] font-medium text-muted-foreground/80 leading-tight font-heading">
                   odoo Techno-Functional
                 </span>
               </div>
@@ -64,12 +64,12 @@ export function Header() {
           </motion.div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-7">
+          <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors"
+                className="text-[12px] font-semibold uppercase tracking-[0.1em] text-foreground/70 hover:text-primary transition-all font-heading"
               >
                 {item.name}
               </Link>

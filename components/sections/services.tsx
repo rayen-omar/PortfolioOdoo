@@ -73,9 +73,6 @@ export function Services() {
 
   return (
     <section id="services" className="py-24 px-4 bg-background relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent"></div>
-      
       <div className="container mx-auto relative z-10">
         <motion.div
            ref={ref}
@@ -84,15 +81,15 @@ export function Services() {
            transition={{ duration: 0.8 }}
            className="text-center mb-20"
          >
-           <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 text-primary rounded-full text-[10px] font-black uppercase tracking-widest border border-primary/20 mb-6">
+           <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 text-primary rounded-full text-[10px] font-black uppercase tracking-[0.25em] border border-primary/20 mb-6 font-sans">
              <Settings className="w-3 h-3" />
-             Mes Services
+             Expertise & Offres
            </div>
-           <h2 className="text-5xl md:text-7xl font-black mb-8 tracking-tighter text-foreground">
-             Solutions <span className="text-muted-foreground mr-2">&</span> 
-             <span className="text-primary italic font-black">Sur Mesure</span>
-           </h2>
-           <div className="w-24 h-2 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto rounded-full opacity-50 shadow-[0_0_20px_rgba(59,130,246,0.5)]"></div>
+            <h2 className="text-5xl md:text-7xl font-black mb-8 tracking-tight text-foreground font-heading uppercase py-2 px-4">
+              Solutions <span className="text-primary/80">&</span> 
+              <span className="bg-gradient-to-r from-primary to-blue-400 text-transparent bg-clip-text italic px-2"> Sur Mesure</span>
+            </h2>
+           <div className="w-24 h-2 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto rounded-full opacity-50 shadow-[0_0_20px_rgba(59,130,246,0.3)]"></div>
          </motion.div>
 
         <motion.div

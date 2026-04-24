@@ -165,27 +165,23 @@ export function Testimonials() {
   }
 
   return (
-    <section id="testimonials" className="py-20 px-4 bg-background relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(59,130,246,0.05),transparent)]"></div>
-
+    <section id="testimonials" className="py-24 px-4 bg-background relative overflow-hidden">
       <div className="container mx-auto relative z-10">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, scale: 0.95 }}
           animate={inView ? { opacity: 1, scale: 1 } : {}}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="text-center mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 text-primary rounded-full text-[10px] font-black uppercase tracking-widest border border-primary/20 mb-6">
-            <Quote className="w-3 h-3" />
-            Témoignages
+          <div className="inline-flex items-center gap-3 px-3 py-1 bg-primary/10 text-primary rounded-full text-[10px] font-black uppercase tracking-[0.25em] border border-primary/20 mb-6 font-sans">
+            <div className="w-2 h-2 rounded-full bg-primary shadow-[0_0_8px_rgba(59,130,246,0.8)] animate-pulse"></div>Retours Clients
           </div>
-          <h2 className="text-5xl md:text-7xl font-black mb-8 tracking-tighter text-foreground">
-            Retours <span className="text-muted-foreground mr-2">&</span> 
-            <span className="text-primary italic font-black">Confiance</span>
+          <h2 className="text-5xl md:text-7xl font-black mb-8 tracking-tight text-foreground font-heading uppercase py-2 px-4">
+            Avis <span className="text-primary/80">&</span> 
+            <span className="bg-gradient-to-r from-primary to-blue-400 text-transparent bg-clip-text italic px-2"> Témoignages</span>
           </h2>
-          <div className="w-24 h-2 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto rounded-full opacity-50 shadow-[0_0_20px_rgba(59,130,246,0.5)]"></div>
+          <div className="w-24 h-2 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto rounded-full opacity-50 shadow-[0_0_20px_rgba(59,130,246,0.3)]"></div>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
@@ -416,5 +412,11 @@ export function Testimonials() {
     </section>
   )
 }
+
+
+
+
+
+
 
 

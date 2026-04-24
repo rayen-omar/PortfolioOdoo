@@ -1,13 +1,20 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Outfit, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { Toaster } from "@/components/ui/toaster";
 import { Analytics } from "@vercel/analytics/react";
 import type { ReactNode } from "react";
+import { CursorEffect } from "@/components/ui/cursor-effect";
+import { CursorTrail } from "@/components/ui/cursor-trail";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
+const outfit = Outfit({ subsets: ["latin"], variable: "--font-heading" });
+const playfair = Playfair_Display({ 
+  subsets: ["latin"],
+  variable: "--font-serif" 
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.benamor.tech"),
@@ -17,7 +24,7 @@ export const metadata: Metadata = {
     template: "%s | BenAmor - odoo",
   },
   description:
-    "BenAmor, Développeur & Consultant odoo Freelance en Tunisie. Expert en intégration odoo, migration ERP (Sage vers odoo), odoo 18, 19 et développement sur mesure.",
+    "BenAmor, Développeur & Techno-Functional odoo Freelance en Tunisie. Expert en intégration odoo, migration ERP (Sage vers odoo), odoo 18, 19 et développement sur mesure.",
   keywords: [
     "développeur odoo tunisie",
     "consultant odoo tunisie",
@@ -96,11 +103,13 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="fr">
+    <html lang="fr" className={`${inter.variable} ${outfit.variable} ${playfair.variable}`}>
       <head>
         <link rel="canonical" href="https://www.benamor.tech" />
       </head>
-      <body className={inter.className}>
+      <body className="font-sans">
+        <CursorTrail />
+        <CursorEffect />
         <Header />
         <main>{children}</main>
         <Footer />

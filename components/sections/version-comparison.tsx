@@ -142,9 +142,9 @@ export function VersionComparison() {
              <TrendingUp className="w-3 h-3" />
              Expertise Multi-versions
            </div>
-           <h2 className="text-5xl md:text-7xl font-black mb-8 tracking-tighter text-foreground font-sans">
-             Historique <span className="text-muted-foreground mr-2">&</span> 
-             <span className="text-primary italic font-black">Evolutions</span>
+           <h2 className="text-5xl md:text-7xl font-black mb-8 tracking-tight text-foreground font-heading uppercase py-2 px-4">
+             Historique <span className="text-primary/80">&</span> 
+             <span className="bg-gradient-to-r from-primary to-blue-400 text-transparent bg-clip-text italic px-2"> Evolutions</span>
            </h2>
            <div className="w-24 h-2 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto rounded-full opacity-50 shadow-[0_0_20px_rgba(59,130,246,0.5)]"></div>
          </motion.div>

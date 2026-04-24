@@ -192,10 +192,7 @@ export function Contact() {
   }
 
   return (
-    <section id="contact" className="py-24 px-4 bg-gradient-to-b from-secondary/10 via-background to-background relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(59,130,246,0.1),transparent_50%)]"></div>
-      
+    <section id="contact" className="py-24 px-4 bg-background relative overflow-hidden">
       <div className="container mx-auto relative z-10">
         <motion.div
            ref={ref}
@@ -208,11 +205,11 @@ export function Contact() {
              <Mail className="w-3 h-3" />
              Lançons Un Projet
            </div>
-           <h2 className="text-5xl md:text-7xl font-black mb-8 tracking-tighter text-foreground font-sans">
-             Contactez <span className="text-muted-foreground mr-2">&</span> 
-             <span className="text-primary italic font-black">Moi</span>
+           <h2 className="text-5xl md:text-7xl font-black mb-8 tracking-tight text-foreground font-heading uppercase py-2 px-4">
+             Contactez <span className="text-primary/80">&</span> 
+             <span className="bg-gradient-to-r from-primary to-blue-400 text-transparent bg-clip-text italic px-2"> Moi</span>
            </h2>
-           <div className="w-24 h-2 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto rounded-full opacity-50 shadow-[0_0_20px_rgba(59,130,246,0.5)]"></div>
+           <div className="w-24 h-2 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto rounded-full opacity-50 shadow-[0_0_20px_rgba(59,130,246,0.3)]"></div>
          </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -395,10 +392,10 @@ export function Contact() {
                   value={projectType}
                   onValueChange={(value) => setValue("projectType", value)}
                 >
-                  <SelectTrigger className="mt-1 focus:border-primary focus:ring-primary">
+                  <SelectTrigger className="mt-1 focus:border-primary focus:ring-primary bg-card/50 border-border/50">
                     <SelectValue placeholder="Sélectionnez un type de projet" />
                   </SelectTrigger>
-                  <SelectContent className="bg-slate-900 border-white/10 rounded-xl">
+                  <SelectContent className="bg-card border-border/50 rounded-xl backdrop-blur-xl">
                     <SelectItem value="custom-module">
                       Développement de module personnalisé
                     </SelectItem>

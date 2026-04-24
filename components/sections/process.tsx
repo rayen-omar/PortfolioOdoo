@@ -56,15 +56,15 @@ export function Process() {
           transition={{ duration: 0.8 }}
           className="text-center mb-24"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 text-primary rounded-full text-[10px] font-black uppercase tracking-widest border border-primary/20 mb-6 font-sans">
+          <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 text-primary rounded-full text-[10px] font-black uppercase tracking-[0.25em] border border-primary/20 mb-6 font-sans">
             <Cpu className="w-3 h-3" />
-            Ma Méthodologie
+            Méthodologie & Accompagnement
           </div>
-          <h2 className="text-5xl md:text-7xl font-black mb-8 tracking-tighter text-foreground font-sans">
-            Processus <span className="text-muted-foreground mr-2">&</span> 
-            <span className="text-primary italic font-black">Agilité</span>
+          <h2 className="text-5xl md:text-7xl font-black mb-8 tracking-tight text-foreground font-heading uppercase py-2 px-4">
+            Processus <span className="text-primary/80">&</span> 
+            <span className="bg-gradient-to-r from-primary to-blue-400 text-transparent bg-clip-text italic px-2"> Agilité</span>
           </h2>
-          <div className="w-24 h-2 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto rounded-full opacity-50 shadow-[0_0_20px_rgba(59,130,246,0.5)]"></div>
+          <div className="w-24 h-2 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto rounded-full opacity-50 shadow-[0_0_20px_rgba(59,130,246,0.3)]"></div>
         </motion.div>
 
         <div className="relative">

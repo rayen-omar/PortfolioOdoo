@@ -97,17 +97,15 @@ export function FAQ() {
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={inView ? { opacity: 1, scale: 1 } : {}}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 text-primary rounded-full text-[10px] font-black uppercase tracking-widest border border-primary/20 mb-6 font-sans">
-              <Code2 className="w-3 h-3" />
-              FAQ & Aide
+            <div className="inline-flex items-center gap-3 px-3 py-1 bg-primary/10 text-primary rounded-full text-[10px] sm:text-[12px] font-mono uppercase tracking-[0.1em] border border-primary/20 mb-6"><div className="w-2 h-2 rounded-full bg-primary shadow-[0_0_8px_rgba(213,255,79,0.8)] animate-pulse"></div>FAQ & Aide
             </div>
-            <h2 className="text-5xl md:text-7xl font-black mb-8 tracking-tighter text-foreground font-sans">
-              Questions <span className="text-muted-foreground mr-2">&</span> 
-              <span className="text-primary italic font-black">Fréquentes</span>
+            <h2 className="text-5xl md:text-7xl font-black mb-8 tracking-tight text-foreground font-heading uppercase py-2 px-4">
+              Questions <span className="text-primary/80">&</span> 
+              <span className="bg-gradient-to-r from-primary to-blue-400 text-transparent bg-clip-text italic px-2"> Fréquentes</span>
             </h2>
-            <div className="w-24 h-2 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto rounded-full opacity-50 shadow-[0_0_20px_rgba(59,130,246,0.5)]"></div>
+            <div className="w-24 h-2 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto rounded-full opacity-50 "></div>
           </motion.div>
         </div>
 
@@ -153,5 +151,10 @@ export function FAQ() {
     </section>
   )
 }
+
+
+
+
+
 
 

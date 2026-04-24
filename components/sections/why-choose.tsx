@@ -6,8 +6,8 @@ import { Card, CardContent } from "@/components/ui/card"
 
 export function WhyChoose() {
   return (
-    <section id="why-choose" className="py-24 px-4 bg-background">
-      <div className="container mx-auto">
+    <section id="why-choose" className="py-24 px-4 bg-background relative overflow-hidden">
+      <div className="container mx-auto relative z-10">
         <motion.div
            initial={{ opacity: 0, y: 20 }}
            whileInView={{ opacity: 1, y: 0 }}
@@ -15,14 +15,13 @@ export function WhyChoose() {
            transition={{ duration: 0.6 }}
            className="text-center mb-16"
          >
-           <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 text-primary rounded-full text-[10px] font-black uppercase tracking-widest border border-primary/20 mb-6 font-sans">
-             <Award className="w-3 h-3" />
-             Valeur & Engagement
+           <div className="inline-flex items-center gap-3 px-3 py-1 bg-primary/10 text-primary rounded-full text-[10px] font-black uppercase tracking-[0.25em] border border-primary/20 mb-6 font-sans">
+             <div className="w-2 h-2 rounded-full bg-primary shadow-[0_0_8px_rgba(59,130,246,0.8)] animate-pulse"></div>Valeur & Engagement
            </div>
-           <h2 className="text-5xl md:text-7xl font-black mb-8 tracking-tighter text-foreground font-sans">
-             Pourquoi me <span className="text-primary italic font-black">Choisir ?</span>
+           <h2 className="text-5xl md:text-7xl font-black mb-8 tracking-tight text-foreground font-heading uppercase py-2 px-4">
+             Pourquoi me <span className="bg-gradient-to-r from-primary to-blue-400 text-transparent bg-clip-text italic px-2"> Choisir ?</span>
            </h2>
-           <div className="w-24 h-2 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto rounded-full opacity-50 shadow-[0_0_20px_rgba(59,130,246,0.5)]"></div>
+           <div className="w-24 h-2 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto rounded-full opacity-50 shadow-[0_0_20px_rgba(59,130,246,0.3)]"></div>
          </motion.div>
 
         {/* Simple Comparison Grid - Centered as the main content */}
@@ -130,4 +129,8 @@ export function WhyChoose() {
     </section>
   )
 }
+
+
+
+
 

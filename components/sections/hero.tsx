@@ -115,12 +115,10 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center pt-24 pb-32 lg:pb-12 px-4 overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center pt-24 pb-32 lg:pb-12 px-4 overflow-hidden bg-background"
     >
       {/* Animated Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-background via-primary/5 to-secondary/20">
-        {/* Grid pattern removed to avoid errors */}
-      </div>
+      <div className="absolute inset-0 bg-gradient-to-br from-background via-primary/5 to-secondary/10"></div>
 
       {/* Floating particles */}
       <div className="absolute inset-0 overflow-hidden">
@@ -192,7 +190,7 @@ export function Hero() {
                 <motion.span 
                   className="relative inline-block"
                 >
-                  <span className="relative z-10 bg-gradient-to-r from-violet-500 to-primary text-transparent bg-clip-text pr-1 py-1">
+                  <span className="relative z-10 bg-gradient-to-r from-primary to-blue-400 text-transparent bg-clip-text pr-4 py-1 font-serif italic">
                     {"odoo Expert".split("").map((char, index) => (
                       <motion.span 
                         key={`w3-${index}`} 

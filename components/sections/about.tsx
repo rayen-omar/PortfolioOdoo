@@ -24,18 +24,16 @@ export function About() {
           ref={ref}
           initial={{ opacity: 0, scale: 0.95 }}
           animate={inView ? { opacity: 1, scale: 1 } : {}}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="text-center mb-20"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 text-primary rounded-full text-[10px] font-black uppercase tracking-widest border border-primary/20 mb-6">
-            <Users className="w-3 h-3" />
-            Mon Profil
+          <div className="inline-flex items-center gap-3 px-3 py-1 bg-primary/10 text-primary rounded-full text-[10px] sm:text-[12px] font-mono uppercase tracking-[0.1em] border border-primary/20 mb-6"><div className="w-2 h-2 rounded-full bg-primary shadow-[0_0_8px_rgba(213,255,79,0.8)] animate-pulse"></div>Mon Profil
           </div>
-          <h2 className="text-4xl sm:text-5xl md:text-7xl font-black mb-8 tracking-tighter text-foreground">
-            Vision <span className="text-muted-foreground mr-2">&</span> 
-            <span className="text-primary italic font-black">Expertise</span>
+          <h2 className="text-5xl md:text-7xl font-black mb-8 tracking-tight text-foreground font-heading uppercase py-2 px-4">
+            Vision <span className="text-primary/80">&</span> 
+            <span className="bg-gradient-to-r from-primary to-blue-400 text-transparent bg-clip-text italic px-2"> Expertise</span>
           </h2>
-          <div className="w-24 h-2 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto rounded-full opacity-50 shadow-[0_0_20px_rgba(59,130,246,0.5)]"></div>
+          <div className="w-24 h-2 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto rounded-full opacity-50 "></div>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center mb-20">
@@ -45,7 +43,7 @@ export function About() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="space-y-6"
           >
-            <h3 className="text-2xl font-bold">Bonjour, je suis BenAmor, Consultant Techno-Fonctionnel odoo.</h3>
+            <h3 className="text-2xl font-bold">Bonjour, je suis BenAmor, Techno-Functional odoo.</h3>
             <p className="text-muted-foreground text-lg leading-relaxed mt-4">
               Basé en Tunisie et disponible pour des missions à l'international (100% remote), je parle à la fois le langage de votre entreprise et celui de la machine.
             </p>
@@ -111,5 +109,11 @@ export function About() {
     </section>
   )
 }
+
+
+
+
+
+
 
 

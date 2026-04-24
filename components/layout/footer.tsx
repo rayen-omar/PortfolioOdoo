@@ -32,22 +32,29 @@ const socialLinks = [
 
 export function Footer() {
   return (
-    <footer className="bg-background border-t border-border/70">
-      <div className="container mx-auto px-4 py-14">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* About */}
-          <div>
-            <div className="flex items-center gap-3 mb-5 group">
-              <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center p-1.5 border border-primary/20 shadow-sm transition-transform group-hover:scale-110">
+    <footer className="bg-background text-white py-20 relative overflow-hidden border-t border-border/30">
+      {/* Background Watermark */}
+      <div className="absolute inset-0 flex items-center justify-center opacity-[0.05] pointer-events-none select-none">
+        <span className="text-[20vw] font-serif italic whitespace-nowrap text-primary">BenAmor</span>
+      </div>
+
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-24">
+          {/* Column 1: About */}
+          <div className="space-y-8">
+            <div className="flex items-center gap-4 group">
+              <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center p-2 border border-primary/20 shadow-lg">
                 <LogoB className="w-full h-full" />
               </div>
-              <h3 className="text-xl font-bold tracking-tight">BenAmor</h3>
+              <h3 className="text-3xl font-serif italic pr-4">BenAmor</h3>
             </div>
-            <p className="text-muted-foreground mb-5 leading-relaxed">
-              odoo Techno-Functional Consultant spécialisé dans les solutions ERP
-              personnalisées. Transformez votre entreprise avec odoo.
+            
+            <p className="text-muted-foreground/80 leading-relaxed max-w-sm">
+              odoo Techno-Functional spécialisé dans les solutions ERP personnalisées. 
+              Transformez la gestion de votre entreprise avec élégance et performance.
             </p>
-            <div className="flex space-x-4">
+
+            <div className="flex gap-3">
               {socialLinks.map((link) => {
                 const Icon = link.icon
                 return (
@@ -56,9 +63,9 @@ export function Footer() {
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-muted-foreground hover:text-primary transition-colors p-2 rounded-md hover:bg-secondary/70"
+                    className="w-10 h-10 border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/50 hover:bg-primary/5 transition-all duration-300"
                   >
-                    <Icon className="h-5 w-5" />
+                    <Icon className="h-4 w-4" />
                     <span className="sr-only">{link.name}</span>
                   </Link>
                 )
@@ -66,81 +73,62 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Quick Links */}
+          {/* Column 2: Navigation */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Liens rapides</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link
-                  href="#services"
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  Services
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#projects"
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  Projets
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#skills"
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  Compétences
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#contact"
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  Contact
-                </Link>
-              </li>
+            <h3 className="text-2xl font-serif italic mb-10 pr-4">Navigation</h3>
+            <ul className="space-y-6">
+              {[
+                { name: "Services", href: "#services" },
+                { name: "Projets", href: "#projects" },
+                { name: "Compétences", href: "#skills" },
+                { name: "Contact", href: "#contact" },
+              ].map((link) => (
+                <li key={link.name}>
+                  <Link
+                    href={link.href}
+                    className="text-[11px] font-black uppercase tracking-[0.25em] text-muted-foreground/60 hover:text-primary transition-colors"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Contact Info */}
+          {/* Column 3: Contact */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Contact</h3>
-            <ul className="space-y-2 text-muted-foreground">
-              <li>Monastir, Tunisie</li>
-              <li>
-                <Link
-                  href="mailto:rayeen@benamor.tech"
-                  className="hover:text-primary transition-colors"
-                >
+            <h3 className="text-2xl font-serif italic mb-10 pr-4">Contact</h3>
+            <div className="space-y-8">
+              <div className="space-y-2">
+                <p className="text-[10px] font-black uppercase tracking-[0.25em] text-muted-foreground/40">Localisation</p>
+                <p className="text-sm font-medium">Monastir, Tunisie</p>
+              </div>
+
+              <div className="space-y-2">
+                <p className="text-[10px] font-black uppercase tracking-[0.25em] text-muted-foreground/40">Email</p>
+                <Link href="mailto:rayeen@benamor.tech" className="text-sm font-medium hover:text-primary transition-colors">
                   rayeen@benamor.tech
                 </Link>
-              </li>
-              <li>
-                <Link
-                  href="tel:+21695129848"
-                  className="hover:text-primary transition-colors"
-                >
-                  +216 95129848
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="https://wa.me/21695129848"
-                  className="hover:text-primary transition-colors"
-                >
-                  WhatsApp Business
-                </Link>
-              </li>
-            </ul>
+              </div>
+
+              <div className="space-y-2">
+                <p className="text-[10px] font-black uppercase tracking-[0.25em] text-muted-foreground/40">Téléphone</p>
+                <div className="flex flex-col gap-1">
+                  <Link href="tel:+21695129848" className="text-sm font-medium hover:text-primary transition-colors">
+                    +216 95129848
+                  </Link>
+                  <Link href="https://wa.me/21695129848" className="text-sm font-bold text-primary hover:brightness-110 transition-all">
+                    WhatsApp Business
+                  </Link>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-
       </div>
     </footer>
   )
 }
+
 
 
