@@ -57,7 +57,7 @@ export const metadata: Metadata = {
     title: "BenAmor | Consultant odoo Expert",
     description:
       "Développeur & Consultant odoo Freelance basé à Monastir, Tunisie. Spécialiste intégration, migration ERP, odoo 18/19.",
-    images: ["/photo.png"],
+    images: ["/og-image.png"],
   },
   robots: {
     index: true,
