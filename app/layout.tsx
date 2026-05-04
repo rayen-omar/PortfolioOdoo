@@ -50,22 +50,7 @@ export const metadata: Metadata = {
   category: "Technology",
   classification: "Développement Logiciel",
   openGraph: {
-    type: "website",
-    locale: "fr_FR",
-    url: "https://www.benamor.tech",
-    title:
-      "BenAmor | Développeur & Consultant odoo – Expert en Tunisie",
-    description:
-      "Développeur & Consultant odoo Freelance basé à Monastir, Tunisie. Spécialiste intégration, migration ERP, odoo 18/19, dev technique & fonctionnel.",
-    siteName: "Benamor.tech",
-    images: [
-      {
-        url: "/photo.png",
-        width: 1200,
-        height: 630,
-        alt: "BenAmor - Développeur & Consultant odoo Freelance",
-      },
-    ],
+    images: ["/og-image.png"],
   },
   twitter: {
     card: "summary_large_image",
